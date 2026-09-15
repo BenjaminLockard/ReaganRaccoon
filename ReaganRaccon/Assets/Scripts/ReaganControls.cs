@@ -30,6 +30,7 @@ public class ReaganControls : MonoBehaviour
                 new Vector3(cursorInput.x, cursorInput.y,
                     -Camera.main.transform.position.z));
 
+            //keep from changing z axis
             cursorWorldPosition.z = transform.position.z;
 
             moveToCursor = true;
