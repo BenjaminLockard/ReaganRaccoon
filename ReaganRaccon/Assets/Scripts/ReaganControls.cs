@@ -1,15 +1,19 @@
-
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ReaganControls : MonoBehaviour
 {
-    public float moveSpeed;
+    [Header("Movement")]
+    [SerializeField] private float maxSpeed = 5f;
+    [SerializeField] private float acceleration = 20f;
+    [SerializeField] private float deceleration = 25f;
 
     private Vector2 moveInput;
     private Vector2 cursorInput;
     private Vector3 cursorWorldPosition;
     private bool moveToCursor;
+
+    private Vector2 currentVelocity;
 
     public void OnMove(InputValue value)
     {
@@ -23,14 +27,17 @@ public class ReaganControls : MonoBehaviour
 
     public void OnMoveToCursor(InputValue value)
     {
-        // Take a snapshot of mouse position
         if (value.isPressed)
         {
             cursorWorldPosition = Camera.main.ScreenToWorldPoint(
-                new Vector3(cursorInput.x, cursorInput.y,
-                    -Camera.main.transform.position.z));
+                new Vector3(
+                    cursorInput.x,
+                    cursorInput.y,
+                    -Camera.main.transform.position.z
+                )
+            );
 
-            //keep from changing z axis
+            // Keep from changing Z axis
             cursorWorldPosition.z = transform.position.z;
 
             moveToCursor = true;
@@ -39,30 +46,59 @@ public class ReaganControls : MonoBehaviour
 
     private void Update()
     {
-        Vector3 direction = Vector3.zero;
+        Vector2 desiredVelocity = Vector2.zero;
 
+        // WASD movement
         if (moveInput.sqrMagnitude > 0f)
         {
-            direction = new Vector3(moveInput.x, moveInput.y, 0f);
+            Vector2 inputDirection = moveInput.normalized;
 
+            desiredVelocity = inputDirection * maxSpeed;
+
+            // Manual input takes priority over cursor movement
             moveToCursor = false;
         }
 
+        // Mouse movement
         else if (moveToCursor)
         {
-            direction = cursorWorldPosition - transform.position;
+            Vector2 direction = cursorWorldPosition - transform.position;
 
             if (direction.sqrMagnitude < 0.01f)
             {
-                direction = Vector3.zero;
+                desiredVelocity = Vector2.zero;
                 moveToCursor = false;
+            }
+            else
+            {
+                float distance = direction.magnitude;
+
+                float slowdownDistance = 4f;
+
+                float speedMultiplier = Mathf.Clamp01(
+                    distance / slowdownDistance
+                );
+
+                desiredVelocity = direction.normalized * maxSpeed * speedMultiplier;
             }
         }
 
-        // Prevent diagonal movement from being too fast
-        if (direction.sqrMagnitude > 1f)
-            direction.Normalize();
+        // Accelerate toward desired velocity
+        float accelerationRate = desiredVelocity.sqrMagnitude > 0f
+            ? acceleration
+            : deceleration;
 
-        transform.position += direction * moveSpeed * Time.deltaTime;
+        currentVelocity = Vector2.MoveTowards(
+            currentVelocity,
+            desiredVelocity,
+            accelerationRate * Time.deltaTime
+        );
+
+        // Move the character
+        transform.position += new Vector3(
+            currentVelocity.x,
+            currentVelocity.y,
+            0f
+        ) * Time.deltaTime;
     }
 }
