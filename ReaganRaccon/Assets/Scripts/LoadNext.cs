@@ -6,15 +6,17 @@ using UnityEngine.SceneManagement;
 public class LoadNext : MonoBehaviour
 {
     //if object tag has "tag" minigame and pressing action causes the new scene to load
-    private Rigidbody2D rb;
+
     private bool isCollidingWithObject;
     public string miniGameSceneName;
-  
-    private void Awake(){
-        rb = GetComponent<Rigidbody2D>();
+    private void OnCollisionEnter2D(Collision2D collision){
+        Debug.Log("Collision");
     }
-    private void OnCollsionEnter2D(Collision2D collision){
+
+    private void OnTriggerEnter2D(Collider2D collision){
+        Debug.Log("WE HIT EACH OTTER");
         if(collision.gameObject.CompareTag("Regan")){
+            Debug.Log("WE HIT EACH OTTER");
             isCollidingWithObject = true;
             SceneManager.LoadScene("SampleScene");
         }
