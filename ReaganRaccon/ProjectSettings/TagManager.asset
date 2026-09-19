@@ -42,5 +42,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: floor
+    uniqueID: 2967409713
+    locked: 0
+  - name: regan
+    uniqueID: 2099549623
+    locked: 0
   m_RenderingLayers:
   - Default

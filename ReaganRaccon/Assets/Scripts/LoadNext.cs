@@ -9,16 +9,14 @@ public class LoadNext : MonoBehaviour
 
     private bool isCollidingWithObject;
     public string miniGameSceneName;
-    private void OnCollisionEnter2D(Collision2D collision){
-        Debug.Log("Collision");
-    }
+
 
     private void OnTriggerEnter2D(Collider2D collision){
         Debug.Log("WE HIT EACH OTTER");
-        if(collision.gameObject.CompareTag("Regan")){
+        if(collision.gameObject.CompareTag("Reagan")){
             Debug.Log("WE HIT EACH OTTER");
             isCollidingWithObject = true;
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene(miniGameSceneName);
         }
         else{
             isCollidingWithObject = false;
@@ -28,10 +26,11 @@ public class LoadNext : MonoBehaviour
         //within controls
     }
 
-    private void Update(){
+    /*private void Update(){
         if(isCollidingWithObject) // && [interact] is pressed 
         //transition scene should be loaded as soon as you enter a level
         //while in the background of that the minigame is being loaded 
         SceneManager.LoadScene(miniGameSceneName);
     }
+    */
 }
