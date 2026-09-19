@@ -15,6 +15,59 @@ public class ReaganControls : MonoBehaviour
 
     private Vector2 currentVelocity;
 
+    [Header("Dash")]
+    [SerializeField] private float dashSpeed = 15f;
+    [SerializeField] private float dashDuration = 0.15f;
+    [SerializeField] private float dashCooldown = 0.5f;
+
+    private bool isDashing;
+    private float dashTimer;
+    private float dashCooldownTimer;
+    private Vector2 dashDirection;
+
+    public void OnDash(InputValue value)
+    {
+        if (!value.isPressed)
+            return;
+
+        // Can't dash while already dashing or on cooldown.
+        if (isDashing || dashCooldownTimer > 0f)
+            return;
+
+        // WASD takes priority.
+        if (moveInput.sqrMagnitude > 0f)
+        {
+            dashDirection = moveInput.normalized;
+        }
+        // Otherwise dash toward the mouse.
+        else if (moveToCursor)
+        {
+            Vector2 direction = (Vector2)cursorWorldPosition - (Vector2)transform.position;
+
+            if (direction.sqrMagnitude > 0.01f)
+            {
+                dashDirection = direction.normalized;
+            }
+            else
+            {
+                return;
+            }
+        }
+        else
+        {
+            // No movement direction available.
+            return;
+        }
+
+        isDashing = true;
+        dashTimer = dashDuration;
+        dashCooldownTimer = dashCooldown;
+
+        // Immediately give the player dash velocity.
+        currentVelocity = dashDirection * dashSpeed;
+    }
+
+
     public void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
@@ -46,6 +99,33 @@ public class ReaganControls : MonoBehaviour
 
     private void Update()
     {
+        // Handle dash cooldown.
+        if (dashCooldownTimer > 0f)
+        {
+            dashCooldownTimer -= Time.deltaTime;
+        }
+
+        // Handle active dash.
+        if (isDashing)
+        {
+            dashTimer -= Time.deltaTime;
+
+            currentVelocity = dashDirection * dashSpeed;
+
+            transform.position += new Vector3(
+                currentVelocity.x,
+                currentVelocity.y,
+                0f
+            ) * Time.deltaTime;
+
+            if (dashTimer <= 0f)
+            {
+                isDashing = false;
+            }
+
+            return;
+        }
+
         Vector2 desiredVelocity = Vector2.zero;
 
         // WASD movement
@@ -73,13 +153,16 @@ public class ReaganControls : MonoBehaviour
             {
                 float distance = direction.magnitude;
 
-                float slowdownDistance = 4f;
+                float slowdownDistance = 3.5f;
 
                 float speedMultiplier = Mathf.Clamp01(
                     distance / slowdownDistance
                 );
 
-                desiredVelocity = direction.normalized * maxSpeed * speedMultiplier;
+                desiredVelocity =
+                    direction.normalized *
+                    maxSpeed *
+                    speedMultiplier;
             }
         }
 
