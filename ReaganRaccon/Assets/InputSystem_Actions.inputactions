@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "InputSystem_Actions",
     "maps": [
         {
@@ -986,6 +987,34 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "TrackedDeviceOrientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Minigame",
+            "id": "153e9945-6832-4a02-aeb1-a5020d00ec19",
+            "actions": [
+                {
+                    "name": "MouseClick",
+                    "type": "Button",
+                    "id": "09fc62a6-a3af-47c9-958d-8d5bcfdfaa57",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4ada500d-beeb-41b9-9a7d-0bc872524bfa",
+                    "path": "<Mouse>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
