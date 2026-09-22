@@ -39,7 +39,7 @@ public class LoadNext : MonoBehaviour
         //within controls
     }
 */
-    public void switchScene()
+    public void switchScene(string type, string SceneName)
     {
         if (type == "minigame")
         {
