@@ -3,8 +3,8 @@ using UnityEngine.InputSystem;
 
 public class ReaganInteractions : MonoBehaviour
 {
-    public string sceneName;
-    public string SceneType; 
+    //public string sceneName;
+    //public string SceneType; 
     private IInteractable currentInteractable;
 
     void Update()
