@@ -17540,7 +17540,7 @@ MonoBehaviour:
   dashSpeed: 18
   dashDuration: 0.015
   dashCooldown: 0.4
-  bounceMultiplier: 0.75
+  bounceMultiplier: 0.5
   dizzyDuration: 2
 --- !u!212 &965427582
 SpriteRenderer:

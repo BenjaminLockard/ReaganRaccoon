@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class ReaganControls : MonoBehaviour
 {
@@ -246,5 +247,11 @@ public class ReaganControls : MonoBehaviour
             0f
         ) * Time.deltaTime;
     }
+
+
+    public void OnReset(InputValue input) {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
 
 }
