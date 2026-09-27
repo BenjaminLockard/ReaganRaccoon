@@ -43,7 +43,9 @@ public class LoadNext : MonoBehaviour
     {
         if (type == "minigame")
         {
+            //disable root object here from the main world
             SceneManager.LoadScene(SceneName, LoadSceneMode.Additive);
+            //rooty.SetActive(false)
         }
         else
         {
