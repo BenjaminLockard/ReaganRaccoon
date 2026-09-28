@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class ReaganControls : MonoBehaviour
 {
@@ -25,9 +26,18 @@ public class ReaganControls : MonoBehaviour
     private float dashCooldownTimer;
     private Vector2 dashDirection;
 
+    private bool dizzy;
+
+    [Header("Crash Stun")]
+    //[SerializeField] private float bounceSpeed = 8f;
+    [SerializeField] private float bounceMultiplier = 0.5f;
+    [SerializeField] private float dizzyDuration = 3f;
+    [SerializeField] private float crashThreshold = 1.25f;
+
+    private float dizzyTimer;
     public void OnDash(InputValue value)
     {
-        if (!value.isPressed)
+        if (!value.isPressed || dizzy)
             return;
 
         // Can't dash while already dashing or on cooldown.
@@ -68,6 +78,39 @@ public class ReaganControls : MonoBehaviour
     }
 
 
+    //to allow slip-through, add to conditional w/ tags or something
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        float speed = currentVelocity.magnitude;
+
+        if (speed > (maxSpeed * crashThreshold) && !dizzy)
+        {
+            crashStun(collision);
+        }
+    }
+
+    private void crashStun(Collision2D collision)
+    {
+        dizzy = true;
+        dizzyTimer = dizzyDuration;
+
+        // Cancel the dash.
+        isDashing = false;
+        dashTimer = 0f;
+
+        // Get the player's speed at the moment of impact.
+        float impactSpeed = currentVelocity.magnitude;
+
+        // Find the direction away from the collision.
+        Vector2 collisionPoint = collision.GetContact(0).point;
+
+        Vector2 bounceDirection =
+            ((Vector2)transform.position - collisionPoint).normalized;
+
+        // Reverse the player's momentum and scale the bounce.
+        currentVelocity = bounceDirection * impactSpeed * bounceMultiplier;
+    }
+
     public void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
@@ -99,6 +142,25 @@ public class ReaganControls : MonoBehaviour
 
     private void Update()
     {
+        // -------------------------
+        // DIZZY TIMER
+        // -------------------------
+
+        if (dizzy)
+        {
+            dizzyTimer -= Time.deltaTime;
+
+            if (dizzyTimer <= 0f)
+            {
+                dizzy = false;
+            }
+        }
+
+
+        // -------------------------
+        // DASH COOLDOWN
+        // -------------------------
+
         // Handle dash cooldown.
         if (dashCooldownTimer > 0f)
         {
@@ -125,6 +187,10 @@ public class ReaganControls : MonoBehaviour
 
             return;
         }
+
+        // -------------------------
+        // NORMAL MOVEMENT
+        // -------------------------
 
         Vector2 desiredVelocity = Vector2.zero;
 
@@ -184,4 +250,11 @@ public class ReaganControls : MonoBehaviour
             0f
         ) * Time.deltaTime;
     }
+
+    public void OnReset(InputValue input)
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+
 }
