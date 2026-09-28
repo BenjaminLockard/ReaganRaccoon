@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 8856875411534315060}
   - component: {fileID: 2862247050672525958}
   - component: {fileID: 3914890469455466496}
-  - component: {fileID: -3149637697866887560}
   - component: {fileID: 3416072067996356085}
   - component: {fileID: 1474073546866348844}
+  - component: {fileID: 6679916931457795480}
   m_Layer: 0
   m_Name: dirt
-  m_TagString: Untagged
+  m_TagString: Dirt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,19 +122,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-3149637697866887560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9115749410710645557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83cd350268af4c14da1b050022d32104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  isDragging: 1
 --- !u!61 &3416072067996356085
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -194,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
   m_Actions: {fileID: -944628639613478452, guid: 37bb3502a10b3254680646f25372424d, type: 3}
-  m_NotificationBehavior: 2
+  m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -223,3 +210,15 @@ MonoBehaviour:
   m_DefaultActionMap: Mouse
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &6679916931457795480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9115749410710645557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83cd350268af4c14da1b050022d32104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoveDirt

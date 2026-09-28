@@ -8,21 +8,21 @@
             "actions": [
                 {
                     "name": "LeftClick",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "c4563cc0-1026-4aac-a5a9-50348b7d3613",
-                    "expectedControlType": "",
+                    "expectedControlType": "Integer",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "RightClick",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "44dc85d5-4f90-403e-ba66-3dd11feaa037",
-                    "expectedControlType": "",
+                    "expectedControlType": "Integer",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Cursor",
@@ -39,7 +39,7 @@
                     "name": "",
                     "id": "348853f9-6f4c-4c7c-9459-4f5ae92b2736",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "",
+                    "interactions": "Hold",
                     "processors": "",
                     "groups": "",
                     "action": "LeftClick",
@@ -50,7 +50,7 @@
                     "name": "",
                     "id": "8f52b642-09f6-4d7f-8b5b-32c892853398",
                     "path": "<Mouse>/rightButton",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "processors": "",
                     "groups": "",
                     "action": "RightClick",
