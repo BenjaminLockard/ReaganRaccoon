@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class ReaganControls : MonoBehaviour
 {
@@ -24,16 +25,16 @@ public class ReaganControls : MonoBehaviour
     private float dashTimer;
     private float dashCooldownTimer;
     private Vector2 dashDirection;
-    
+
     private bool dizzy;
 
     [Header("Crash Stun")]
     //[SerializeField] private float bounceSpeed = 8f;
     [SerializeField] private float bounceMultiplier = 0.5f;
     [SerializeField] private float dizzyDuration = 3f;
+    [SerializeField] private float crashThreshold = 1.25f;
 
     private float dizzyTimer;
-
     public void OnDash(InputValue value)
     {
         if (!value.isPressed || dizzy)
@@ -76,12 +77,13 @@ public class ReaganControls : MonoBehaviour
         currentVelocity = dashDirection * dashSpeed;
     }
 
+
     //to allow slip-through, add to conditional w/ tags or something
     private void OnCollisionEnter2D(Collision2D collision)
     {
         float speed = currentVelocity.magnitude;
 
-        if (speed > (maxSpeed * 1.25) && !dizzy)
+        if (speed > (maxSpeed * crashThreshold) && !dizzy)
         {
             crashStun(collision);
         }
@@ -108,7 +110,6 @@ public class ReaganControls : MonoBehaviour
         // Reverse the player's momentum and scale the bounce.
         currentVelocity = bounceDirection * impactSpeed * bounceMultiplier;
     }
-
 
     public void OnMove(InputValue value)
     {
@@ -160,16 +161,13 @@ public class ReaganControls : MonoBehaviour
         // DASH COOLDOWN
         // -------------------------
 
+        // Handle dash cooldown.
         if (dashCooldownTimer > 0f)
         {
             dashCooldownTimer -= Time.deltaTime;
         }
 
-
-        // -------------------------
-        // DASH
-        // -------------------------
-
+        // Handle active dash.
         if (isDashing)
         {
             dashTimer -= Time.deltaTime;
@@ -190,21 +188,24 @@ public class ReaganControls : MonoBehaviour
             return;
         }
 
-
         // -------------------------
         // NORMAL MOVEMENT
         // -------------------------
 
         Vector2 desiredVelocity = Vector2.zero;
 
+        // WASD movement
         if (moveInput.sqrMagnitude > 0f)
         {
             Vector2 inputDirection = moveInput.normalized;
 
             desiredVelocity = inputDirection * maxSpeed;
 
+            // Manual input takes priority over cursor movement
             moveToCursor = false;
         }
+
+        // Mouse movement
         else if (moveToCursor)
         {
             Vector2 direction = cursorWorldPosition - transform.position;
@@ -217,6 +218,7 @@ public class ReaganControls : MonoBehaviour
             else
             {
                 float distance = direction.magnitude;
+
                 float slowdownDistance = 3.5f;
 
                 float speedMultiplier = Mathf.Clamp01(
@@ -230,6 +232,7 @@ public class ReaganControls : MonoBehaviour
             }
         }
 
+        // Accelerate toward desired velocity
         float accelerationRate = desiredVelocity.sqrMagnitude > 0f
             ? acceleration
             : deceleration;
@@ -240,11 +243,18 @@ public class ReaganControls : MonoBehaviour
             accelerationRate * Time.deltaTime
         );
 
+        // Move the character
         transform.position += new Vector3(
             currentVelocity.x,
             currentVelocity.y,
             0f
         ) * Time.deltaTime;
     }
+
+    public void OnReset(InputValue input)
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
 
 }
