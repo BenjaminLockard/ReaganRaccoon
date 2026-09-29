@@ -1,0 +1,793 @@
+fileFormatVersion: 2
+guid: 4a202631d12d0439dab5a3713690a4e5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7946181943368753001
+    second: Reagan Spritesheet_0
+  - first:
+      213: 3109213817112258998
+    second: Reagan Spritesheet_1
+  - first:
+      213: -7262478367501084134
+    second: Reagan Spritesheet_2
+  - first:
+      213: 4580508541583552415
+    second: Reagan Spritesheet_3
+  - first:
+      213: 8692905888373049997
+    second: Reagan Spritesheet_4
+  - first:
+      213: 1644561866747045193
+    second: Reagan Spritesheet_5
+  - first:
+      213: -1373003120527169605
+    second: Reagan Spritesheet_6
+  - first:
+      213: 4783322578959217764
+    second: Reagan Spritesheet_7
+  - first:
+      213: -8939195990977858075
+    second: Reagan Spritesheet_8
+  - first:
+      213: 3784104534530704070
+    second: Reagan Spritesheet_9
+  - first:
+      213: -4759884029517617038
+    second: Reagan Spritesheet_10
+  - first:
+      213: 4047087745354156411
+    second: Reagan Spritesheet_11
+  - first:
+      213: 4538399623838431335
+    second: Reagan Spritesheet_12
+  - first:
+      213: -7011243528647383670
+    second: Reagan Spritesheet_13
+  - first:
+      213: 4847376733222827112
+    second: Reagan Spritesheet_14
+  - first:
+      213: -8428150861206573185
+    second: Reagan Spritesheet_15
+  - first:
+      213: 7077540287475112504
+    second: Reagan Spritesheet_16
+  - first:
+      213: -8836529934471404696
+    second: Reagan Spritesheet_17
+  - first:
+      213: 5798354899498214580
+    second: Reagan Spritesheet_18
+  - first:
+      213: -6763798667215407897
+    second: Reagan Spritesheet_19
+  - first:
+      213: -7794184702519845923
+    second: Reagan Spritesheet_20
+  - first:
+      213: 3090018242920038535
+    second: Reagan Spritesheet_21
+  - first:
+      213: 8644671102327940590
+    second: Reagan Spritesheet_22
+  - first:
+      213: -676571736582400906
+    second: Reagan Spritesheet_23
+  - first:
+      213: 4333708008994272097
+    second: Reagan Spritesheet_24
+  - first:
+      213: 7682717604336394672
+    second: Reagan Spritesheet_25
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Reagan Spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 293
+        width: 46
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 790e1e88f9d79b190800000000000000
+      internalID: -7946181943368753001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reagan Spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 293
+        width: 46
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b966bb4e75262b20800000000000000
+      internalID: 3109213817112258998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reagan Spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 293
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1a932c276e763b90800000000000000
+      internalID: -7262478367501084134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reagan Spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 293
+        width: 46
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9feabfff3c319f30800000000000000
+      internalID: 4580508541583552415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reagan Spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 293
+        width: 46
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8a806639d763a870800000000000000
+      internalID: 8692905888373049997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reagan Spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 293
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9456c96fd48a2d610800000000000000
+      internalID: 1644561866747045193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reagan Spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 242
+        width: 46
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb7a975bfec12fce0800000000000000
+      internalID: -1373003120527169605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reagan Spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 191
+        width: 45
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 3}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46438fcda86c16240800000000000000
+      internalID: 4783322578959217764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reagan Spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 191
+        width: 45
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e53b2cab9891f380800000000000000
+      internalID: -8939195990977858075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reagan Spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 191
+        width: 45
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c2c5ad6607d38430800000000000000
+      internalID: 3784104534530704070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reagan Spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 191
+        width: 45
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2782c80b1be71fdb0800000000000000
+      internalID: -4759884029517617038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reagan Spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 192
+        width: 45
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 3}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b79cbacacd42a2830800000000000000
+      internalID: 4047087745354156411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reagan Spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 191
+        width: 45
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 768f7a39962abfe30800000000000000
+      internalID: 4538399623838431335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reagan Spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 144
+        width: 45
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a856739682f03be90800000000000000
+      internalID: -7011243528647383670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reagan Spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 143
+        width: 45
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8647d34d477554340800000000000000
+      internalID: 4847376733222827112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reagan Spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 143
+        width: 45
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7f216c2271390b80800000000000000
+      internalID: -8428150861206573185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reagan Spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 94
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83a587e9469783260800000000000000
+      internalID: 7077540287475112504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reagan Spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 143
+        width: 45
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 863e9b0b7d65e5580800000000000000
+      internalID: -8836529934471404696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reagan Spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 143
+        width: 45
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b4ac326f05e77050800000000000000
+      internalID: 5798354899498214580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reagan Spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 143
+        width: 45
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e47d54c2f82222a0800000000000000
+      internalID: -6763798667215407897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reagan Spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 92
+        width: 46
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddb5584fe4e75d390800000000000000
+      internalID: -7794184702519845923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reagan Spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 94
+        width: 46
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 780c9b66833f1ea20800000000000000
+      internalID: 3090018242920038535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reagan Spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 94
+        width: 46
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee5675ee09a08f770800000000000000
+      internalID: 8644671102327940590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reagan Spritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 94
+        width: 46
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 674dfe717955c96f0800000000000000
+      internalID: -676571736582400906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reagan Spritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 94
+        width: 46
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1637e54297c642c30800000000000000
+      internalID: 4333708008994272097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reagan Spritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 44
+        width: 46
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b16c14d4fe7e9a60800000000000000
+      internalID: 7682717604336394672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: b3a639ba7db3c474dba69fbfe5fa5135
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Reagan Spritesheet_0: -7946181943368753001
+      Reagan Spritesheet_1: 3109213817112258998
+      Reagan Spritesheet_10: -4759884029517617038
+      Reagan Spritesheet_11: 4047087745354156411
+      Reagan Spritesheet_12: 4538399623838431335
+      Reagan Spritesheet_13: -7011243528647383670
+      Reagan Spritesheet_14: 4847376733222827112
+      Reagan Spritesheet_15: -8428150861206573185
+      Reagan Spritesheet_16: 7077540287475112504
+      Reagan Spritesheet_17: -8836529934471404696
+      Reagan Spritesheet_18: 5798354899498214580
+      Reagan Spritesheet_19: -6763798667215407897
+      Reagan Spritesheet_2: -7262478367501084134
+      Reagan Spritesheet_20: -7794184702519845923
+      Reagan Spritesheet_21: 3090018242920038535
+      Reagan Spritesheet_22: 8644671102327940590
+      Reagan Spritesheet_23: -676571736582400906
+      Reagan Spritesheet_24: 4333708008994272097
+      Reagan Spritesheet_25: 7682717604336394672
+      Reagan Spritesheet_3: 4580508541583552415
+      Reagan Spritesheet_4: 8692905888373049997
+      Reagan Spritesheet_5: 1644561866747045193
+      Reagan Spritesheet_6: -1373003120527169605
+      Reagan Spritesheet_7: 4783322578959217764
+      Reagan Spritesheet_8: -8939195990977858075
+      Reagan Spritesheet_9: 3784104534530704070
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
