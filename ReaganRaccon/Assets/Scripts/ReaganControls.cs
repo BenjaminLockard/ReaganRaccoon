@@ -110,6 +110,12 @@ public class ReaganControls : MonoBehaviour
         // Reverse the player's momentum and scale the bounce.
         currentVelocity = bounceDirection * impactSpeed * bounceMultiplier;
     }
+    public void resetMovement()
+    {
+        moveInput = Vector2.zero;
+        cursorInput = Vector2.zero;
+        moveToCursor = false;
+    }
 
     public void OnMove(InputValue value)
     {
