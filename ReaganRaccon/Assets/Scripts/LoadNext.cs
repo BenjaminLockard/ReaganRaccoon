@@ -50,7 +50,7 @@ public class LoadNext : MonoBehaviour
             SceneManager.LoadScene(SceneName, LoadSceneMode.Additive);
             //rooty.SetActive(false)
             //SceneManager.SetActiveScene(SceneName);
-            SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneName));
+            //SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneName));
             
             
         }
