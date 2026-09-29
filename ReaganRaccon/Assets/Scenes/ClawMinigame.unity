@@ -960,7 +960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d50b42796350463880bc73de4d551a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClawMinigame
-  speed: 100
+  speed: 250
   rb: {fileID: 1842960288}
 --- !u!114 &1842960290
 MonoBehaviour:

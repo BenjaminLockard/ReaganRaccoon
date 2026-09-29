@@ -39,8 +39,6 @@ public class LoadNext : MonoBehaviour
 
     public void switchScene(string type, string SceneName)
     {
-       
-        
         if (type == "minigame")
         {
             Destroy(removed);
