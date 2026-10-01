@@ -81,17 +81,18 @@ public class ReaganControls : MonoBehaviour
     //to allow slip-through, add to conditional w/ tags or something
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        float speed = currentVelocity.magnitude;
-
-        if (speed > (maxSpeed * crashThreshold) && !dizzy)
-        {
-            crashStun(collision);
-        }
+        crashStun(collision);
     }
 
     private void crashStun(Collision2D collision)
     {
-        dizzy = true;
+        float speed = currentVelocity.magnitude;
+
+        if (speed > (maxSpeed * crashThreshold) && !dizzy)
+        {
+            dizzy = true;
+        }
+        
         dizzyTimer = dizzyDuration;
 
         // Cancel the dash.
