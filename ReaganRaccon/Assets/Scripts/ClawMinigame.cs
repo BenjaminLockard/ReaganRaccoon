@@ -18,8 +18,9 @@ public class ClawMinigame : MonoBehaviour
         loadNext = GetComponent<LoadNext>();
         rb = GetComponent<Rigidbody2D>();
     }
-        private void Update() {
-            if(rb.transform.position.x >= 8.5)
+
+    private void Update() {
+        if(rb.transform.position.x >= 8.5)
         {
             flip = -1;
         }else if (rb.transform.position.x <= -8.5)//possibly condense this with an || 
@@ -27,12 +28,15 @@ public class ClawMinigame : MonoBehaviour
             flip = 1;
         }
         //this is the boundary of how far the box can go out before flipping
+    }
+
+    private void FixedUpdate() {
 
         if(isSpacePressed){
             //moves down
             if (failed)//is triggered by the collider
             {
-            rb.MovePosition(rb.position + new Vector2(0f , speed) * Time.deltaTime);
+            rb.MovePosition(rb.position + new Vector2(0f , speed) * Time.fixedDeltaTime);
             if(rb.transform.position.y >= 3)
                 {
                     //claw goes up then goes back to going left and right
@@ -41,12 +45,12 @@ public class ClawMinigame : MonoBehaviour
                 }
             }else{
                 //claw goes straight down 
-            rb.MovePosition(rb.position + new Vector2(0f , speed * -1) * Time.deltaTime);
+            rb.MovePosition(rb.position + new Vector2(0f , speed * -1) * Time.fixedDeltaTime);
             }
         }
         else
         {
-            rb.MovePosition(rb.position + new Vector2(speed * flip, 0f) * Time.deltaTime);
+            rb.MovePosition(rb.position + new Vector2(speed * flip, 0f) * Time.fixedDeltaTime);
             //goes left and right
         }
     }
