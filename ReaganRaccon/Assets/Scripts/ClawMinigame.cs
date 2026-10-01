@@ -31,7 +31,7 @@ public class ClawMinigame : MonoBehaviour
     }
 
     private void FixedUpdate() {
-
+        //fixed updates on a constant loop
         if(isSpacePressed){
             //moves down
             if (failed)//is triggered by the collider
@@ -63,6 +63,8 @@ public class ClawMinigame : MonoBehaviour
             //loadNext.switchScene("NULL","TestSceneB");
             //Jason
             loadNext.switchScene("switchback","ClawMinigame");
+            //The name of this script needs to be put in
+            //then the script knows which one to destroy
         }
         else{
             //runs the return sequence where the claw goes back up and you try again

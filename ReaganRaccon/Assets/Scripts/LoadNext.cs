@@ -46,6 +46,9 @@ public class LoadNext : MonoBehaviour
             //disable root object here from the main world
             
             SceneManager.LoadScene(SceneName, LoadSceneMode.Additive);
+            //Loads the minigame additively
+            //Main gets disabled
+
             //rooty.SetActive(false)
             //SceneManager.SetActiveScene(SceneName);
             //SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneName));
@@ -53,8 +56,11 @@ public class LoadNext : MonoBehaviour
             
         } else if(type == "switchback") {
             Destroy(removed);
-            SceneManager.UnloadSceneAsync(SceneName);
+            //probably remove
+            SceneManager.UnloadSceneAsync(SceneName); //could make it so that it gets the current
+            //unloads the scene that it got passed down
             GameManager.Instance.setRootTrue();
+            //reloads the root scene 
         }
         else
         {
