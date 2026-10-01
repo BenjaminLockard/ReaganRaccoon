@@ -56,7 +56,9 @@ public class ClawMinigame : MonoBehaviour
         {
             //hitting the triangle causes you to win
             //Debug.Log("WINNER");
-            loadNext.switchScene("NULL","TestSceneB");
+            //loadNext.switchScene("NULL","TestSceneB");
+            //Jason
+            loadNext.switchScene("switchback","ClawMinigame");
         }
         else{
             //runs the return sequence where the claw goes back up and you try again

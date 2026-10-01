@@ -51,6 +51,10 @@ public class LoadNext : MonoBehaviour
             //SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneName));
             
             
+        } else if(type == "switchback") {
+            Destroy(removed);
+            SceneManager.UnloadSceneAsync(SceneName);
+            GameManager.Instance.setRootTrue();
         }
         else
         {
