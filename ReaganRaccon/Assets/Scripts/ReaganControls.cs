@@ -115,6 +115,9 @@ public class ReaganControls : MonoBehaviour
         moveInput = Vector2.zero;
         cursorInput = Vector2.zero;
         moveToCursor = false;
+        currentVelocity = Vector2.zero;
+        //add in code here to stop reagan velocity
+       
     }
 
     public void OnMove(InputValue value)
@@ -148,6 +151,10 @@ public class ReaganControls : MonoBehaviour
 
     private void Update()
     {
+        if (!GameManager.Instance.getisLoaded())
+        {
+            resetMovement();
+        }
         // -------------------------
         // DIZZY TIMER
         // -------------------------

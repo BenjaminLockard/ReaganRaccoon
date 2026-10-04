@@ -12,7 +12,16 @@ public class LoadNext : MonoBehaviour
     public string type;
     //[SerializeField] GameObject Root; 
     public GameObject removed;
-  
+    /*
+    public GameObject reagan;
+    private ReaganControls reaganControls;
+    private void Awake() {
+        //reagan = GameObject.Find("ReaganCapsule");
+       reaganControls = reagan.GetComponent<ReaganControls>();
+    }
+    //none of that works 
+    //was trying to grab the game object and just stop it
+    */
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("WE HIT EACH OTTER");
@@ -61,6 +70,7 @@ public class LoadNext : MonoBehaviour
             //unloads the scene that it got passed down
             GameManager.Instance.setRootTrue();
             //reloads the root scene 
+            //reagan.reaganControls.resetMovement();
         }
         else
         {

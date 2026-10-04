@@ -23,7 +23,7 @@ public class MashingMinigame : MonoBehaviour
     void Update(){
         mainText.text = "Press Space " + timesToMash;
         if(timesToMash == 0f){
-            mainText.text = "FART";
+            //mainText.text = "FART";
             loadNext.switchScene("switchback","MashingMinigame");
         }
     }    
