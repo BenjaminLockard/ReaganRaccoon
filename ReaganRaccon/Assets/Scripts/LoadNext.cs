@@ -10,18 +10,9 @@ public class LoadNext : MonoBehaviour
     private bool isCollidingWithObject;
     public string SceneName;
     public string type;
-    //[SerializeField] GameObject Root; 
+   
     public GameObject removed;
-    /*
-    public GameObject reagan;
-    private ReaganControls reaganControls;
-    private void Awake() {
-        //reagan = GameObject.Find("ReaganCapsule");
-       reaganControls = reagan.GetComponent<ReaganControls>();
-    }
-    //none of that works 
-    //was trying to grab the game object and just stop it
-    */
+ 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("WE HIT EACH OTTER");
@@ -35,15 +26,6 @@ public class LoadNext : MonoBehaviour
             //which should allow the main game to be active 
             //however switching
         }
-        /*
-        else
-        {
-            isCollidingWithObject = false;
-        }
-        */
-        //sets that regan is colliding with the object
-        //allows the player to press the interaction button
-        //within controls
     }
 
     public void switchScene(string type, string SceneName)
@@ -58,7 +40,6 @@ public class LoadNext : MonoBehaviour
             //Loads the minigame additively
             //Main gets disabled
 
-            //rooty.SetActive(false)
             //SceneManager.SetActiveScene(SceneName);
             //SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneName));
             

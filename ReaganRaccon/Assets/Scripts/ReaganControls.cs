@@ -151,8 +151,12 @@ public class ReaganControls : MonoBehaviour
 
     private void Update()
     {
+        // -------------------------
+        // RESET Movement
+        // -------------------------
         if (!GameManager.Instance.getisLoaded())
         {
+            //if the game is not loaded reset reagan movement
             resetMovement();
         }
         // -------------------------
