@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2862247050672525958}
   - component: {fileID: 3914890469455466496}
   - component: {fileID: 3416072067996356085}
-  - component: {fileID: 1474073546866348844}
   - component: {fileID: 6679916931457795480}
   m_Layer: 0
   m_Name: dirt
@@ -156,7 +155,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.025885284, y: 0.041933894}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -166,50 +165,8 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.07, y: 2.48}
+  m_Size: {x: 2.376278, y: 1.9861119}
   m_EdgeRadius: 0
---- !u!114 &1474073546866348844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9115749410710645557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
-  m_Actions: {fileID: -944628639613478452, guid: 37bb3502a10b3254680646f25372424d, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: c4563cc0-1026-4aac-a5a9-50348b7d3613
-    m_ActionName: 'Mouse/LeftClick[/Mouse/leftButton]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 44dc85d5-4f90-403e-ba66-3dd11feaa037
-    m_ActionName: 'Mouse/RightClick[/Mouse/rightButton]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: f5df8183-b14d-4f4a-a751-0919b29d49ae
-    m_ActionName: 'Mouse/Cursor[/Mouse/position]'
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Mouse
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &6679916931457795480
 MonoBehaviour:
   m_ObjectHideFlags: 0

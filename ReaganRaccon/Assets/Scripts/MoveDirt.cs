@@ -37,6 +37,7 @@ public class MoveDirt : MonoBehaviour
             //Test hit exists, otherwise you get an error.
             if(hit.collider != null && hit.collider.gameObject.CompareTag("Prize"))
             {
+                Debug.Log("Got I FUCKING YOU");
                 hit.collider.gameObject.transform.position = cursorWorldPosition;
             }
         }
@@ -55,11 +56,11 @@ public class MoveDirt : MonoBehaviour
         cursorInput = value.Get<Vector2>();//location?
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void Update()
+    private void FixedUpdate()
     {
 
-        cursorWorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(cursorInput.x, cursorInput.y, -Camera.main.transform.position.z));
-        Ray ray = cam.ScreenPointToRay(cursorWorldPosition);
+        cursorWorldPosition = cam.ScreenToWorldPoint(new Vector3(cursorInput.x, cursorInput.y, 0f));
+        Ray ray = ScreenPointToRay(cursorWorldPosition);
 
         //Remember that ScreenPointToRay doesn't draw from origin of camera, it's a straight line from the screenpoint of the mouse 'straight down the lens' into the game.
 
