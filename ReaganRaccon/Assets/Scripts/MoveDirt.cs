@@ -60,9 +60,11 @@ public class MoveDirt : MonoBehaviour
     {
 
         cursorWorldPosition = cam.ScreenToWorldPoint(new Vector3(cursorInput.x, cursorInput.y, 0f));
-        Ray ray = ScreenPointToRay(cursorWorldPosition);
+        //Ray ray = ScreenPointToRay(cursorWorldPosition);
 
-        //Remember that ScreenPointToRay doesn't draw from origin of camera, it's a straight line from the screenpoint of the mouse 'straight down the lens' into the game.
+        //Remember that ScreenPointToRay doesn't draw from origin of camera,  
+        //it's a straight line from the screenpoint of 
+        //the mouse 'straight down the lens' into the game.
 
         Debug.DrawRay(ray.origin, ray.direction * 100, Color.green);
 
