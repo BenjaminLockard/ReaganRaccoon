@@ -12,6 +12,7 @@ public class ReaganControls : MonoBehaviour
     private Vector2 cursorInput;
     private Vector3 cursorWorldPosition;
     private bool moveToCursor;
+    private Animator animator;
 
     private Vector2 currentVelocity;
 
@@ -24,7 +25,7 @@ public class ReaganControls : MonoBehaviour
     private float dashTimer;
     private float dashCooldownTimer;
     private Vector2 dashDirection;
-    
+
     private bool dizzy;
 
     [Header("Crash Stun")]
@@ -34,9 +35,10 @@ public class ReaganControls : MonoBehaviour
 
     private float dizzyTimer;
 
-    public void OnDash(InputValue value)
+
+    public void OnDash(InputAction.CallbackContext context)
     {
-        if (!value.isPressed || dizzy)
+        if (!context.performed || dizzy)
             return;
 
         // Can't dash while already dashing or on cooldown.
@@ -51,7 +53,9 @@ public class ReaganControls : MonoBehaviour
         // Otherwise dash toward the mouse.
         else if (moveToCursor)
         {
-            Vector2 direction = (Vector2)cursorWorldPosition - (Vector2)transform.position;
+            Vector2 direction =
+                (Vector2)cursorWorldPosition -
+                (Vector2)transform.position;
 
             if (direction.sqrMagnitude > 0.01f)
             {
@@ -76,12 +80,13 @@ public class ReaganControls : MonoBehaviour
         currentVelocity = dashDirection * dashSpeed;
     }
 
-    //to allow slip-through, add to conditional w/ tags or something
+
+    // Collision / crash stun
     private void OnCollisionEnter2D(Collision2D collision)
     {
         float speed = currentVelocity.magnitude;
 
-        if (speed > (maxSpeed * 1.25) && !dizzy)
+        if (speed > (maxSpeed * 1.25f) && !dizzy)
         {
             crashStun(collision);
         }
@@ -106,23 +111,58 @@ public class ReaganControls : MonoBehaviour
             ((Vector2)transform.position - collisionPoint).normalized;
 
         // Reverse the player's momentum and scale the bounce.
-        currentVelocity = bounceDirection * impactSpeed * bounceMultiplier;
+        currentVelocity =
+            bounceDirection *
+            impactSpeed *
+            bounceMultiplier;
     }
 
 
-    public void OnMove(InputValue value)
+    public void Move(InputAction.CallbackContext context)
     {
-        moveInput = value.Get<Vector2>();
+        moveInput = context.ReadValue<Vector2>();
+
+        animator.SetBool(
+            "isWalking",
+            moveInput.sqrMagnitude > 0f
+        );
+
+        if (context.canceled)
+        {
+            animator.SetBool("isWalking", false);
+
+            animator.SetFloat(
+                "LastInputX",
+                moveInput.x
+            );
+
+            animator.SetFloat(
+                "LastInputY",
+                moveInput.y
+            );
+        }
+
+        animator.SetFloat(
+            "InputX",
+            moveInput.x
+        );
+
+        animator.SetFloat(
+            "InputY",
+            moveInput.y
+        );
     }
 
-    public void OnCursor(InputValue value)
+
+    public void OnCursor(InputAction.CallbackContext context)
     {
-        cursorInput = value.Get<Vector2>();
+        cursorInput = context.ReadValue<Vector2>();
     }
 
-    public void OnMoveToCursor(InputValue value)
+
+    public void OnMoveToCursor(InputAction.CallbackContext context)
     {
-        if (value.isPressed)
+        if (context.performed)
         {
             cursorWorldPosition = Camera.main.ScreenToWorldPoint(
                 new Vector3(
@@ -132,12 +172,33 @@ public class ReaganControls : MonoBehaviour
                 )
             );
 
-            // Keep from changing Z axis
+            // Keep from changing Z axis.
             cursorWorldPosition.z = transform.position.z;
 
             moveToCursor = true;
         }
     }
+
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
+
+    private void UpdateAnimation()
+    {
+        animator.SetFloat(
+            "InputX",
+            currentVelocity.x
+        );
+
+        animator.SetFloat(
+            "InputY",
+            currentVelocity.y
+        );
+    }
+
 
     private void Update()
     {
@@ -174,13 +235,16 @@ public class ReaganControls : MonoBehaviour
         {
             dashTimer -= Time.deltaTime;
 
-            currentVelocity = dashDirection * dashSpeed;
+            currentVelocity =
+                dashDirection * dashSpeed;
 
             transform.position += new Vector3(
                 currentVelocity.x,
                 currentVelocity.y,
                 0f
             ) * Time.deltaTime;
+
+            UpdateAnimation();
 
             if (dashTimer <= 0f)
             {
@@ -199,15 +263,19 @@ public class ReaganControls : MonoBehaviour
 
         if (moveInput.sqrMagnitude > 0f)
         {
-            Vector2 inputDirection = moveInput.normalized;
+            Vector2 inputDirection =
+                moveInput.normalized;
 
-            desiredVelocity = inputDirection * maxSpeed;
+            desiredVelocity =
+                inputDirection * maxSpeed;
 
             moveToCursor = false;
         }
         else if (moveToCursor)
         {
-            Vector2 direction = cursorWorldPosition - transform.position;
+            Vector2 direction =
+                cursorWorldPosition -
+                transform.position;
 
             if (direction.sqrMagnitude < 0.01f)
             {
@@ -219,9 +287,10 @@ public class ReaganControls : MonoBehaviour
                 float distance = direction.magnitude;
                 float slowdownDistance = 3.5f;
 
-                float speedMultiplier = Mathf.Clamp01(
-                    distance / slowdownDistance
-                );
+                float speedMultiplier =
+                    Mathf.Clamp01(
+                        distance / slowdownDistance
+                    );
 
                 desiredVelocity =
                     direction.normalized *
@@ -230,21 +299,25 @@ public class ReaganControls : MonoBehaviour
             }
         }
 
-        float accelerationRate = desiredVelocity.sqrMagnitude > 0f
-            ? acceleration
-            : deceleration;
+        float accelerationRate =
+            desiredVelocity.sqrMagnitude > 0f
+                ? acceleration
+                : deceleration;
 
-        currentVelocity = Vector2.MoveTowards(
-            currentVelocity,
-            desiredVelocity,
-            accelerationRate * Time.deltaTime
-        );
+        currentVelocity =
+            Vector2.MoveTowards(
+                currentVelocity,
+                desiredVelocity,
+                accelerationRate *
+                Time.deltaTime
+            );
 
         transform.position += new Vector3(
             currentVelocity.x,
             currentVelocity.y,
             0f
         ) * Time.deltaTime;
-    }
 
+        UpdateAnimation();
+    }
 }
