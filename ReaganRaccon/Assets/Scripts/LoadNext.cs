@@ -53,13 +53,33 @@ public class LoadNext : MonoBehaviour
             //SceneManager.SetActiveScene(SceneName);
             //SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneName));
             
-            
-        } else if(type == "switchback") {
-            Destroy(removed);
-            //probably remove
-            SceneManager.UnloadSceneAsync(SceneName); //could make it so that it gets the current
-            //unloads the scene that it got passed down
-            GameManager.Instance.setRootTrue();
+        }                    
+        else if (type == "switchback")
+{
+    Destroy(removed);
+
+    // Unload the completed minigame
+    SceneManager.UnloadSceneAsync(SceneName);
+
+    // Keep the main game disabled
+    GameManager.Instance.setRootFalse();
+
+    // Find the reward manager outside Root
+    RewardManager rewardManager =
+        FindFirstObjectByType<RewardManager>();
+
+    if (rewardManager != null)
+    {
+        rewardManager.ShowRewardWindow();
+    }
+    else
+    {
+        Debug.LogWarning("RewardManager not found!");
+
+        // Fallback so the player is not stuck
+        GameManager.Instance.setRootTrue();
+    }
+
             //reloads the root scene 
         }
         else
