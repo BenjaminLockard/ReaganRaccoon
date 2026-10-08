@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class ReaganControls : MonoBehaviour
 {
@@ -32,11 +33,10 @@ public class ReaganControls : MonoBehaviour
     //[SerializeField] private float bounceSpeed = 8f;
     [SerializeField] private float bounceMultiplier = 0.5f;
     [SerializeField] private float dizzyDuration = 3f;
+    [SerializeField] private float crashThreshold = 1.25f;
 
     private float dizzyTimer;
-
-
-    public void OnDash(InputAction.CallbackContext context)
+    public void OnDash(InputValue value)
     {
         if (!context.performed || dizzy)
             return;
@@ -81,20 +81,21 @@ public class ReaganControls : MonoBehaviour
     }
 
 
-    // Collision / crash stun
+    //to allow slip-through, add to conditional w/ tags or something
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        float speed = currentVelocity.magnitude;
-
-        if (speed > (maxSpeed * 1.25f) && !dizzy)
-        {
-            crashStun(collision);
-        }
+        crashStun(collision);
     }
 
     private void crashStun(Collision2D collision)
     {
-        dizzy = true;
+        float speed = currentVelocity.magnitude;
+
+        if (speed > (maxSpeed * crashThreshold) && !dizzy)
+        {
+            dizzy = true;
+        }
+        
         dizzyTimer = dizzyDuration;
 
         // Cancel the dash.
@@ -116,43 +117,17 @@ public class ReaganControls : MonoBehaviour
             impactSpeed *
             bounceMultiplier;
     }
-
-
-    public void Move(InputAction.CallbackContext context)
+    public void resetMovement()
     {
-        moveInput = context.ReadValue<Vector2>();
-
-        animator.SetBool(
-            "isWalking",
-            moveInput.sqrMagnitude > 0f
-        );
-
-        if (context.canceled)
-        {
-            animator.SetBool("isWalking", false);
-
-            animator.SetFloat(
-                "LastInputX",
-                moveInput.x
-            );
-
-            animator.SetFloat(
-                "LastInputY",
-                moveInput.y
-            );
-        }
-
-        animator.SetFloat(
-            "InputX",
-            moveInput.x
-        );
-
-        animator.SetFloat(
-            "InputY",
-            moveInput.y
-        );
+        moveInput = Vector2.zero;
+        cursorInput = Vector2.zero;
+        moveToCursor = false;
     }
 
+    public void OnMove(InputValue value)
+    {
+        moveInput = value.Get<Vector2>();
+    }
 
     public void OnCursor(InputAction.CallbackContext context)
     {
@@ -221,16 +196,13 @@ public class ReaganControls : MonoBehaviour
         // DASH COOLDOWN
         // -------------------------
 
+        // Handle dash cooldown.
         if (dashCooldownTimer > 0f)
         {
             dashCooldownTimer -= Time.deltaTime;
         }
 
-
-        // -------------------------
-        // DASH
-        // -------------------------
-
+        // Handle active dash.
         if (isDashing)
         {
             dashTimer -= Time.deltaTime;
@@ -254,13 +226,13 @@ public class ReaganControls : MonoBehaviour
             return;
         }
 
-
         // -------------------------
         // NORMAL MOVEMENT
         // -------------------------
 
         Vector2 desiredVelocity = Vector2.zero;
 
+        // WASD movement
         if (moveInput.sqrMagnitude > 0f)
         {
             Vector2 inputDirection =
@@ -269,8 +241,11 @@ public class ReaganControls : MonoBehaviour
             desiredVelocity =
                 inputDirection * maxSpeed;
 
+            // Manual input takes priority over cursor movement
             moveToCursor = false;
         }
+
+        // Mouse movement
         else if (moveToCursor)
         {
             Vector2 direction =
@@ -285,6 +260,7 @@ public class ReaganControls : MonoBehaviour
             else
             {
                 float distance = direction.magnitude;
+
                 float slowdownDistance = 3.5f;
 
                 float speedMultiplier =
@@ -299,10 +275,10 @@ public class ReaganControls : MonoBehaviour
             }
         }
 
-        float accelerationRate =
-            desiredVelocity.sqrMagnitude > 0f
-                ? acceleration
-                : deceleration;
+        // Accelerate toward desired velocity
+        float accelerationRate = desiredVelocity.sqrMagnitude > 0f
+            ? acceleration
+            : deceleration;
 
         currentVelocity =
             Vector2.MoveTowards(
@@ -312,6 +288,7 @@ public class ReaganControls : MonoBehaviour
                 Time.deltaTime
             );
 
+        // Move the character
         transform.position += new Vector3(
             currentVelocity.x,
             currentVelocity.y,
@@ -320,4 +297,11 @@ public class ReaganControls : MonoBehaviour
 
         UpdateAnimation();
     }
+
+    public void OnReset(InputValue input)
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+
 }
