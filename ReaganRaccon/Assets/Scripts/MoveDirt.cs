@@ -10,27 +10,41 @@ public class MoveDirt : MonoBehaviour
     private Vector3 cursorWorldPosition;
     private Vector2 cursorInput;
     private Vector2 RightClickInput;
-    Camera cam;
-    private GameObject c;
-    private Rigidbody2D rb;
+    private Camera cam;
+    //private GameObject c;
+    //private Rigidbody2D rb;
+    private RaycastHit2D hit;
+    private Ray ray;
 
     private void Start()
     {
         cam = Camera.main;
-        rb = GetComponent<Rigidbody2D>();
-        c = GetComponent<GameObject>();
+       // rb = GetComponent<Rigidbody2D>();
+       // c = GetComponent<GameObject>();
     }
+     public void OnCursor(InputValue value)
+    {
+        cursorInput = value.Get<Vector2>();//location?
+
+    }
+    private void Update()
+    {
+        cursorWorldPosition = cam.ScreenToWorldPoint(new Vector3(cursorInput.x, cursorInput.y, 0f));
+        ray = cam.ScreenPointToRay(cursorWorldPosition);
+        Debug.DrawRay(ray.origin, ray.direction * 100, Color.green);
+    }
+   
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+
     public void OnLeftClick(InputValue value)
     {
-
         //Just takes in mouse position and prints to screen.
         if (value.isPressed)
-        {
+        {   
             Debug.Log("there was a click at " + cursorWorldPosition);
-
-            RaycastHit2D hit;
-
-            Ray ray = cam.ScreenPointToRay(cursorWorldPosition);
+            
+            //Ray ray = cam.ScreenPointToRay(cursorWorldPosition);
 
             hit = Physics2D.GetRayIntersection(ray, 20);
 
@@ -51,27 +65,5 @@ public class MoveDirt : MonoBehaviour
         }
     }
 
-    public void OnCursor(InputValue value)
-    {
-        cursorInput = value.Get<Vector2>();//location?
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void FixedUpdate()
-    {
-
-        cursorWorldPosition = cam.ScreenToWorldPoint(new Vector3(cursorInput.x, cursorInput.y, 0f));
-        //Ray ray = ScreenPointToRay(cursorWorldPosition);
-
-        //Remember that ScreenPointToRay doesn't draw from origin of camera,  
-        //it's a straight line from the screenpoint of 
-        //the mouse 'straight down the lens' into the game.
-
-        Debug.DrawRay(ray.origin, ray.direction * 100, Color.green);
-
-        /*if (isDragging)
-        {
-            rb.transform.position = cursorWorldPosition;
-        }
-        */
-    }
+    
 }
