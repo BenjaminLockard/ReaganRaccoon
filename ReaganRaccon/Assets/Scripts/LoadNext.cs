@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class LoadNext : MonoBehaviour
@@ -12,7 +13,33 @@ public class LoadNext : MonoBehaviour
     public string type;
     //[SerializeField] GameObject Root; 
     public GameObject removed;
-  
+    private bool canInteract = false;
+
+    void OnTriggerStay2D(Collider2D other){
+            if(other.gameObject.CompareTag("Reagan")){
+                canInteract = true;
+                Debug.Log("Can Interact");
+            }
+            else{
+                canInteract = false;
+            }
+    }
+    
+    void OnTriggerExit2D(Collider2D other){
+        if(other.gameObject.CompareTag("Reagan")){
+            canInteract = false;
+            Debug.Log("Can't Interact");
+        }
+    }
+    
+    
+    void OnInteract(InputValue value){
+        if(canInteract){
+            Debug.Log("Loading Game");
+            switchScene(type, SceneName);
+        }
+    }
+    /*
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("WE HIT EACH OTTER");
@@ -26,16 +53,17 @@ public class LoadNext : MonoBehaviour
             //which should allow the main game to be active 
             //however switching
         }
-        /*
+        
         else
         {
             isCollidingWithObject = false;
         }
-        */
+        
         //sets that regan is colliding with the object
         //allows the player to press the interaction button
         //within controls
-    }
+        //}
+    */
 
     public void switchScene(string type, string SceneName)
     {
