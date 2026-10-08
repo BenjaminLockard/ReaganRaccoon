@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 
+
 public class MashingMinigame : MonoBehaviour
 {
     public TextMeshProUGUI mainText;
@@ -23,7 +24,7 @@ public class MashingMinigame : MonoBehaviour
         mainText.text = "Press Space " + timesToMash;
         if(timesToMash == 0f){
             mainText.text = "FART";
-            loadNext.switchScene("NULL","TestSceneB");
+            loadNext.switchScene("switchback","MashingMinigame");
         }
     }    
 }
