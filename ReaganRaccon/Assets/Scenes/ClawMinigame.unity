@@ -1127,8 +1127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f0b6c39946f40ebb96561c15c5a24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadNext
-  SceneName: TestSceneB
-  type: NULL
+  SceneName: ClawMinigame
+  type: switchback
   removed: {fileID: 617844191}
 --- !u!1 &1915378896
 GameObject:
