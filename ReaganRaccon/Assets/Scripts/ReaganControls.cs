@@ -13,8 +13,9 @@ public class ReaganControls : MonoBehaviour
     private Vector2 cursorInput;
     private Vector3 cursorWorldPosition;
     private bool moveToCursor;
-
     private Vector2 currentVelocity;
+
+    private Animator animator;
 
     [Header("Dash")]
     [SerializeField] private float dashSpeed = 15f;
@@ -29,37 +30,34 @@ public class ReaganControls : MonoBehaviour
     private bool dizzy;
 
     [Header("Crash Stun")]
-    //[SerializeField] private float bounceSpeed = 8f;
     [SerializeField] private float bounceMultiplier = 0.5f;
     [SerializeField] private float dizzyDuration = 3f;
     [SerializeField] private float crashThreshold = 1.25f;
 
     private float dizzyTimer;
 
-
-    // --------------------------------------------------
-    // DASH
-    // --------------------------------------------------
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     public void OnDash(InputValue value)
     {
         if (!value.isPressed || dizzy)
             return;
 
-        // Can't dash while already dashing or on cooldown.
         if (isDashing || dashCooldownTimer > 0f)
             return;
 
-        // WASD takes priority.
         if (moveInput.sqrMagnitude > 0f)
         {
             dashDirection = moveInput.normalized;
         }
-        // Otherwise dash toward the mouse.
         else if (moveToCursor)
         {
             Vector2 direction =
-                (Vector2)cursorWorldPosition - (Vector2)transform.position;
+                (Vector2)cursorWorldPosition -
+                (Vector2)transform.position;
 
             if (direction.sqrMagnitude > 0.01f)
             {
@@ -72,7 +70,6 @@ public class ReaganControls : MonoBehaviour
         }
         else
         {
-            // No movement direction available.
             return;
         }
 
@@ -80,126 +77,102 @@ public class ReaganControls : MonoBehaviour
         dashTimer = dashDuration;
         dashCooldownTimer = dashCooldown;
 
-        // Immediately give the player dash velocity.
         currentVelocity = dashDirection * dashSpeed;
     }
 
-
-    // --------------------------------------------------
-    // COLLISION / CRASH STUN
-    // --------------------------------------------------
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        crashStun(collision);
+        CrashStun(collision);
     }
 
-    private void crashStun(Collision2D collision)
+    private void CrashStun(Collision2D collision)
     {
         float speed = currentVelocity.magnitude;
 
-        if (speed > (maxSpeed * crashThreshold) && !dizzy)
+        if (speed > maxSpeed * crashThreshold && !dizzy)
         {
             dizzy = true;
             dizzyTimer = dizzyDuration;
         }
 
-        // Cancel the dash.
         isDashing = false;
         dashTimer = 0f;
 
-        // Get the player's speed at the moment of impact.
         float impactSpeed = currentVelocity.magnitude;
 
-        // Find the direction away from the collision.
         Vector2 collisionPoint = collision.GetContact(0).point;
 
         Vector2 bounceDirection =
             ((Vector2)transform.position - collisionPoint).normalized;
 
-        // Reverse the player's momentum and scale the bounce.
         currentVelocity =
             bounceDirection * impactSpeed * bounceMultiplier;
     }
 
-
-    // --------------------------------------------------
-    // RESET MOVEMENT
-    // --------------------------------------------------
-
-    public void resetMovement()
+    public void ResetMovement()
     {
         moveInput = Vector2.zero;
         cursorInput = Vector2.zero;
         moveToCursor = false;
     }
 
-
-    // --------------------------------------------------
-    // WASD MOVEMENT
-    // --------------------------------------------------
-
     public void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
     }
-
-
-    // --------------------------------------------------
-    // MOUSE POSITION
-    // --------------------------------------------------
 
     public void OnCursor(InputValue value)
     {
         cursorInput = value.Get<Vector2>();
     }
 
-
-    // --------------------------------------------------
-    // MOUSE BUTTON
-    // --------------------------------------------------
-
     public void OnMoveToCursor(InputValue value)
     {
-        // Scrapped, mouse movement cannot work with new input system.
+        // Mouse movement is handled in Update.
     }
 
+     private void UpdateAnimation()
+{
+    if (animator == null)
+        return;
 
-    // --------------------------------------------------
-    // UPDATE
-    // --------------------------------------------------
+    bool isWalking = moveInput.sqrMagnitude > 0.01f
+                  || currentVelocity.sqrMagnitude > 0.01f;
+
+    animator.SetBool("isWalking", isWalking);
+
+    animator.SetFloat("InputX", currentVelocity.x);
+    animator.SetFloat("InputY", currentVelocity.y);
+
+    if (!isWalking)
+    {
+        animator.SetFloat("LastInputX", currentVelocity.x);
+        animator.SetFloat("LastInputY", currentVelocity.y);
+    }
+}
 
     private void Update()
     {
         moveToCursor =
             Mouse.current != null &&
-            Mouse.current.leftButton.isPressed;
+            Mouse.current.leftButton.isPressed &&
+            moveInput.sqrMagnitude == 0f;
 
-
-        // --------------------------------------------------
-        // UPDATE CURSOR WORLD POSITION
-        // --------------------------------------------------
-
-        // Only update the cursor destination while the
-        // mouse button is actually being held.
-        if (moveToCursor)
+        if (moveToCursor && Camera.main != null)
         {
+            Vector2 mousePosition =
+                Mouse.current.position.ReadValue();
+
             cursorWorldPosition = Camera.main.ScreenToWorldPoint(
                 new Vector3(
-                    cursorInput.x,
-                    cursorInput.y,
+                    mousePosition.x,
+                    mousePosition.y,
                     -Camera.main.transform.position.z
                 )
             );
 
-            // Keep from changing Z axis.
             cursorWorldPosition.z = transform.position.z;
         }
-
-
-        // --------------------------------------------------
-        // DIZZY TIMER
-        // --------------------------------------------------
 
         if (dizzy)
         {
@@ -211,20 +184,10 @@ public class ReaganControls : MonoBehaviour
             }
         }
 
-
-        // --------------------------------------------------
-        // DASH COOLDOWN
-        // --------------------------------------------------
-
         if (dashCooldownTimer > 0f)
         {
             dashCooldownTimer -= Time.deltaTime;
         }
-
-
-        // --------------------------------------------------
-        // ACTIVE DASH
-        // --------------------------------------------------
 
         if (isDashing)
         {
@@ -238,6 +201,8 @@ public class ReaganControls : MonoBehaviour
                 0f
             ) * Time.deltaTime;
 
+            UpdateAnimation();
+
             if (dashTimer <= 0f)
             {
                 isDashing = false;
@@ -246,17 +211,7 @@ public class ReaganControls : MonoBehaviour
             return;
         }
 
-
-        // --------------------------------------------------
-        // NORMAL MOVEMENT
-        // --------------------------------------------------
-
         Vector2 desiredVelocity = Vector2.zero;
-
-
-        // --------------------------------------------------
-        // WASD MOVEMENT
-        // --------------------------------------------------
 
         if (moveInput.sqrMagnitude > 0f)
         {
@@ -264,32 +219,22 @@ public class ReaganControls : MonoBehaviour
 
             desiredVelocity = inputDirection * maxSpeed;
 
-            // Manual input takes priority over cursor movement.
             moveToCursor = false;
         }
-
-
-        // --------------------------------------------------
-        // MOUSE MOVEMENT
-        // --------------------------------------------------
-
         else if (moveToCursor)
         {
             Vector2 direction =
-                cursorWorldPosition - (Vector3)transform.position;
+                (Vector2)cursorWorldPosition -
+                (Vector2)transform.position;
 
             if (direction.sqrMagnitude < 0.01f)
             {
                 desiredVelocity = Vector2.zero;
-
-                // Stop cursor movement when the player
-                // reaches the cursor.
                 moveToCursor = false;
             }
             else
             {
                 float distance = direction.magnitude;
-
                 float slowdownDistance = 3.5f;
 
                 float speedMultiplier = Mathf.Clamp01(
@@ -303,11 +248,6 @@ public class ReaganControls : MonoBehaviour
             }
         }
 
-
-        // --------------------------------------------------
-        // ACCELERATION / DECELERATION
-        // --------------------------------------------------
-
         float accelerationRate =
             desiredVelocity.sqrMagnitude > 0f
                 ? acceleration
@@ -319,22 +259,14 @@ public class ReaganControls : MonoBehaviour
             accelerationRate * Time.deltaTime
         );
 
-
-        // --------------------------------------------------
-        // MOVE CHARACTER
-        // --------------------------------------------------
-
         transform.position += new Vector3(
             currentVelocity.x,
             currentVelocity.y,
             0f
         ) * Time.deltaTime;
+
+        UpdateAnimation();
     }
-
-
-    // --------------------------------------------------
-    // RESET SCENE
-    // --------------------------------------------------
 
     public void OnReset(InputValue input)
     {
