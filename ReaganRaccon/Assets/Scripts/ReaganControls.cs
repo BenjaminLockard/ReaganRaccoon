@@ -35,6 +35,12 @@ public class ReaganControls : MonoBehaviour
     [SerializeField] private float crashThreshold = 1.25f;
 
     private float dizzyTimer;
+
+
+    // --------------------------------------------------
+    // DASH
+    // --------------------------------------------------
+
     public void OnDash(InputValue value)
     {
         if (!value.isPressed || dizzy)
@@ -52,7 +58,8 @@ public class ReaganControls : MonoBehaviour
         // Otherwise dash toward the mouse.
         else if (moveToCursor)
         {
-            Vector2 direction = (Vector2)cursorWorldPosition - (Vector2)transform.position;
+            Vector2 direction =
+                (Vector2)cursorWorldPosition - (Vector2)transform.position;
 
             if (direction.sqrMagnitude > 0.01f)
             {
@@ -78,7 +85,10 @@ public class ReaganControls : MonoBehaviour
     }
 
 
-    //to allow slip-through, add to conditional w/ tags or something
+    // --------------------------------------------------
+    // COLLISION / CRASH STUN
+    // --------------------------------------------------
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         crashStun(collision);
@@ -91,9 +101,8 @@ public class ReaganControls : MonoBehaviour
         if (speed > (maxSpeed * crashThreshold) && !dizzy)
         {
             dizzy = true;
+            dizzyTimer = dizzyDuration;
         }
-        
-        dizzyTimer = dizzyDuration;
 
         // Cancel the dash.
         isDashing = false;
@@ -109,8 +118,15 @@ public class ReaganControls : MonoBehaviour
             ((Vector2)transform.position - collisionPoint).normalized;
 
         // Reverse the player's momentum and scale the bounce.
-        currentVelocity = bounceDirection * impactSpeed * bounceMultiplier;
+        currentVelocity =
+            bounceDirection * impactSpeed * bounceMultiplier;
     }
+
+
+    // --------------------------------------------------
+    // RESET MOVEMENT
+    // --------------------------------------------------
+
     public void resetMovement()
     {
         moveInput = Vector2.zero;
@@ -118,19 +134,55 @@ public class ReaganControls : MonoBehaviour
         moveToCursor = false;
     }
 
+
+    // --------------------------------------------------
+    // WASD MOVEMENT
+    // --------------------------------------------------
+
     public void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
     }
+
+
+    // --------------------------------------------------
+    // MOUSE POSITION
+    // --------------------------------------------------
 
     public void OnCursor(InputValue value)
     {
         cursorInput = value.Get<Vector2>();
     }
 
+
+    // --------------------------------------------------
+    // MOUSE BUTTON
+    // --------------------------------------------------
+
     public void OnMoveToCursor(InputValue value)
     {
-        if (value.isPressed)
+        // Scrapped, mouse movement cannot work with new input system.
+    }
+
+
+    // --------------------------------------------------
+    // UPDATE
+    // --------------------------------------------------
+
+    private void Update()
+    {
+        moveToCursor =
+            Mouse.current != null &&
+            Mouse.current.leftButton.isPressed;
+
+
+        // --------------------------------------------------
+        // UPDATE CURSOR WORLD POSITION
+        // --------------------------------------------------
+
+        // Only update the cursor destination while the
+        // mouse button is actually being held.
+        if (moveToCursor)
         {
             cursorWorldPosition = Camera.main.ScreenToWorldPoint(
                 new Vector3(
@@ -140,18 +192,14 @@ public class ReaganControls : MonoBehaviour
                 )
             );
 
-            // Keep from changing Z axis
+            // Keep from changing Z axis.
             cursorWorldPosition.z = transform.position.z;
-
-            moveToCursor = true;
         }
-    }
 
-    private void Update()
-    {
-        // -------------------------
+
+        // --------------------------------------------------
         // DIZZY TIMER
-        // -------------------------
+        // --------------------------------------------------
 
         if (dizzy)
         {
@@ -164,17 +212,20 @@ public class ReaganControls : MonoBehaviour
         }
 
 
-        // -------------------------
+        // --------------------------------------------------
         // DASH COOLDOWN
-        // -------------------------
+        // --------------------------------------------------
 
-        // Handle dash cooldown.
         if (dashCooldownTimer > 0f)
         {
             dashCooldownTimer -= Time.deltaTime;
         }
 
-        // Handle active dash.
+
+        // --------------------------------------------------
+        // ACTIVE DASH
+        // --------------------------------------------------
+
         if (isDashing)
         {
             dashTimer -= Time.deltaTime;
@@ -195,31 +246,44 @@ public class ReaganControls : MonoBehaviour
             return;
         }
 
-        // -------------------------
+
+        // --------------------------------------------------
         // NORMAL MOVEMENT
-        // -------------------------
+        // --------------------------------------------------
 
         Vector2 desiredVelocity = Vector2.zero;
 
-        // WASD movement
+
+        // --------------------------------------------------
+        // WASD MOVEMENT
+        // --------------------------------------------------
+
         if (moveInput.sqrMagnitude > 0f)
         {
             Vector2 inputDirection = moveInput.normalized;
 
             desiredVelocity = inputDirection * maxSpeed;
 
-            // Manual input takes priority over cursor movement
+            // Manual input takes priority over cursor movement.
             moveToCursor = false;
         }
 
-        // Mouse movement
+
+        // --------------------------------------------------
+        // MOUSE MOVEMENT
+        // --------------------------------------------------
+
         else if (moveToCursor)
         {
-            Vector2 direction = cursorWorldPosition - transform.position;
+            Vector2 direction =
+                cursorWorldPosition - (Vector3)transform.position;
 
             if (direction.sqrMagnitude < 0.01f)
             {
                 desiredVelocity = Vector2.zero;
+
+                // Stop cursor movement when the player
+                // reaches the cursor.
                 moveToCursor = false;
             }
             else
@@ -239,10 +303,15 @@ public class ReaganControls : MonoBehaviour
             }
         }
 
-        // Accelerate toward desired velocity
-        float accelerationRate = desiredVelocity.sqrMagnitude > 0f
-            ? acceleration
-            : deceleration;
+
+        // --------------------------------------------------
+        // ACCELERATION / DECELERATION
+        // --------------------------------------------------
+
+        float accelerationRate =
+            desiredVelocity.sqrMagnitude > 0f
+                ? acceleration
+                : deceleration;
 
         currentVelocity = Vector2.MoveTowards(
             currentVelocity,
@@ -250,7 +319,11 @@ public class ReaganControls : MonoBehaviour
             accelerationRate * Time.deltaTime
         );
 
-        // Move the character
+
+        // --------------------------------------------------
+        // MOVE CHARACTER
+        // --------------------------------------------------
+
         transform.position += new Vector3(
             currentVelocity.x,
             currentVelocity.y,
@@ -258,10 +331,15 @@ public class ReaganControls : MonoBehaviour
         ) * Time.deltaTime;
     }
 
+
+    // --------------------------------------------------
+    // RESET SCENE
+    // --------------------------------------------------
+
     public void OnReset(InputValue input)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(
+            SceneManager.GetActiveScene().name
+        );
     }
-
-
 }
