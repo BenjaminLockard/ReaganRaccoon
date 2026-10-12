@@ -89,9 +89,6 @@ public class LoadNext : MonoBehaviour
     // Unload the completed minigame
     SceneManager.UnloadSceneAsync(SceneName);
 
-    // Keep the main game disabled
-    GameManager.Instance.setRootFalse();
-
     // Find the reward manager outside Root
     RewardManager rewardManager =
         FindFirstObjectByType<RewardManager>();

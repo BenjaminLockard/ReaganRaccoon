@@ -842,7 +842,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press Enter
+  m_text: Continue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1417,7 +1417,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RewardManager
   rewardWindow: {fileID: 1981008386}
-  rewardCamera: {fileID: 1803122655}
+  overworldInput: {fileID: 965427584}
+  possibleRewards:
+  - itemName: Golden Apple
+    itemImage: {fileID: -1938430205886324843, guid: a187bb0b665044c8aa6a9466a56827f7, type: 3}
+  - itemName: Pizza Crust
+    itemImage: {fileID: 3293510962563735362, guid: 2e2c1ec8c4e644e5898ac07eaad656f2, type: 3}
+  - itemName: Broken Watch
+    itemImage: {fileID: -1851511336150504812, guid: dfca9423810604abb9308d73d7a58d85, type: 3}
+  - itemName: Rusty Coin
+    itemImage: {fileID: 6314483659747523203, guid: 77c20466bf14e4fed82d6bba6a5b2b28, type: 3}
+  - itemName: Silver Chain
+    itemImage: {fileID: 763991430711051839, guid: 62cf51ca9ab6c432583c5eb005622156, type: 3}
+  itemNameText: {fileID: 1142800763}
+  itemImageDisplay: {fileID: 1010683569}
 --- !u!114 &578964429
 MonoBehaviour:
   m_ObjectHideFlags: 0
