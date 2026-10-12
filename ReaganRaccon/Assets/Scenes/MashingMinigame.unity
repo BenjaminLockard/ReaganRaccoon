@@ -594,8 +594,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f0b6c39946f40ebb96561c15c5a24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadNext
-  SceneName: TestSceneB
-  type: NULL
+  SceneName: MashingMinigame
+  type: switchback
   removed: {fileID: 2023658431}
 --- !u!114 &1891082439
 MonoBehaviour:
