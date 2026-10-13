@@ -12,6 +12,11 @@ public class MoneyManager : MonoBehaviour
         moneyText.text = "$" + currentMoney.ToString("F2");
     }
 
+    public float getMoney()
+    {
+        return currentMoney;
+    }
+
     void Start()
     {
         currentMoney = 0.00f;

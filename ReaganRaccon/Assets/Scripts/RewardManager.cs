@@ -16,10 +16,14 @@ public class RewardManager : MonoBehaviour
     public RewardItem[] possibleRewards;
 
     public TMP_Text itemNameText;
+    public TMP_Text itemValueText;
+    public TMP_Text totalMoneyText;
     public Image itemImageDisplay;
 
     private float rewardOpenedTime;
     private bool rewardOpen = false;
+    //FOR MONEY MANAGEMENT
+    public MoneyManager moneyManager;
 
     // Stores each reward's name and image
     [System.Serializable]
@@ -27,6 +31,8 @@ public class RewardManager : MonoBehaviour
     {
         public string itemName;
         public Sprite itemImage;
+
+        public float itemValue;
     }
 
     void Update()
@@ -108,6 +114,9 @@ public class RewardManager : MonoBehaviour
         {
            itemNameText.text =
               "You Won <b>" + chosenItem.itemName + "</b>!";
+            moneyManager.changeMoney(chosenItem.itemValue);
+            itemValueText.text = "Money Earned: $" + (chosenItem.itemValue.ToString("F2"));
+            totalMoneyText.text = "Total Money: $" + moneyManager.getMoney().ToString("F2");
         }
 
         // Display the item's artwork
