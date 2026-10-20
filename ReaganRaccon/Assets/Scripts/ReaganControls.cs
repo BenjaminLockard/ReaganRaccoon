@@ -35,7 +35,6 @@ public class ReaganControls : MonoBehaviour
     [SerializeField] private float bounceMultiplier = 0.5f;
     [SerializeField] private float dizzyDuration = 3f;
     [SerializeField] private float crashThreshold = 1.25f;
-    [SerializeField] private float hazardKnockbackForce = 30f;
 
     private float dizzyTimer;
 
