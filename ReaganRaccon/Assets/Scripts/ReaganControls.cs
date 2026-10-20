@@ -17,6 +17,7 @@ public class ReaganControls : MonoBehaviour
 
     [Header("Animation")]
     private Animator animator;
+    private Vector2 lastMoveDirection = Vector2.down;
 
     [Header("Dash")]
     [SerializeField] private float dashSpeed = 15f;
@@ -38,16 +39,12 @@ public class ReaganControls : MonoBehaviour
 
     private float dizzyTimer;
 
-    private Vector2 lastMoveDirection = Vector2.down;
-
     private void Awake()
     {
         animator = GetComponent<Animator>();
     }
 
-    // --------------------------------------------------
     // DASH
-    // --------------------------------------------------
 
     public void OnDash(InputValue value)
     {
@@ -57,12 +54,10 @@ public class ReaganControls : MonoBehaviour
         if (isDashing || dashCooldownTimer > 0f)
             return;
 
-        // WASD takes priority.
         if (moveInput.sqrMagnitude > 0f)
         {
             dashDirection = moveInput.normalized;
         }
-        // Otherwise dash toward the mouse.
         else if (moveToCursor)
         {
             Vector2 direction =
@@ -70,13 +65,9 @@ public class ReaganControls : MonoBehaviour
                 (Vector2)transform.position;
 
             if (direction.sqrMagnitude > 0.01f)
-            {
                 dashDirection = direction.normalized;
-            }
             else
-            {
                 return;
-            }
         }
         else
         {
@@ -90,20 +81,11 @@ public class ReaganControls : MonoBehaviour
         currentVelocity = dashDirection * dashSpeed;
     }
 
-    // --------------------------------------------------
     // COLLISION / CRASH STUN
-    // --------------------------------------------------
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Hazard"))
-        {
-            HazardKnockback(collision);
-        }
-        else
-        {
-            CrashStun(collision);
-        }
+        CrashStun(collision);
     }
 
     private void CrashStun(Collision2D collision)
@@ -116,7 +98,6 @@ public class ReaganControls : MonoBehaviour
             dizzyTimer = dizzyDuration;
         }
 
-        // Cancel the dash.
         isDashing = false;
         dashTimer = 0f;
 
@@ -131,19 +112,7 @@ public class ReaganControls : MonoBehaviour
             bounceDirection * impactSpeed * bounceMultiplier;
     }
 
-    public void HazardKnockback(Collision2D collision)
-    {
-        Vector2 collisionPoint = collision.GetContact(0).point;
-
-        Vector2 launchDirection =
-            ((Vector2)transform.position - collisionPoint).normalized;
-
-        currentVelocity = launchDirection * hazardKnockbackForce;
-    }
-
-    // --------------------------------------------------
     // RESET MOVEMENT
-    // --------------------------------------------------
 
     public void ResetMovement()
     {
@@ -152,41 +121,24 @@ public class ReaganControls : MonoBehaviour
         moveToCursor = false;
     }
 
-    // --------------------------------------------------
     // INPUT
-
-    // --------------------------------------------------
-    // WASD MOVEMENT
-    // --------------------------------------------------
 
     public void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
     }
 
-
-    // --------------------------------------------------
-    // MOUSE POSITION
-    // --------------------------------------------------
-
     public void OnCursor(InputValue value)
     {
         cursorInput = value.Get<Vector2>();
     }
-
-
-    // --------------------------------------------------
-    // MOUSE BUTTON
-    // --------------------------------------------------
 
     public void OnMoveToCursor(InputValue value)
     {
         // Mouse movement is handled in Update.
     }
 
-    // --------------------------------------------------
     // ANIMATION
-    // --------------------------------------------------
 
     private void UpdateAnimation()
     {
@@ -202,30 +154,8 @@ public class ReaganControls : MonoBehaviour
         animator.SetFloat("InputX", currentVelocity.x);
         animator.SetFloat("InputY", currentVelocity.y);
 
-        // Remember the last meaningful movement direction.
-        if (currentVelocity.sqrMagnitude > 0.01f);
-        // Scrapped, mouse movement cannot work with new input system.
-    }
-
-
-    // --------------------------------------------------
-    // UPDATE
-    // --------------------------------------------------
-
-    private void Update()
-    {
-        moveToCursor =
-            Mouse.current != null &&
-            Mouse.current.leftButton.isPressed;
-
-
-        // --------------------------------------------------
-        // UPDATE CURSOR WORLD POSITION
-        // --------------------------------------------------
-
-        // Only update the cursor destination while the
-        // mouse button is actually being held.
-        if (moveToCursor)
+        // Remember the last nonzero movement direction.
+        if (currentVelocity.sqrMagnitude > 0.01f)
         {
             lastMoveDirection = currentVelocity.normalized;
         }
@@ -237,17 +167,16 @@ public class ReaganControls : MonoBehaviour
         }
     }
 
-    // --------------------------------------------------
     // UPDATE
-    // --------------------------------------------------
 
     private void Update()
     {
         moveToCursor =
             Mouse.current != null &&
-            Mouse.current.leftButton.isPressed;
+            Mouse.current.leftButton.isPressed &&
+            moveInput.sqrMagnitude == 0f;
 
-        // Update cursor world position.
+        // Update mouse world position.
         if (moveToCursor && Camera.main != null)
         {
             Vector2 mousePosition =
@@ -270,16 +199,12 @@ public class ReaganControls : MonoBehaviour
             dizzyTimer -= Time.deltaTime;
 
             if (dizzyTimer <= 0f)
-            {
                 dizzy = false;
-            }
         }
 
         // Dash cooldown.
         if (dashCooldownTimer > 0f)
-        {
             dashCooldownTimer -= Time.deltaTime;
-        }
 
         // Active dash.
         if (isDashing)
@@ -297,9 +222,7 @@ public class ReaganControls : MonoBehaviour
             UpdateAnimation();
 
             if (dashTimer <= 0f)
-            {
                 isDashing = false;
-            }
 
             return;
         }
@@ -307,7 +230,7 @@ public class ReaganControls : MonoBehaviour
         // Normal movement.
         Vector2 desiredVelocity = Vector2.zero;
 
-        // WASD movement takes priority.
+        // WASD movement.
         if (moveInput.sqrMagnitude > 0f)
         {
             Vector2 inputDirection = moveInput.normalized;
@@ -326,9 +249,6 @@ public class ReaganControls : MonoBehaviour
             if (direction.sqrMagnitude < 0.01f)
             {
                 desiredVelocity = Vector2.zero;
-
-                // Stop cursor movement when the player
-                // reaches the cursor.
                 moveToCursor = false;
             }
             else
@@ -359,20 +279,17 @@ public class ReaganControls : MonoBehaviour
             accelerationRate * Time.deltaTime
         );
 
-        // Move character.
+        // Move player.
         transform.position += new Vector3(
             currentVelocity.x,
             currentVelocity.y,
             0f
         ) * Time.deltaTime;
 
-        // Update animations after movement.
         UpdateAnimation();
     }
 
-    // --------------------------------------------------
     // RESET SCENE
-    // --------------------------------------------------
 
     public void OnReset(InputValue input)
     {
