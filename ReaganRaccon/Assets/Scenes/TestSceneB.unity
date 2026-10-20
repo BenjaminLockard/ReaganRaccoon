@@ -138391,6 +138391,7 @@ MonoBehaviour:
   bounceMultiplier: 0.6
   dizzyDuration: 1.5
   crashThreshold: 1.25
+  hazardKnockbackForce: 16
 --- !u!212 &965427582
 SpriteRenderer:
   serializedVersion: 2
