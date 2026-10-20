@@ -36,6 +36,7 @@ public class ClawMinigame : MonoBehaviour
             //moves down
             if (failed)//is triggered by the collider
             {
+            loadNext.switchScene("switchback","ClawMinigame");
             rb.MovePosition(rb.position + new Vector2(0f , speed) * Time.fixedDeltaTime);
             if(rb.transform.position.y >= 3)
                 {

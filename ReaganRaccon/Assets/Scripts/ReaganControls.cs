@@ -154,6 +154,9 @@ public class ReaganControls : MonoBehaviour
 
     // --------------------------------------------------
     // INPUT
+
+    // --------------------------------------------------
+    // WASD MOVEMENT
     // --------------------------------------------------
 
     public void OnMove(InputValue value)
@@ -161,10 +164,20 @@ public class ReaganControls : MonoBehaviour
         moveInput = value.Get<Vector2>();
     }
 
+
+    // --------------------------------------------------
+    // MOUSE POSITION
+    // --------------------------------------------------
+
     public void OnCursor(InputValue value)
     {
         cursorInput = value.Get<Vector2>();
     }
+
+
+    // --------------------------------------------------
+    // MOUSE BUTTON
+    // --------------------------------------------------
 
     public void OnMoveToCursor(InputValue value)
     {
@@ -190,7 +203,29 @@ public class ReaganControls : MonoBehaviour
         animator.SetFloat("InputY", currentVelocity.y);
 
         // Remember the last meaningful movement direction.
-        if (currentVelocity.sqrMagnitude > 0.01f)
+        if (currentVelocity.sqrMagnitude > 0.01f);
+        // Scrapped, mouse movement cannot work with new input system.
+    }
+
+
+    // --------------------------------------------------
+    // UPDATE
+    // --------------------------------------------------
+
+    private void Update()
+    {
+        moveToCursor =
+            Mouse.current != null &&
+            Mouse.current.leftButton.isPressed;
+
+
+        // --------------------------------------------------
+        // UPDATE CURSOR WORLD POSITION
+        // --------------------------------------------------
+
+        // Only update the cursor destination while the
+        // mouse button is actually being held.
+        if (moveToCursor)
         {
             lastMoveDirection = currentVelocity.normalized;
         }
@@ -291,6 +326,9 @@ public class ReaganControls : MonoBehaviour
             if (direction.sqrMagnitude < 0.01f)
             {
                 desiredVelocity = Vector2.zero;
+
+                // Stop cursor movement when the player
+                // reaches the cursor.
                 moveToCursor = false;
             }
             else
