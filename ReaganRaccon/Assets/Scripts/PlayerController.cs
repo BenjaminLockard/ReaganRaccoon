@@ -15,10 +15,10 @@ public class PlayerController : MonoBehaviour
     
     public float coyoteTime = 0.05f;
     private float coyoteTimeCounter;
-
+    private LoadNext loadNext;
     void Start(){
     rb = GetComponent<Rigidbody2D>();
-
+    loadNext = GetComponent<LoadNext>();
     }
 
    //moves the player left and right
@@ -29,7 +29,10 @@ public class PlayerController : MonoBehaviour
     void Update(){
         rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
         if(transform.position.y <= -8){
+            //Teleport the player 
             transform.position = startingPoint.transform.position;
+            GameManager.Instance.setStatus("LOSE");
+            loadNext.switchScene("switchback", name);
         }
         if(isGrounded){
             coyoteTimeCounter = coyoteTime;

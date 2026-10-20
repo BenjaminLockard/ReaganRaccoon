@@ -4,6 +4,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     [SerializeField] private GameObject Root;
+    private string Status = null;
     
      void Awake() { //finishes Singleton creation
         Instance = this;
@@ -28,5 +29,12 @@ public class GameManager : MonoBehaviour
         Root.SetActive(true);
     }
     // Update is called once per frame
-
+    public void setStatus(string s)
+    {
+        Status = s;
+    }
+    public string getStatus()
+    {
+        return Status;
+    }
 }
