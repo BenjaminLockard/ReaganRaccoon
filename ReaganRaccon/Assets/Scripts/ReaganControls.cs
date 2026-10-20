@@ -35,6 +35,7 @@ public class ReaganControls : MonoBehaviour
     [SerializeField] private float bounceMultiplier = 0.5f;
     [SerializeField] private float dizzyDuration = 3f;
     [SerializeField] private float crashThreshold = 1.25f;
+    [SerializeField] private float hazardKnockbackForce = 30f;
 
     private float dizzyTimer;
 
@@ -84,32 +85,60 @@ public class ReaganControls : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        CrashStun(collision);
+        if (collision.gameObject.CompareTag("Hazard"))
+            hazardKnockback(collision);
+        else
+        {
+            crashStun(collision);
+        }
     }
 
-    private void CrashStun(Collision2D collision)
+    private void crashStun(Collision2D collision)
     {
         float speed = currentVelocity.magnitude;
 
-        if (speed > maxSpeed * crashThreshold && !dizzy)
+        if (speed > (maxSpeed * crashThreshold) && !dizzy)
         {
             dizzy = true;
             dizzyTimer = dizzyDuration;
         }
 
+        // Cancel the dash.
         isDashing = false;
         dashTimer = 0f;
 
+        // Get the player's speed at the moment of impact.
         float impactSpeed = currentVelocity.magnitude;
 
+        // Find the direction away from the collision.
         Vector2 collisionPoint = collision.GetContact(0).point;
 
         Vector2 bounceDirection =
             ((Vector2)transform.position - collisionPoint).normalized;
 
+        // Reverse the player's momentum and scale the bounce.
         currentVelocity =
             bounceDirection * impactSpeed * bounceMultiplier;
     }
+
+    public void hazardKnockback(Collision2D collision)
+    {
+        //dizzy = true;
+        //dizzyTimer = dizzyDuration;
+
+        //isDashing = false;
+        //dashTimer = 0f;
+
+        Vector2 collisionPoint = collision.GetContact(0).point;
+
+        Vector2 launchDirection =
+            ((Vector2)transform.position - collisionPoint).normalized;
+
+        // Reverse the player's momentum and scale the bounce.
+        currentVelocity =
+            launchDirection * hazardKnockbackForce;
+    }
+
 
     // RESET MOVEMENT
 
