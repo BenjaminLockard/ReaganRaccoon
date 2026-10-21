@@ -1,6 +1,7 @@
 
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 using TMPro;
 
 public class DialogueManager : MonoBehaviour
@@ -15,11 +16,29 @@ public class DialogueManager : MonoBehaviour
     [Header("Reagan")]
     public Sprite reaganPortrait;
 
+    [Header("Portrait Appearance")]
+    public Color speakingColor = Color.white;
+    public Color dimmedColor =
+        new Color(0.45f, 0.45f, 0.45f, 1f);
+
+    [Header("Dialogue Choices")]
+    public GameObject dialogueChoices;
+    public Button choiceButton1;
+    public Button choiceButton2;
+    public TMP_Text continueHint;
+
     private DialogueLine[] currentLines;
     private int currentLineIndex;
     private bool dialogueActive;
 
-    // Each line has a speaker, text, and portrait
+    private Sprite currentNPCPortrait;
+    private string currentNPCName;
+
+    private bool showingChoices;
+    private int selectedChoice;
+    private bool showingChosenResponse;
+    private bool waitingForKeyRelease;
+
     [System.Serializable]
     public class DialogueLine
     {
@@ -30,11 +49,62 @@ public class DialogueManager : MonoBehaviour
 
         public Sprite speakerPortrait;
         public bool isReaganSpeaking;
+
+        [Header("Optional Reagan Choices")]
+        public bool hasChoices;
+
+        public string choice1 = "Uh, no...";
+        public string choice2 = "Yeah, haha!";
+
+        [TextArea(2, 5)]
+        public string npcReply1;
+
+        [TextArea(2, 5)]
+        public string npcReply2;
     }
 
     void Start()
     {
-        dialoguePanel.SetActive(false);
+        if (dialoguePanel != null)
+            dialoguePanel.SetActive(false);
+
+        if (choiceButton1 != null)
+        {
+            choiceButton1.onClick.AddListener(
+                () => SelectChoice(0));
+        }
+
+        if (choiceButton2 != null)
+        {
+            choiceButton2.onClick.AddListener(
+                () => SelectChoice(1));
+        }
+    }
+
+    void Update()
+    {
+        if (!dialogueActive || !showingChoices)
+            return;
+
+        if (Keyboard.current == null)
+            return;
+
+        if (waitingForKeyRelease)
+        {
+            if (!Keyboard.current.eKey.isPressed)
+                waitingForKeyRelease = false;
+
+            return;
+        }
+
+        if (Keyboard.current.wKey.wasPressedThisFrame)
+            ChangeSelection(-1);
+
+        if (Keyboard.current.sKey.wasPressedThisFrame)
+            ChangeSelection(1);
+
+        if (Keyboard.current.eKey.wasPressedThisFrame)
+            SelectChoice(selectedChoice);
     }
 
     public bool IsDialogueActive()
@@ -42,71 +112,272 @@ public class DialogueManager : MonoBehaviour
         return dialogueActive;
     }
 
+    public bool IsShowingChoices()
+    {
+        return showingChoices;
+    }
+
     public void StartDialogue(DialogueLine[] lines)
     {
-        if (dialogueActive || lines == null || lines.Length == 0)
+        if (dialogueActive || lines == null ||
+            lines.Length == 0)
             return;
 
         currentLines = lines;
         currentLineIndex = 0;
         dialogueActive = true;
 
-        dialoguePanel.SetActive(true);
+        showingChoices = false;
+        showingChosenResponse = false;
+        waitingForKeyRelease = true;
+
+        currentNPCPortrait = null;
+        currentNPCName = "NPC";
+
+        foreach (DialogueLine line in currentLines)
+        {
+            if (!line.isReaganSpeaking)
+            {
+                currentNPCName = line.speakerName;
+
+                if (line.speakerPortrait != null)
+                    currentNPCPortrait = line.speakerPortrait;
+            }
+        }
+
+        if (dialoguePanel != null)
+            dialoguePanel.SetActive(true);
+
         ShowCurrentLine();
     }
 
     public void NextLine()
     {
-        if (!dialogueActive)
+        if (!dialogueActive || showingChoices)
             return;
 
-        currentLineIndex++;
-
-        if (currentLineIndex >= currentLines.Length)
+        if (showingChosenResponse)
         {
-            EndDialogue();
+            showingChosenResponse = false;
+            currentLineIndex++;
         }
         else
         {
-            ShowCurrentLine();
+            currentLineIndex++;
         }
+
+        if (currentLineIndex >= currentLines.Length)
+            EndDialogue();
+        else
+            ShowCurrentLine();
     }
 
     private void ShowCurrentLine()
     {
         DialogueLine line = currentLines[currentLineIndex];
 
-        speakerNameText.text = line.speakerName;
-        dialogueText.text = line.dialogue;
+        UpdatePortraits(line.isReaganSpeaking);
 
-        // Display NPC portrait
+        if (dialogueText != null)
+            dialogueText.text = line.dialogue;
+
+        if (line.hasChoices)
+        {
+            ShowChoices(line);
+        }
+        else
+        {
+            showingChoices = false;
+
+            if (dialogueChoices != null)
+                dialogueChoices.SetActive(false);
+
+            if (continueHint != null)
+                continueHint.gameObject.SetActive(true);
+        }
+    }
+
+    private void ShowChoices(DialogueLine line)
+    {
+        showingChoices = true;
+        selectedChoice = 0;
+        waitingForKeyRelease = true;
+
+        if (dialogueChoices != null)
+            dialogueChoices.SetActive(true);
+
+        if (continueHint != null)
+            continueHint.gameObject.SetActive(false);
+
+        if (choiceButton1 != null)
+        {
+            TMP_Text text =
+                choiceButton1.GetComponentInChildren<TMP_Text>();
+
+            if (text != null)
+                text.text = line.choice1;
+        }
+
+        if (choiceButton2 != null)
+        {
+            TMP_Text text =
+                choiceButton2.GetComponentInChildren<TMP_Text>();
+
+            if (text != null)
+                text.text = line.choice2;
+        }
+
+        UpdateChoiceHighlight();
+    }
+
+    private void ChangeSelection(int direction)
+    {
+        selectedChoice += direction;
+
+        if (selectedChoice < 0)
+            selectedChoice = 1;
+
+        if (selectedChoice > 1)
+            selectedChoice = 0;
+
+        UpdateChoiceHighlight();
+    }
+
+    private void UpdateChoiceHighlight()
+    {
+        if (choiceButton1 != null)
+        {
+            choiceButton1.image.color =
+                selectedChoice == 0
+                ? new Color(1f, 0.85f, 0.55f)
+                : Color.white;
+        }
+
+        if (choiceButton2 != null)
+        {
+            choiceButton2.image.color =
+                selectedChoice == 1
+                ? new Color(1f, 0.85f, 0.55f)
+                : Color.white;
+        }
+    }
+
+    public void SelectChoice(int choiceIndex)
+    {
+        if (!dialogueActive || !showingChoices)
+            return;
+
+        DialogueLine line = currentLines[currentLineIndex];
+
+        showingChoices = false;
+        showingChosenResponse = true;
+
+        if (dialogueChoices != null)
+            dialogueChoices.SetActive(false);
+
+        if (continueHint != null)
+            continueHint.gameObject.SetActive(true);
+
+        // Display Reagan's selected response.
+        if (dialogueText != null)
+        {
+            dialogueText.text =
+                choiceIndex == 0
+                ? line.choice1
+                : line.choice2;
+        }
+
+        UpdatePortraits(true);
+
+        // Save the NPC's response for the next E press.
+        pendingNPCReply =
+            choiceIndex == 0
+            ? line.npcReply1
+            : line.npcReply2;
+
+        waitingForKeyRelease = true;
+    }
+
+    private string pendingNPCReply;
+    private bool showingNPCReply;
+
+    public void AdvanceDialogue()
+    {
+        if (!dialogueActive || showingChoices)
+            return;
+
+        if (showingChosenResponse)
+        {
+            showingChosenResponse = false;
+
+            if (!string.IsNullOrEmpty(pendingNPCReply))
+            {
+                showingNPCReply = true;
+
+                if (dialogueText != null)
+                    dialogueText.text = pendingNPCReply;
+
+                UpdatePortraits(false);
+                return;
+            }
+        }
+        else if (showingNPCReply)
+        {
+            showingNPCReply = false;
+            pendingNPCReply = null;
+        }
+
+        NextLine();
+    }
+
+    private void UpdatePortraits(bool isReaganSpeaking)
+    {
+        if (speakerNameText != null)
+            speakerNameText.text = currentNPCName;
+
         if (npcPortraitImage != null)
         {
-            npcPortraitImage.sprite =
-                line.isReaganSpeaking ? null : line.speakerPortrait;
+            if (currentNPCPortrait != null)
+                npcPortraitImage.sprite = currentNPCPortrait;
 
             npcPortraitImage.enabled =
                 npcPortraitImage.sprite != null;
+
+            npcPortraitImage.color =
+                isReaganSpeaking
+                ? dimmedColor
+                : speakingColor;
         }
 
-        // Display Reagan portrait
         if (reaganPortraitImage != null)
         {
-            reaganPortraitImage.sprite = reaganPortrait;
-            reaganPortraitImage.enabled = reaganPortrait != null;
+            if (reaganPortrait != null)
+                reaganPortraitImage.sprite = reaganPortrait;
 
-            // Highlight Reagan when she's speaking
-            reaganPortraitImage.color = line.isReaganSpeaking
-                ? Color.white
-                : new Color(0.6f, 0.6f, 0.6f, 1f);
+            reaganPortraitImage.enabled =
+                reaganPortraitImage.sprite != null;
+
+            reaganPortraitImage.color =
+                isReaganSpeaking
+                ? speakingColor
+                : dimmedColor;
         }
     }
 
     public void EndDialogue()
     {
         dialogueActive = false;
-        dialoguePanel.SetActive(false);
+        showingChoices = false;
+        showingChosenResponse = false;
+        showingNPCReply = false;
+
+        pendingNPCReply = null;
         currentLines = null;
+        currentNPCPortrait = null;
+
+        if (dialoguePanel != null)
+            dialoguePanel.SetActive(false);
     }
 }
+
 
