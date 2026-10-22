@@ -39,6 +39,8 @@ public class ReaganControls : MonoBehaviour
 
     private float dizzyTimer;
 
+    Vector2 desiredVelocity = Vector2.zero;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -175,17 +177,17 @@ public class ReaganControls : MonoBehaviour
 
         bool isWalking =
             moveInput.sqrMagnitude > 0.01f ||
-            currentVelocity.sqrMagnitude > 0.01f;
+            desiredVelocity.sqrMagnitude > 0.01f;
 
         animator.SetBool("isWalking", isWalking);
 
-        animator.SetFloat("InputX", currentVelocity.x);
-        animator.SetFloat("InputY", currentVelocity.y);
+        animator.SetFloat("InputX", desiredVelocity.x);
+        animator.SetFloat("InputY", desiredVelocity.y);
 
         // Remember the last nonzero movement direction.
-        if (currentVelocity.sqrMagnitude > 0.01f)
+        if (desiredVelocity.sqrMagnitude > 0.01f)
         {
-            lastMoveDirection = currentVelocity.normalized;
+            lastMoveDirection = desiredVelocity.normalized;
         }
 
         if (!isWalking)
@@ -256,7 +258,7 @@ public class ReaganControls : MonoBehaviour
         }
 
         // Normal movement.
-        Vector2 desiredVelocity = Vector2.zero;
+        desiredVelocity = Vector2.zero;
 
         // WASD movement.
         if (moveInput.sqrMagnitude > 0f)
