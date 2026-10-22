@@ -231,6 +231,7 @@ GameObject:
   m_Component:
   - component: {fileID: 731393017}
   - component: {fileID: 731393016}
+  - component: {fileID: 731393018}
   m_Layer: 0
   m_Name: MinigameTimer
   m_TagString: Untagged
@@ -252,6 +253,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MinigameTimer
   timeLimit: 10
   timerText: {fileID: 1585619805}
+  onTimeUp:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 731393018}
+        m_TargetAssemblyTypeName: MinigameFailure, Assembly-CSharp
+        m_MethodName: TriggerFailure
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &731393017
 Transform:
   m_ObjectHideFlags: 0
@@ -267,6 +283,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &731393018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731393015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5c0b2d5bc2424c09a36b8c6ec21a364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinigameFailure
+  minigameSceneName: 
 --- !u!1 &913402331
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,6 +649,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MinigameTimer
   timeLimit: 10
   timerText: {fileID: 1585619805}
+  onTimeUp:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!222 &1585619807
 CanvasRenderer:
   m_ObjectHideFlags: 0

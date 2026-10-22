@@ -9,6 +9,9 @@ public class RewardManager : MonoBehaviour
     [Header("Reward Window")]
     public GameObject rewardWindow;
 
+    [Header("Lose Window")]
+    public GameObject loseWindow;
+
     [Header("Player Controls")]
     public PlayerInput overworldInput;
 
@@ -20,30 +23,37 @@ public class RewardManager : MonoBehaviour
     public TMP_Text totalMoneyText;
     public Image itemImageDisplay;
 
-    private float rewardOpenedTime;
-    private bool rewardOpen = false;
-    //FOR MONEY MANAGEMENT
+    [Header("Money Management")]
     public MoneyManager moneyManager;
 
-    // Stores each reward's name and image
+    private float windowOpenedTime;
+    private bool resultWindowOpen = false;
+
     [System.Serializable]
     public class RewardItem
     {
         public string itemName;
         public Sprite itemImage;
-
         public float itemValue;
+    }
+
+    void Start()
+    {
+        if (rewardWindow != null)
+            rewardWindow.SetActive(false);
+
+        if (loseWindow != null)
+            loseWindow.SetActive(false);
     }
 
     void Update()
     {
-        // Only check input when reward window is open
-        if (!rewardOpen)
+        if (!resultWindowOpen)
             return;
 
-        // Prevent the last minigame input
-        // from immediately closing the reward screen
-        if (Time.unscaledTime - rewardOpenedTime < 0.25f)
+        // Prevent the final minigame input from
+        // immediately closing the result window.
+        if (Time.unscaledTime - windowOpenedTime < 0.25f)
             return;
 
         bool keyboardPressed = false;
@@ -68,32 +78,59 @@ public class RewardManager : MonoBehaviour
         }
 
         if (keyboardPressed || mouseClicked)
-        {
             ContinueToMainGame();
-        }
     }
 
-    // Called when a minigame finishes
+    // Called when the player WINS a minigame.
     public void ShowRewardWindow()
     {
-        // Show the overworld and main camera
+        if (resultWindowOpen)
+            return;
+
         GameManager.Instance.setRootTrue();
 
-        // Temporarily disable Reagan's controls
         if (overworldInput != null)
             overworldInput.enabled = false;
 
-        // Choose a random reward
+        if (loseWindow != null)
+            loseWindow.SetActive(false);
+
         ChooseRandomReward();
 
-        // Display the reward window
-        rewardWindow.SetActive(true);
+        if (rewardWindow != null)
+            rewardWindow.SetActive(true);
 
-        rewardOpenedTime = Time.unscaledTime;
-        rewardOpen = true;
+        windowOpenedTime = Time.unscaledTime;
+        resultWindowOpen = true;
+
+        Debug.Log("MINIGAME WON!");
     }
 
-    // Randomly selects an item
+    // Called when the player LOSES a minigame.
+    public void ShowLoseWindow()
+    {
+        if (resultWindowOpen)
+            return;
+
+        GameManager.Instance.setRootTrue();
+
+        if (overworldInput != null)
+            overworldInput.enabled = false;
+
+        if (rewardWindow != null)
+            rewardWindow.SetActive(false);
+
+        // No random item is selected.
+        // No money is added.
+        if (loseWindow != null)
+            loseWindow.SetActive(true);
+
+        windowOpenedTime = Time.unscaledTime;
+        resultWindowOpen = true;
+
+        Debug.Log("MINIGAME LOST! No reward awarded.");
+    }
+
     private void ChooseRandomReward()
     {
         if (possibleRewards == null ||
@@ -109,22 +146,34 @@ public class RewardManager : MonoBehaviour
         RewardItem chosenItem =
             possibleRewards[randomIndex];
 
-        // Display the item name with "You Won"
         if (itemNameText != null)
         {
-           itemNameText.text =
-              "You Won <b>" + chosenItem.itemName + "</b>!";
-            moneyManager.changeMoney(chosenItem.itemValue);
-            itemValueText.text = "Money Earned: $" + (chosenItem.itemValue.ToString("F2"));
-            totalMoneyText.text = "Total Money: $" + moneyManager.getMoney().ToString("F2");
+            itemNameText.text =
+                "You Won <b>" + chosenItem.itemName + "</b>!";
         }
 
-        // Display the item's artwork
+        if (moneyManager != null)
+        {
+            moneyManager.changeMoney(chosenItem.itemValue);
+
+            if (totalMoneyText != null)
+            {
+                totalMoneyText.text =
+                    "Total Money: $" +
+                    moneyManager.getMoney().ToString("F2");
+            }
+        }
+
+        if (itemValueText != null)
+        {
+            itemValueText.text =
+                "Money Earned: $" +
+                chosenItem.itemValue.ToString("F2");
+        }
+
         if (itemImageDisplay != null)
         {
             itemImageDisplay.sprite = chosenItem.itemImage;
-
-            // Hide image if artwork isn't assigned yet
             itemImageDisplay.enabled =
                 chosenItem.itemImage != null;
         }
@@ -132,22 +181,25 @@ public class RewardManager : MonoBehaviour
         Debug.Log("Player won: " + chosenItem.itemName);
     }
 
-    // Called by WASD, Space, or mouse click
+    // Closes either result window.
     public void ContinueToMainGame()
     {
-        if (!rewardOpen)
+        if (!resultWindowOpen)
             return;
 
-        rewardOpen = false;
+        resultWindowOpen = false;
 
-        // Hide reward window
-        rewardWindow.SetActive(false);
+        if (rewardWindow != null)
+            rewardWindow.SetActive(false);
 
-        // Restore Reagan's controls
+        if (loseWindow != null)
+            loseWindow.SetActive(false);
+
         if (overworldInput != null)
             overworldInput.enabled = true;
 
-        Debug.Log("REWARD SCREEN CLOSED!");
+        Debug.Log("RESULT WINDOW CLOSED!");
     }
 }
+
 
