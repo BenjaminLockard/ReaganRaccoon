@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4584573722542756365}
   - component: {fileID: 7754078752573345682}
   - component: {fileID: 2718095396086281180}
+  - component: {fileID: 6982808339158219566}
   m_Layer: 0
   m_Name: Sample Trigger (script needed) (3)
   m_TagString: Untagged
@@ -156,6 +157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f0b6c39946f40ebb96561c15c5a24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadNext
+  transitionTime: 0
+  transition: {fileID: 0}
   SceneName: ClawMinigame
   type: minigame
   removed: {fileID: 589636002368998424}
@@ -189,3 +192,25 @@ MonoBehaviour:
   m_DefaultActionMap: ReaganInLevel
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!95 &6982808339158219566
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589636002368998424}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 296b7df2cbe97434f9bb78991319f8c9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
