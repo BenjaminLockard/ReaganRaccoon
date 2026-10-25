@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class LoadNext : MonoBehaviour
 {
     //if object tag has "tag" minigame and pressing action causes the new scene to load
-    public float transitionTime; 
+    public float transitionTime = 0.6f; 
     public Animator transition;
     private bool isCollidingWithObject;
     public string SceneName;
@@ -37,8 +37,11 @@ public class LoadNext : MonoBehaviour
     void OnInteract(InputValue value){
         if(canInteract){
             Debug.Log("Loading Game");
-            StartCoroutine(switchScene(type, SceneName));
+            switchScene(type, SceneName);
         }
+    }
+    public void switchScene(string type, string SceneName){
+        StartCoroutine(switchaScene(type, SceneName));
     }
     /*
     private void OnTriggerEnter2D(Collider2D collision)
@@ -154,16 +157,19 @@ public class LoadNext : MonoBehaviour
     }
     */
 
-    public IEnumerator switchScene(string type, string SceneName)
+    public IEnumerator switchaScene(string type, string SceneName)
     {
         if (type == "minigame")
         {
+
             Destroy(removed);
-            GameManager.Instance.setRootFalse();
+            
             //disable root object here from the main world
-            transition.SetTrigger("Start");
-            yield return new WaitForSeconds(transitionTime);
+            //transition.SetTrigger("Start"); //plays transition
+            //yield return new WaitForSeconds(transitionTime); //waits for a certain amount of time
             SceneManager.LoadScene(SceneName, LoadSceneMode.Additive);
+            GameManager.Instance.setRootFalse();
+            //SceneManager.LoadScene(SceneName, LoadSceneMode.Additive); //loads the next scene
             //Loads the minigame additively
             //Main gets disabled
 
@@ -173,8 +179,9 @@ public class LoadNext : MonoBehaviour
             
         }                    
         else if (type == "switchback")
-{
-    transition.SetTrigger("Start");
+{   
+    Debug.Log("SWITCHING");
+    transition.SetTrigger("Start"); //play animation
     yield return new WaitForSeconds(transitionTime);
     
     Destroy(removed);
