@@ -165,6 +165,14 @@ public class ReaganControls : MonoBehaviour
         iFrames = false;
     }
 
+    //KNOWN BUG - iFrames last forever if minigame entered during iFrames
+    //FIX - Call function below upon returning to main scene.
+    public void resetIFrame()
+    {
+        iFrames = false;
+        SetOpacity(1f);
+    }
+
     public void SetOpacity(float alphaValue)
     {
         Color currentColor = spriteRenderer.color;

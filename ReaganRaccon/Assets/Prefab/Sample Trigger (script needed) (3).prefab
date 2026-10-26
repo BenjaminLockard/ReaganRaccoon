@@ -86,7 +86,7 @@ SpriteRenderer:
   m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.85970145, b: 0.50980395, a: 0.33333334}
+  m_Color: {r: 0.50980395, g: 1, b: 0.51876897, a: 0.33333334}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f0b6c39946f40ebb96561c15c5a24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadNext
+  transition: {fileID: 0}
   SceneName: ClawMinigame
   type: minigame
   removed: {fileID: 589636002368998424}
