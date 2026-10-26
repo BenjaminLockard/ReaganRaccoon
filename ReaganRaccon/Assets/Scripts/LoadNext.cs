@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class LoadNext : MonoBehaviour
 {
     //if object tag has "tag" minigame and pressing action causes the new scene to load
-    public float transitionTime = 1.5f; 
+    private float transitionTime = 1.7f; 
     public Animator transition;
     private bool isCollidingWithObject;
     public string SceneName;

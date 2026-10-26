@@ -559,7 +559,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f0b6c39946f40ebb96561c15c5a24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadNext
-  transitionTime: 0.6
   transition: {fileID: 1671099552}
   SceneName: PlatformingMinigame 1
   type: switchback
@@ -1267,7 +1266,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f0b6c39946f40ebb96561c15c5a24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadNext
-  transitionTime: 0.6
   transition: {fileID: 0}
   SceneName: PlatformingMinigame 1
   type: switchback
@@ -1725,6 +1723,7 @@ Transform:
   - {fileID: 199081308}
   - {fileID: 614872805}
   - {fileID: 1671099551}
+  - {fileID: 2059700093}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2059700092
@@ -1759,7 +1758,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 55447577}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1910150508}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1834,5 +1833,4 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1910150508}
-  - {fileID: 2059700093}
   - {fileID: 438169057}
