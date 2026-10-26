@@ -53,14 +53,17 @@ TagManager:
   - name: Reagan
     uniqueID: 1391004129
     locked: 0
-  - name: Trees
-    uniqueID: 843793863
+  - name: Camping stuff
+    uniqueID: 3437419787
     locked: 0
   - name: Camping gear
     uniqueID: 3366270823
     locked: 0
-  - name: Camping stuff
-    uniqueID: 3437419787
+  - name: Trees
+    uniqueID: 843793863
+    locked: 0
+  - name: New Layer 7
+    uniqueID: 801603119
     locked: 0
   m_RenderingLayers:
   - Default
