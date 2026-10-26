@@ -11,6 +11,7 @@ public class ClawMinigame : MonoBehaviour
     
     private float flip = 1f;
     private bool failed = false;
+    private bool finished;
     public Rigidbody2D rb;
     private bool isSpacePressed = false; 
     private LoadNext loadNext;
@@ -34,7 +35,7 @@ public class ClawMinigame : MonoBehaviour
         //fixed updates on a constant loop
         if(isSpacePressed){
             //moves down
-            if (failed)//is triggered by the collider
+            if (failed && finished != finished)//is triggered by the collider
             {
             loadNext.switchScene("switchback","ClawMinigame");
             rb.MovePosition(rb.position + new Vector2(0f , speed) * Time.fixedDeltaTime);
@@ -57,7 +58,7 @@ public class ClawMinigame : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision){
-        if(collision.gameObject.CompareTag("Prize"))
+        if(collision.gameObject.CompareTag("Prize") && finished != true)
         {
             //hitting the triangle causes you to win
             //Debug.Log("WINNER");

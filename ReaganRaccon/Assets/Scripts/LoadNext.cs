@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class LoadNext : MonoBehaviour
 {
     //if object tag has "tag" minigame and pressing action causes the new scene to load
-
+    public float transitionTime = 1.5f; 
+    public Animator transition;
     private bool isCollidingWithObject;
     public string SceneName;
     public string type;
@@ -39,6 +40,9 @@ public class LoadNext : MonoBehaviour
             switchScene(type, SceneName);
         }
     }
+    public void switchScene(string type, string SceneName){
+        StartCoroutine(switchaScene(type, SceneName));
+    }
     /*
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -65,6 +69,7 @@ public class LoadNext : MonoBehaviour
         //}
     */
 
+/*
     public void switchScene(string type, string SceneName)
     {
         if (type == "minigame")
@@ -124,6 +129,8 @@ public class LoadNext : MonoBehaviour
         //however switching to the main game should destory the minigame to not waste data
         //this can be called 
     }
+*/
+
 /*
     //https://docs.unity3d.com/6000.6/Documentation/ScriptReference/SceneManagement.SceneManager.LoadSceneAsync.html
 
@@ -149,4 +156,72 @@ public class LoadNext : MonoBehaviour
         SceneManager.LoadScene(miniGameSceneName);
     }
     */
+
+    public IEnumerator switchaScene(string type, string SceneName)
+    {
+        if (type == "minigame")
+        {
+
+            Destroy(removed);
+            
+            //disable root object here from the main world
+            //transition.SetTrigger("Start"); //plays transition
+            //yield return new WaitForSeconds(transitionTime); //waits for a certain amount of time
+            SceneManager.LoadScene(SceneName, LoadSceneMode.Additive);
+            GameManager.Instance.setRootFalse();
+            //SceneManager.LoadScene(SceneName, LoadSceneMode.Additive); //loads the next scene
+            //Loads the minigame additively
+            //Main gets disabled
+
+            //rooty.SetActive(false)
+            //SceneManager.SetActiveScene(SceneName);
+            //SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneName));
+            
+        }                    
+        else if (type == "switchback")
+{   
+    Debug.Log("SWITCHING");
+    transition.SetTrigger("Start"); //play animation
+    yield return new WaitForSeconds(transitionTime);
+    
+    Destroy(removed);
+
+    // Unload the completed minigame
+    SceneManager.UnloadSceneAsync(SceneName);
+
+    // Find the reward manager outside Root
+    RewardManager rewardManager =
+        FindFirstObjectByType<RewardManager>();
+
+    if (rewardManager != null)
+    {
+        rewardManager.ShowRewardWindow();
+    }
+    else
+    {
+        Debug.LogWarning("RewardManager not found!");
+
+        // Fallback so the player is not stuck
+        GameManager.Instance.setRootTrue();
+    }
+
+            //reloads the root scene 
+        }
+        else
+        {
+            Destroy(removed);
+            GameManager.Instance.setRootTrue();
+            //SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
+            //SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneName));
+            
+            //DontDestroyOnLoad(root);
+            
+            //SceneManager.LoadScene(SceneName);
+
+        }
+        //adding additive causes the scene to load on top of each other 
+        //which should allow the main game to be active 
+        //however switching to the main game should destory the minigame to not waste data
+        //this can be called 
+    }
 }
