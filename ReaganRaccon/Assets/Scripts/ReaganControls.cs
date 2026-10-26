@@ -1,9 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class ReaganControls : MonoBehaviour
 {
+    private SpriteRenderer spriteRenderer;
+
     [Header("Movement")]
     [SerializeField] private float maxSpeed = 5f;
     [SerializeField] private float acceleration = 20f;
@@ -35,7 +38,11 @@ public class ReaganControls : MonoBehaviour
     [SerializeField] private float bounceMultiplier = 0.5f;
     [SerializeField] private float dizzyDuration = 3f;
     [SerializeField] private float crashThreshold = 1.25f;
-    [SerializeField] private float hazardKnockbackForce = 30f;
+
+    [Header("Hazard Handling")]
+    [SerializeField] public bool iFrames = false;
+    [SerializeField] private float hazardKnockbackForce = 20f;
+    [SerializeField] private float iFrameDuration = 2f;
 
     private float dizzyTimer;
 
@@ -87,7 +94,7 @@ public class ReaganControls : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Hazard"))
+        if (collision.gameObject.CompareTag("Hazard") && !iFrames)
             hazardKnockback(collision);
         else
         {
@@ -139,8 +146,31 @@ public class ReaganControls : MonoBehaviour
         // Reverse the player's momentum and scale the bounce.
         currentVelocity =
             launchDirection * hazardKnockbackForce;
+
+        StartCoroutine(justHit());
     }
 
+    public IEnumerator justHit()
+    {
+        iFrames = true;
+
+        for (float i = iFrameDuration; i > 0f; i -= 0.15f)
+        {
+            SetOpacity(0.5f);
+            yield return new WaitForSeconds(0.075f);
+            SetOpacity(1f);
+            yield return new WaitForSeconds(0.075f);
+        }
+
+        iFrames = false;
+    }
+
+    public void SetOpacity(float alphaValue)
+    {
+        Color currentColor = spriteRenderer.color;
+        currentColor.a = alphaValue;
+        spriteRenderer.color = currentColor;
+    }
 
     // RESET MOVEMENT
 
@@ -318,13 +348,19 @@ public class ReaganControls : MonoBehaviour
 
         UpdateAnimation();
     }
-
-    // RESET SCENE
-
-    public void OnReset(InputValue input)
+    void Start()
     {
-        SceneManager.LoadScene(
-            SceneManager.GetActiveScene().name
-        );
+        // Get the SpriteRenderer component attached to this GameObject
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
-}
+
+
+        // RESET SCENE
+
+        //public void OnReset(InputValue input)
+        //{
+        //    SceneManager.LoadScene(
+        //        SceneManager.GetActiveScene().name
+        //    );
+        //}
+    }

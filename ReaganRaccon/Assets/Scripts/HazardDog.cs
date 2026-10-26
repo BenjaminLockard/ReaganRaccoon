@@ -20,6 +20,7 @@ public class HazardDog : MonoBehaviour
 
     public GameObject target;
     private GameObject player;
+    private ReaganControls playerControls;
 
     private Rigidbody2D rb;
 
@@ -60,11 +61,11 @@ public class HazardDog : MonoBehaviour
 
     void UpdateState()
     {
-        if (PlayerInRange() && currentState == EnemyState.Patrolling)
+        if ((PlayerInRange() && currentState == EnemyState.Patrolling) && !playerControls.iFrames)
         {
             currentState = EnemyState.Chasing;
         }
-        else if (!PlayerInRange() && currentState == EnemyState.Chasing)
+        else if ((!PlayerInRange() && currentState == EnemyState.Chasing) || playerControls.iFrames)
         {
             currentState = EnemyState.Patrolling;
         }
@@ -168,6 +169,7 @@ public class HazardDog : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Reagan");
+        playerControls = player.GetComponent<ReaganControls>();
 
         rb = GetComponent<Rigidbody2D>();
 
