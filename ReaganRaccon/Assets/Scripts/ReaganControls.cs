@@ -47,8 +47,8 @@ public class ReaganControls : MonoBehaviour
     [SerializeField] private GameObject grandPrefab;
     [SerializeField] private GameObject largePrefab;
     [SerializeField] private GameObject smallPrefab;
-    [SerializeField] private float coinLaunchForceMin = 8f;
-    [SerializeField] private float coinLaunchForceMax = 12f;
+    [SerializeField] private float coinLaunchForceMin = 6f;
+    [SerializeField] private float coinLaunchForceMax = 10f;
 
 
     private float dizzyTimer;
