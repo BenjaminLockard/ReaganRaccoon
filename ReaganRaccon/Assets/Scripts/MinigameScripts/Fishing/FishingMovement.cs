@@ -26,7 +26,7 @@ public class FishingMovement : MonoBehaviour
     }
     // Update is called once per frame
     void Update()
-    {
+    {//
         rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, moveInput.y * moveSpeed);
         rb.position = new Vector2(Mathf.Clamp(rb.position.x,-52.54f,-24.23f),Mathf.Clamp(rb.position.y,-4.44f,11.33f));
     }
