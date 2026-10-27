@@ -32,6 +32,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FishingMinigame.unity
     guid: 85a953c1637f04246abf71378565819a
+  - enabled: 1
+    path: Assets/Scenes/BaseBallMinigame.unity
+    guid: a9f0d9e5e51517636bb07b645ca457aa
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
