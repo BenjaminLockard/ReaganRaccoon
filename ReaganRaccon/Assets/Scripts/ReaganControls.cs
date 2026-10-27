@@ -6,6 +6,7 @@ using System.Collections;
 public class ReaganControls : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
+    public MoneyManager moneyManager;
 
     [Header("Movement")]
     [SerializeField] private float maxSpeed = 5f;
@@ -43,6 +44,12 @@ public class ReaganControls : MonoBehaviour
     [SerializeField] public bool iFrames = false;
     [SerializeField] private float hazardKnockbackForce = 20f;
     [SerializeField] private float iFrameDuration = 2f;
+    [SerializeField] private GameObject grandPrefab;
+    [SerializeField] private GameObject largePrefab;
+    [SerializeField] private GameObject smallPrefab;
+    [SerializeField] private float coinLaunchForceMin = 8f;
+    [SerializeField] private float coinLaunchForceMax = 12f;
+
 
     private float dizzyTimer;
 
@@ -153,6 +160,7 @@ public class ReaganControls : MonoBehaviour
     public IEnumerator justHit()
     {
         iFrames = true;
+        dropMoney();
 
         for (float i = iFrameDuration; i > 0f; i -= 0.15f)
         {
@@ -163,6 +171,106 @@ public class ReaganControls : MonoBehaviour
         }
 
         iFrames = false;
+    }
+
+    public void dropMoney()
+    {
+        float moneyToLose = moneyManager.getCurrentMoney() / 5f;
+        if (moneyToLose > 25f)
+            moneyToLose = 25f;
+
+        moneyManager.changeMoney(moneyToLose * -1f);
+
+        for (int i = 0; i < 4; i++)
+        {
+            if (moneyToLose >= 5)
+            {
+                GameObject grandCoin = Instantiate(
+                    grandPrefab,
+                    transform.position,
+                    transform.rotation
+                );
+
+                MoneyFloating coin =
+                    grandCoin.GetComponent<MoneyFloating>();
+
+                // Give the coin the references it needs.
+                coin.Initialize(moneyManager, this);
+
+                // Launch the coin in a random direction.
+                Vector2 randomDirection =
+                    Random.insideUnitCircle.normalized;
+
+                float launchForce = Random.Range(
+                        coinLaunchForceMin,
+                        coinLaunchForceMax
+                );
+
+                coin.Launch(randomDirection, launchForce);
+
+                moneyToLose -= 5;
+            }
+        }
+        for (int i = 0; i < 4; i++)
+        {
+            if (moneyToLose >= 1)
+            {
+                GameObject largeCoin = Instantiate(
+                    largePrefab,
+                    transform.position,
+                    transform.rotation
+                );
+
+                MoneyFloating coin =
+                    largeCoin.GetComponent<MoneyFloating>();
+
+                // Give the coin the references it needs.
+                coin.Initialize(moneyManager, this);
+
+                // Launch the coin in a random direction.
+                Vector2 randomDirection =
+                    Random.insideUnitCircle.normalized;
+
+                float launchForce = Random.Range(
+                        coinLaunchForceMin,
+                        coinLaunchForceMax
+                );
+
+                coin.Launch(randomDirection, launchForce);
+
+                moneyToLose -= 1;
+            }
+        }
+        for (int i = 0; i < 4; i++)
+        {
+            if (moneyToLose >= 0.25f)
+            {
+                GameObject smallCoin = Instantiate(
+                    smallPrefab,
+                    transform.position,
+                    transform.rotation
+                );
+
+                MoneyFloating coin =
+                    smallCoin.GetComponent<MoneyFloating>();
+
+                // Give the coin the references it needs.
+                coin.Initialize(moneyManager, this);
+
+                // Launch the coin in a random direction.
+                Vector2 randomDirection =
+                    Random.insideUnitCircle.normalized;
+
+                float launchForce = Random.Range(
+                        coinLaunchForceMin,
+                        coinLaunchForceMax
+                );
+
+                coin.Launch(randomDirection, launchForce);
+
+                moneyToLose -= 0.25f;
+            }
+        }
     }
 
     //KNOWN BUG - iFrames last forever if minigame entered during iFrames

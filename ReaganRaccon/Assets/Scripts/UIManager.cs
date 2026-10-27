@@ -9,8 +9,14 @@ public class UIManager : MonoBehaviour
 
     public void OnPause(InputValue input)
     {
-        pauseMenu.SetActive(true);
-        Time.timeScale = 0;
+        if (!pauseMenu.activeInHierarchy)
+        {
+            pauseMenu.SetActive(true);
+            Time.timeScale = 0;
+        } else
+        {
+            Unpause();
+        }
     } 
     
     public void Unpause()
