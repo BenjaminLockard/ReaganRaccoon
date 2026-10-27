@@ -10,6 +10,11 @@ public class HideOnInteract : MonoBehaviour
         thisPanel.SetActive(false);
     }
 
+    private void OnPause()
+    {
+        thisPanel.SetActive(false);
+    }
+
     //private void Start()
     //{
     //    thisPanel.SetActive(true);

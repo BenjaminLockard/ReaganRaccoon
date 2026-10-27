@@ -42,7 +42,7 @@ public class TimeManager : MonoBehaviour
         if (currentTime <= 0)
         {
             ticking = false;
-            timerText.text = "0:00 TIME UP - Press R To Replay";
+            timerText.text = "0:00 TIME UP - Restart via ESC menu";
         }
         else if (ticking)
         {
