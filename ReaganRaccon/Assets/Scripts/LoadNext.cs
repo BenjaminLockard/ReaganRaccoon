@@ -15,6 +15,7 @@ public class LoadNext : MonoBehaviour
     //[SerializeField] GameObject Root; 
     public GameObject removed;
     private bool canInteract = false;
+    public ReaganControls playerControls;
 
     void OnTriggerStay2D(Collider2D other){
             if(other.gameObject.CompareTag("Reagan")){
@@ -37,9 +38,13 @@ public class LoadNext : MonoBehaviour
     void OnInteract(InputValue value){
         if(canInteract){
             Debug.Log("Loading Game");
+            //IFRAME BUGFIX
+            playerControls.resetIFrame();
+
             switchScene(type, SceneName);
         }
     }
+
     public void switchScene(string type, string SceneName){
         StartCoroutine(switchaScene(type, SceneName));
     }
@@ -88,6 +93,7 @@ public class LoadNext : MonoBehaviour
 
         // Fallback so the player is not stuck
         GameManager.Instance.setRootTrue();
+
     }
 
             //reloads the root scene 
@@ -96,8 +102,6 @@ public class LoadNext : MonoBehaviour
         {
             Destroy(removed);
             GameManager.Instance.setRootTrue();
-            //SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
-            //SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneName));
             
             //DontDestroyOnLoad(root);
             
