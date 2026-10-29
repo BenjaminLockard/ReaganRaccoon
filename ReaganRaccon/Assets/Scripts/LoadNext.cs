@@ -62,8 +62,7 @@ public class LoadNext : MonoBehaviour
         GameManager.Instance.setRootTrue();
 
     }
-
-            //reloads the root scene 
+    //reloads the root scene 
         }
         else
         {

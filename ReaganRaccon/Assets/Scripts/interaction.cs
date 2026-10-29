@@ -13,6 +13,7 @@ public class interaction : MonoBehaviour
     public GameObject removed;
     private float transitionTime = 1.7f; 
     public Animator transition;
+    public Animator stopMoving;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
 
@@ -36,6 +37,7 @@ public class interaction : MonoBehaviour
     
     void OnInteract(InputValue value){
         if(canInteract){
+            //pause
             Debug.Log("Loading Game");
             //IFRAME BUGFIX
             playerControls.resetIFrame();
