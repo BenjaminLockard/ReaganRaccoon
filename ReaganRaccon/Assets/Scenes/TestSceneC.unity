@@ -1863,7 +1863,7 @@ MonoBehaviour:
   dialogueText: {fileID: 1321011724}
   npcPortraitImage: {fileID: 1243034653}
   reaganPortraitImage: {fileID: 79767354}
-  reaganPortrait: {fileID: -7946181943368753001, guid: 4a202631d12d0439dab5a3713690a4e5, type: 3}
+  reaganPortrait: {fileID: 21300000, guid: 5a6122c5128e84649b03d453107948dd, type: 3}
   speakingColor: {r: 1, g: 1, b: 1, a: 1}
   dimmedColor: {r: 0.45, g: 0.45, b: 0.45, a: 1}
   dialogueChoices: {fileID: 676950005}
@@ -2825,6 +2825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f0b6c39946f40ebb96561c15c5a24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadNext
+  transition: {fileID: 0}
   SceneName: 
   type: 
   removed: {fileID: 0}
@@ -139075,6 +139076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a44b3007e891f7048bb8ff59cb32bba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReaganControls
+  moneyManager: {fileID: 0}
   maxSpeed: 8
   acceleration: 12
   deceleration: 22
@@ -139084,7 +139086,14 @@ MonoBehaviour:
   bounceMultiplier: 0.6
   dizzyDuration: 1.5
   crashThreshold: 1.25
+  iFrames: 0
   hazardKnockbackForce: 16
+  iFrameDuration: 2
+  grandPrefab: {fileID: 0}
+  largePrefab: {fileID: 0}
+  smallPrefab: {fileID: 0}
+  coinLaunchForceMin: 6
+  coinLaunchForceMax: 10
 --- !u!212 &965427582
 SpriteRenderer:
   serializedVersion: 2
@@ -139131,7 +139140,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1391004129
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -7946181943368753001, guid: 4a202631d12d0439dab5a3713690a4e5, type: 3}
@@ -220812,7 +220821,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1391004129
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
@@ -221122,6 +221131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoneyManager
   moneyText: {fileID: 386185071}
+  updateText: {fileID: 0}
 --- !u!1 &1867643097
 GameObject:
   m_ObjectHideFlags: 0

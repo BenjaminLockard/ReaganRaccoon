@@ -32,12 +32,17 @@ public class DialogueManager : MonoBehaviour
     private bool dialogueActive;
 
     private Sprite currentNPCPortrait;
+    private Sprite defaultNPCPortrait;
+    private Sprite pendingNPCPortrait;
     private string currentNPCName;
 
     private bool showingChoices;
     private int selectedChoice;
     private bool showingChosenResponse;
+    private bool showingNPCReply;
     private bool waitingForKeyRelease;
+
+    private string pendingNPCReply;
 
     [System.Serializable]
     public class DialogueLine
@@ -61,6 +66,10 @@ public class DialogueManager : MonoBehaviour
 
         [TextArea(2, 5)]
         public string npcReply2;
+
+        [Header("NPC Expressions After Choices")]
+        public Sprite choice1ReplyPortrait;
+        public Sprite choice2ReplyPortrait;
     }
 
     void Start()
@@ -129,9 +138,13 @@ public class DialogueManager : MonoBehaviour
 
         showingChoices = false;
         showingChosenResponse = false;
+        showingNPCReply = false;
         waitingForKeyRelease = true;
 
+        pendingNPCReply = null;
+        pendingNPCPortrait = null;
         currentNPCPortrait = null;
+        defaultNPCPortrait = null;
         currentNPCName = "NPC";
 
         foreach (DialogueLine line in currentLines)
@@ -140,10 +153,15 @@ public class DialogueManager : MonoBehaviour
             {
                 currentNPCName = line.speakerName;
 
-                if (line.speakerPortrait != null)
-                    currentNPCPortrait = line.speakerPortrait;
+                if (line.speakerPortrait != null &&
+                    defaultNPCPortrait == null)
+                {
+                    defaultNPCPortrait = line.speakerPortrait;
+                }
             }
         }
+
+        currentNPCPortrait = defaultNPCPortrait;
 
         if (dialoguePanel != null)
             dialoguePanel.SetActive(true);
@@ -156,15 +174,7 @@ public class DialogueManager : MonoBehaviour
         if (!dialogueActive || showingChoices)
             return;
 
-        if (showingChosenResponse)
-        {
-            showingChosenResponse = false;
-            currentLineIndex++;
-        }
-        else
-        {
-            currentLineIndex++;
-        }
+        currentLineIndex++;
 
         if (currentLineIndex >= currentLines.Length)
             EndDialogue();
@@ -175,6 +185,17 @@ public class DialogueManager : MonoBehaviour
     private void ShowCurrentLine()
     {
         DialogueLine line = currentLines[currentLineIndex];
+
+        // Reset expression for each new dialogue line.
+        if (!line.isReaganSpeaking &&
+            line.speakerPortrait != null)
+        {
+            currentNPCPortrait = line.speakerPortrait;
+        }
+        else
+        {
+            currentNPCPortrait = defaultNPCPortrait;
+        }
 
         UpdatePortraits(line.isReaganSpeaking);
 
@@ -289,17 +310,19 @@ public class DialogueManager : MonoBehaviour
 
         UpdatePortraits(true);
 
-        // Save the NPC's response for the next E press.
+        // Save NPC reply and matching facial expression.
         pendingNPCReply =
             choiceIndex == 0
             ? line.npcReply1
             : line.npcReply2;
 
+        pendingNPCPortrait =
+            choiceIndex == 0
+            ? line.choice1ReplyPortrait
+            : line.choice2ReplyPortrait;
+
         waitingForKeyRelease = true;
     }
-
-    private string pendingNPCReply;
-    private bool showingNPCReply;
 
     public void AdvanceDialogue()
     {
@@ -317,6 +340,12 @@ public class DialogueManager : MonoBehaviour
                 if (dialogueText != null)
                     dialogueText.text = pendingNPCReply;
 
+                // Change NPC expression for their reply.
+                currentNPCPortrait =
+                    pendingNPCPortrait != null
+                    ? pendingNPCPortrait
+                    : defaultNPCPortrait;
+
                 UpdatePortraits(false);
                 return;
             }
@@ -325,6 +354,7 @@ public class DialogueManager : MonoBehaviour
         {
             showingNPCReply = false;
             pendingNPCReply = null;
+            pendingNPCPortrait = null;
         }
 
         NextLine();
@@ -337,11 +367,10 @@ public class DialogueManager : MonoBehaviour
 
         if (npcPortraitImage != null)
         {
-            if (currentNPCPortrait != null)
-                npcPortraitImage.sprite = currentNPCPortrait;
+            npcPortraitImage.sprite = currentNPCPortrait;
 
             npcPortraitImage.enabled =
-                npcPortraitImage.sprite != null;
+                currentNPCPortrait != null;
 
             npcPortraitImage.color =
                 isReaganSpeaking
@@ -372,12 +401,15 @@ public class DialogueManager : MonoBehaviour
         showingNPCReply = false;
 
         pendingNPCReply = null;
+        pendingNPCPortrait = null;
         currentLines = null;
         currentNPCPortrait = null;
+        defaultNPCPortrait = null;
 
         if (dialoguePanel != null)
             dialoguePanel.SetActive(false);
     }
 }
+
 
 
