@@ -56038,6 +56038,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: PlatformingMinigame
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -56740,6 +56744,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: PlatformingMinigame 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -57859,6 +57867,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: PlatformingMinigame 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -57929,6 +57941,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: PlatformingMinigame 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -84301,6 +84317,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: ClawMinigame
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -85787,6 +85807,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: PlatformingMinigame
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -92342,6 +92366,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: MashingMinigame
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -92417,6 +92445,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: BaseBallMinigame
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -135145,6 +135177,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: BaseBallMinigame
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -139698,6 +139734,7 @@ MonoBehaviour:
   SceneName: 
   type: 
   removed: {fileID: 0}
+  playerControls: {fileID: 0}
 --- !u!4 &802241094 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1334915721907032342, guid: 32ff1e86797ea1c4b874e98a399e1c54, type: 3}
@@ -364941,6 +364978,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: FishingMinigame
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -365011,6 +365052,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: PlatformingMinigame
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -366249,6 +366294,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: PlatformingMinigame 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -368636,6 +368685,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: BaseBallMinigame
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -371159,6 +371212,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: FishingMinigame
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -537843,6 +537900,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: PlatformingMinigame 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -540843,6 +540904,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: FishingMinigame
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -541458,6 +541523,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: PlatformingMinigame 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -824655,6 +824724,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: ClawMinigame
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -824730,6 +824803,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: PlatformingMinigame 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -826223,6 +826300,10 @@ PrefabInstance:
       propertyPath: Root
       value: 
       objectReference: {fileID: 795019401}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
