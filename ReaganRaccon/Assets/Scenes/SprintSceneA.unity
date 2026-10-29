@@ -135656,10 +135656,18 @@ PrefabInstance:
     - target: {fileID: 1792988182744560068, guid: 55481db4a2c7a734487ded5e1e1ff988, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 1587597668}
+    - target: {fileID: 1792988182744560068, guid: 55481db4a2c7a734487ded5e1e1ff988, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SceneReset
       objectReference: {fileID: 0}
     - target: {fileID: 3882385806184681741, guid: 55481db4a2c7a734487ded5e1e1ff988, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 1587597668}
+    - target: {fileID: 3882385806184681741, guid: 55481db4a2c7a734487ded5e1e1ff988, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Unpause
       objectReference: {fileID: 0}
     - target: {fileID: 8380027960629871662, guid: 55481db4a2c7a734487ded5e1e1ff988, type: 3}
       propertyPath: m_Name
