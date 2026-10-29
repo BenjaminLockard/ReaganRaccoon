@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4584573722542756365}
   - component: {fileID: 7754078752573345682}
   - component: {fileID: 2718095396086281180}
+  - component: {fileID: 8673874306904970502}
   m_Layer: 0
   m_Name: Sample Trigger (script needed) (3)
   m_TagString: Untagged
@@ -160,6 +161,7 @@ MonoBehaviour:
   SceneName: ClawMinigame
   type: minigame
   removed: {fileID: 589636002368998424}
+  playerControls: {fileID: 0}
 --- !u!114 &2718095396086281180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,3 +192,20 @@ MonoBehaviour:
   m_DefaultActionMap: ReaganInLevel
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &8673874306904970502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589636002368998424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c53a66b50a1d24196832045528c115c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::interaction
+  playerControls: {fileID: 0}
+  loadNext: {fileID: 0}
+  SceneName: ClawMinigame
+  type: minigame
+  removed: {fileID: 0}

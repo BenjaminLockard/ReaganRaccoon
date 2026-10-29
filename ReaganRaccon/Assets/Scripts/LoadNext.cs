@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class LoadNext : MonoBehaviour
@@ -9,41 +8,9 @@ public class LoadNext : MonoBehaviour
     //if object tag has "tag" minigame and pressing action causes the new scene to load
     private float transitionTime = 1.7f; 
     public Animator transition;
-    private bool isCollidingWithObject;
     public string SceneName;
     public string type;
-    //[SerializeField] GameObject Root; 
     public GameObject removed;
-    private bool canInteract = false;
-    public ReaganControls playerControls;
-
-    void OnTriggerStay2D(Collider2D other){
-            if(other.gameObject.CompareTag("Reagan")){
-                canInteract = true;
-                Debug.Log("Can Interact");
-            }
-            else{
-                canInteract = false;
-            }
-    }
-    
-    void OnTriggerExit2D(Collider2D other){
-        if(other.gameObject.CompareTag("Reagan")){
-            canInteract = false;
-            Debug.Log("Can't Interact");
-        }
-    }
-    
-    
-    void OnInteract(InputValue value){
-        if(canInteract){
-            Debug.Log("Loading Game");
-            //IFRAME BUGFIX
-            playerControls.resetIFrame();
-
-            switchScene(type, SceneName);
-        }
-    }
 
     public void switchScene(string type, string SceneName){
         StartCoroutine(switchaScene(type, SceneName));
