@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     private string[] levelNames =
      {"BaseBallMinigame","ClawMinigame","FishingMinigame",
     "PlatformingMinigame 1","PlatformingMinigame 2"
-    ,"PlatformingMinigame 3","PlatformingMinigame"};
+    ,"PlatformingMinigame 3"};
      void Awake() { //finishes Singleton creation
         Instance = this;
         Shuffle(levelNames);
