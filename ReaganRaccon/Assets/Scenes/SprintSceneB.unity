@@ -55988,7 +55988,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 589636002368998424, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_Name
-      value: Sample Trigger (script needed) (8)
+      value: MinigameZone (12)
       objectReference: {fileID: 0}
     - target: {fileID: 3281631985414146945, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_LocalPosition.x
@@ -56039,6 +56039,10 @@ PrefabInstance:
       value: PlatformingMinigame
       objectReference: {fileID: 0}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -56694,7 +56698,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 589636002368998424, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_Name
-      value: Sample Trigger (script needed) (18)
+      value: MinigameZone (7)
       objectReference: {fileID: 0}
     - target: {fileID: 3281631985414146945, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_LocalPosition.x
@@ -56745,6 +56749,10 @@ PrefabInstance:
       value: PlatformingMinigame 3
       objectReference: {fileID: 0}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -57817,7 +57825,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 589636002368998424, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_Name
-      value: Sample Trigger (script needed) (13)
+      value: MinigameZone (20)
       objectReference: {fileID: 0}
     - target: {fileID: 3281631985414146945, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_LocalPosition.x
@@ -57871,6 +57879,14 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: SceneName
+      value: Null
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -57891,7 +57907,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 589636002368998424, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_Name
-      value: Sample Trigger (script needed) (10)
+      value: MinigameZone (14)
       objectReference: {fileID: 0}
     - target: {fileID: 3281631985414146945, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_LocalPosition.x
@@ -57942,6 +57958,10 @@ PrefabInstance:
       value: PlatformingMinigame 2
       objectReference: {fileID: 0}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -84267,7 +84287,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 589636002368998424, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_Name
-      value: Sample Trigger (script needed) (3)
+      value: MinigameZone (10)
       objectReference: {fileID: 0}
     - target: {fileID: 3281631985414146945, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_LocalPosition.x
@@ -84318,6 +84338,10 @@ PrefabInstance:
       value: ClawMinigame
       objectReference: {fileID: 0}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -85757,7 +85781,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 589636002368998424, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_Name
-      value: Sample Trigger (script needed) (4)
+      value: MinigameZone (4)
       objectReference: {fileID: 0}
     - target: {fileID: 3281631985414146945, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_LocalPosition.x
@@ -85808,6 +85832,10 @@ PrefabInstance:
       value: PlatformingMinigame
       objectReference: {fileID: 0}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -92316,7 +92344,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 589636002368998424, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_Name
-      value: Sample Trigger (script needed) (12)
+      value: MinigameZone (19)
       objectReference: {fileID: 0}
     - target: {fileID: 3281631985414146945, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_LocalPosition.x
@@ -92370,6 +92398,10 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -92395,7 +92427,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 589636002368998424, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_Name
-      value: Sample Trigger (script needed) (7)
+      value: MinigameZone (9)
       objectReference: {fileID: 0}
     - target: {fileID: 3281631985414146945, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_LocalPosition.x
@@ -92446,6 +92478,10 @@ PrefabInstance:
       value: BaseBallMinigame
       objectReference: {fileID: 0}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -135127,7 +135163,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 589636002368998424, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_Name
-      value: Sample Trigger (script needed) (14)
+      value: MinigameZone (16)
       objectReference: {fileID: 0}
     - target: {fileID: 3281631985414146945, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_LocalPosition.x
@@ -135178,6 +135214,10 @@ PrefabInstance:
       value: BaseBallMinigame
       objectReference: {fileID: 0}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -135787,7 +135827,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8799777215194099863, guid: 55481db4a2c7a734487ded5e1e1ff988, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 8.917007
+      value: 8.917023
       objectReference: {fileID: 0}
     - target: {fileID: 8799777215194099863, guid: 55481db4a2c7a734487ded5e1e1ff988, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -139734,7 +139774,6 @@ MonoBehaviour:
   SceneName: 
   type: 
   removed: {fileID: 0}
-  playerControls: {fileID: 0}
 --- !u!4 &802241094 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1334915721907032342, guid: 32ff1e86797ea1c4b874e98a399e1c54, type: 3}
@@ -364928,7 +364967,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 589636002368998424, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_Name
-      value: Sample Trigger (script needed) (16)
+      value: MinigameZone (3)
       objectReference: {fileID: 0}
     - target: {fileID: 3281631985414146945, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_LocalPosition.x
@@ -364982,6 +365021,10 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -365002,7 +365045,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 589636002368998424, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_Name
-      value: Sample Trigger (script needed) (3)
+      value: MinigameZone (8)
       objectReference: {fileID: 0}
     - target: {fileID: 3281631985414146945, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_LocalPosition.x
@@ -365053,6 +365096,10 @@ PrefabInstance:
       value: PlatformingMinigame
       objectReference: {fileID: 0}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -366244,7 +366291,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 589636002368998424, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_Name
-      value: Sample Trigger (script needed) (11)
+      value: MinigameZone (15)
       objectReference: {fileID: 0}
     - target: {fileID: 3281631985414146945, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_LocalPosition.x
@@ -366295,6 +366342,10 @@ PrefabInstance:
       value: PlatformingMinigame 3
       objectReference: {fileID: 0}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -368670,7 +368721,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 589636002368998424, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_Name
-      value: Sample Trigger (script needed) (5)
+      value: MinigameZone (2)
       objectReference: {fileID: 0}
     - target: {fileID: 3281631985414146945, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_LocalPosition.x
@@ -371197,7 +371248,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 589636002368998424, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_Name
-      value: Sample Trigger (script needed) (9)
+      value: MinigameZone (11)
       objectReference: {fileID: 0}
     - target: {fileID: 3281631985414146945, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_LocalPosition.x
@@ -371248,6 +371299,10 @@ PrefabInstance:
       value: FishingMinigame
       objectReference: {fileID: 0}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -537885,7 +537940,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 589636002368998424, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_Name
-      value: Sample Trigger (script needed) (6)
+      value: MinigameZone (5)
       objectReference: {fileID: 0}
     - target: {fileID: 3281631985414146945, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_LocalPosition.x
@@ -537936,6 +537991,10 @@ PrefabInstance:
       value: PlatformingMinigame 1
       objectReference: {fileID: 0}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -540889,7 +540948,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 589636002368998424, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_Name
-      value: Sample Trigger (script needed) (3)
+      value: MinigameZone (18)
       objectReference: {fileID: 0}
     - target: {fileID: 3281631985414146945, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_LocalPosition.x
@@ -540940,6 +540999,14 @@ PrefabInstance:
       value: FishingMinigame
       objectReference: {fileID: 0}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: SceneName
+      value: Null
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -541508,7 +541575,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 589636002368998424, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_Name
-      value: Sample Trigger (script needed) (17)
+      value: MinigameZone (6)
       objectReference: {fileID: 0}
     - target: {fileID: 3281631985414146945, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_LocalPosition.x
@@ -541559,6 +541626,10 @@ PrefabInstance:
       value: PlatformingMinigame 2
       objectReference: {fileID: 0}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -824709,7 +824780,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 589636002368998424, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_Name
-      value: Sample Trigger (script needed) (15)
+      value: MinigameZone (17)
       objectReference: {fileID: 0}
     - target: {fileID: 3281631985414146945, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_LocalPosition.x
@@ -824763,6 +824834,10 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -824788,7 +824863,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 589636002368998424, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_Name
-      value: Sample Trigger (script needed) (3)
+      value: MinigameZone (13)
       objectReference: {fileID: 0}
     - target: {fileID: 3281631985414146945, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_LocalPosition.x
@@ -824839,6 +824914,10 @@ PrefabInstance:
       value: PlatformingMinigame 1
       objectReference: {fileID: 0}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -826289,7 +826368,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 589636002368998424, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_Name
-      value: Sample Trigger (script needed) (3)
+      value: MinigameZone (1)
       objectReference: {fileID: 0}
     - target: {fileID: 3281631985414146945, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: m_LocalPosition.x
@@ -826336,6 +826415,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 795019401}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}

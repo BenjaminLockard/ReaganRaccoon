@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2718095396086281180}
   - component: {fileID: 8673874306904970502}
   m_Layer: 0
-  m_Name: Sample Trigger (script needed) (3)
+  m_Name: MinigameZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,7 +161,6 @@ MonoBehaviour:
   SceneName: ClawMinigame
   type: minigame
   removed: {fileID: 589636002368998424}
-  playerControls: {fileID: 0}
 --- !u!114 &2718095396086281180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +204,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::interaction
   playerControls: {fileID: 0}
-  loadNext: {fileID: 0}
-  SceneName: ClawMinigame
+  loadNext: {fileID: 7754078752573345682}
+  SceneName: Null
   type: minigame
-  removed: {fileID: 0}
+  removed: {fileID: 589636002368998424}
+  transition: {fileID: 0}
+  stopMoving: {fileID: 0}

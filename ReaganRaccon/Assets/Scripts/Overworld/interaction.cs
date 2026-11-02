@@ -15,12 +15,16 @@ public class interaction : MonoBehaviour
     public Animator transition;
     public Animator stopMoving;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-
+    
+    void start()
+    {
+        loadNext = GetComponent<LoadNext>();
+    }
 
     void OnTriggerStay2D(Collider2D other){
             if(other.gameObject.CompareTag("Reagan")){
                 canInteract = true;
-                Debug.Log("Can Interact");
+                //Debug.Log("Can Interact");
             }
             else{
                 canInteract = false;
@@ -30,7 +34,7 @@ public class interaction : MonoBehaviour
     void OnTriggerExit2D(Collider2D other){
         if(other.gameObject.CompareTag("Reagan")){
             canInteract = false;
-            Debug.Log("Can't Interact");
+            //Debug.Log("Can't Interact");
         }
     }
     
@@ -38,7 +42,7 @@ public class interaction : MonoBehaviour
     void OnInteract(InputValue value){
         if(canInteract){
             //pause
-            Debug.Log("Loading Game");
+            //Debug.Log("Loading Game");
             //IFRAME BUGFIX
             playerControls.resetIFrame();
 

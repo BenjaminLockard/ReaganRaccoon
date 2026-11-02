@@ -23,11 +23,11 @@ public class LoadNext : MonoBehaviour
         {
 
             Destroy(removed);
-            
+            //GameManager.Instance.getLeveName();
             //disable root object here from the main world
             //transition.SetTrigger("Start"); //plays transition
             //yield return new WaitForSeconds(transitionTime); //waits for a certain amount of time
-            SceneManager.LoadScene(SceneName, LoadSceneMode.Additive);
+            SceneManager.LoadScene(GameManager.Instance.getLeveName(), LoadSceneMode.Additive);
             GameManager.Instance.setRootFalse();
             //SceneManager.LoadScene(SceneName, LoadSceneMode.Additive); //loads the next scene
             //Loads the minigame additively
@@ -37,7 +37,7 @@ public class LoadNext : MonoBehaviour
         }                    
         else if (type == "switchback")
 {   
-    Debug.Log("SWITCHING");
+    //Debug.Log("SWITCHING");
     transition.SetTrigger("Start"); //play animation
     yield return new WaitForSeconds(transitionTime);
     

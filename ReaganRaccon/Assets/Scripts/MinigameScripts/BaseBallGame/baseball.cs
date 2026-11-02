@@ -26,13 +26,13 @@ public class baseballscript : MonoBehaviour
         if(other.gameObject.CompareTag("Win")){
             //trigger win item
             //load scene
-            Debug.Log("YOU WIN!!");
+            //Debug.Log("YOU WIN!!");
             loadNext.switchScene("BaseBallMinigame","switchback");
         }else if(other.gameObject.CompareTag("Lose")){
             //trigger lose 
             //load scene
             loadNext.switchScene("BaseBallMinigame","switchback");
-            Debug.Log("FUCK YOU FUCK YOU AHHHHHH FUCK YOU");
+            //Debug.Log("FUCK YOU FUCK YOU AHHHHHH FUCK YOU");
         }
 
     }

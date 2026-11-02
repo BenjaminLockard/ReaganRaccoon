@@ -12,10 +12,6 @@ public class Swing : MonoBehaviour
             //Debug.Log("Time: " + timer);
             timer -= Time.deltaTime;
         }
-        else
-        {
-            Debug.Log("HOLD ON");
-        }
         
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,10 +21,12 @@ public class Swing : MonoBehaviour
             //else it does nothing
             timer = Recovery;
             transition.SetTrigger("isSwing");
-            Debug.Log("SWING");
+            //Debug.Log("SWING");
         } 
+        /*
         else{
             Debug.Log("SWING AND A MISS");
         }
+        */
     }
 }
