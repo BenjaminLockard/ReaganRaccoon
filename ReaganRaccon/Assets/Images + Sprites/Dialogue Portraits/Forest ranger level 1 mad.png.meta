@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: eb9157eff2d33494388cd35cd25d82f0
+guid: 6ef79f2e5fecf41f0bd2a2934cb4aa7c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8817115371989583163
-    second: Forest ranger level 1 mad_0
+      213: 2158238050033103999
+    second: Forest ranger level 1 mad (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Forest ranger level 1 mad_0
+      name: Forest ranger level 1 mad (1)_0
       rect:
         serializedVersion: 2
-        x: 5
+        x: 0
         y: 0
-        width: 118
-        height: 121
+        width: 123
+        height: 122
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5cabce4c84053a580800000000000000
-      internalID: -8817115371989583163
+      spriteID: f7474f8521a93fd10800000000000000
+      internalID: 2158238050033103999
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Forest ranger level 1 mad_0: -8817115371989583163
+      Forest ranger level 1 mad (1)_0: 2158238050033103999
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
