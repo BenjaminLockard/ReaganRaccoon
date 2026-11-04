@@ -56895,6 +56895,127 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1944624350233458273, guid: f6ca5f5b6f48050488ef269bc14a91f8, type: 3}
   m_PrefabInstance: {fileID: 176927467}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &179447693
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 179447694}
+  - component: {fileID: 179447696}
+  - component: {fileID: 179447695}
+  - component: {fileID: 179447697}
+  m_Layer: 5
+  m_Name: ChoiceButton3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &179447694
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179447693}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1373168055}
+  m_Father: {fileID: 220436285}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 10}
+  m_SizeDelta: {x: 590, y: 28}
+  m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &179447695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179447693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &179447696
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179447693}
+  m_CullTransparentMesh: 1
+--- !u!114 &179447697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179447693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 179447695}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &191214941 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1026301617713320662, guid: d015e757940490b45aa07995642266fb, type: 3}
@@ -57036,6 +57157,7 @@ RectTransform:
   m_Children:
   - {fileID: 1234668971}
   - {fileID: 246107020}
+  - {fileID: 179447694}
   m_Father: {fileID: 1214681149}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
@@ -57294,7 +57416,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 24}
+  m_AnchoredPosition: {x: 0, y: 42}
   m_SizeDelta: {x: 590, y: 28}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &246107021
@@ -136491,28 +136613,127 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
   lines:
-  - speakerName: TestNPC
-    dialogue: Are you trying to break into my house?
+  - speakerName: Forest Ranger
+    dialogue: Hey man, I'm in charge here, what's your business here?
     speakerPortrait: {fileID: 21300000, guid: ccf4ac88625324da28f7217ba2335dee, type: 3}
     isReaganSpeaking: 0
     hasChoices: 1
-    choice1: Uh, no...
-    choice2: Yeah, haha!
-    npcReply1: Oh, okay! Sorry for asking.
-    npcReply2: Wait, seriously?! Not cool man...
+    choice1: I've come for chaos!
+    choice2: "I just want to steal\u2014I mean, um!"
+    choice3: I'm just here to camp.
+    npcReply1: Sorry man, no chaos allowed at these campgrounds.
+    npcReply2: Hmm, sounds suspicious. I probably shouldn't let you in.
+    npcReply3: Oh, alright. I'm pretty sure that is allowed here.
     choice1ReplyPortrait: {fileID: 21300000, guid: ccf4ac88625324da28f7217ba2335dee, type: 3}
     choice2ReplyPortrait: {fileID: 21300000, guid: eb9157eff2d33494388cd35cd25d82f0, type: 3}
-  - speakerName: TestNPC
-    dialogue: Anyway, have a nice day!
+    choice3ReplyPortrait: {fileID: 21300000, guid: ccf4ac88625324da28f7217ba2335dee, type: 3}
+    choice1TimeChange: 0
+    choice2TimeChange: -30
+    choice3TimeChange: 30
+    choice1IsBad: 1
+    choice2IsBad: 1
+    choice3IsBad: 0
+    choice1NextLine: 1
+    choice2NextLine: 3
+    choice3NextLine: 2
+  - speakerName: Forest Ranger
+    dialogue: What kind of chaos are we talking here?
     speakerPortrait: {fileID: 21300000, guid: ccf4ac88625324da28f7217ba2335dee, type: 3}
     isReaganSpeaking: 0
-    hasChoices: 0
-    choice1: Uh, no...
-    choice2: Yeah, haha!
-    npcReply1: 
-    npcReply2: 
-    choice1ReplyPortrait: {fileID: 0}
-    choice2ReplyPortrait: {fileID: 0}
+    hasChoices: 1
+    choice1: What about chaotic good?
+    choice2: Not even chaotic neutral?
+    choice3: Not even chaotic evil?
+    npcReply1: I guess that's okay.
+    npcReply2: That seems pretty ambiguous. Kinda sus man.
+    npcReply3: ESPECIALLY not chaotic evil!
+    choice1ReplyPortrait: {fileID: 21300000, guid: ccf4ac88625324da28f7217ba2335dee, type: 3}
+    choice2ReplyPortrait: {fileID: 21300000, guid: eb9157eff2d33494388cd35cd25d82f0, type: 3}
+    choice3ReplyPortrait: {fileID: 21300000, guid: 6ef79f2e5fecf41f0bd2a2934cb4aa7c, type: 3}
+    choice1TimeChange: 30
+    choice2TimeChange: -30
+    choice3TimeChange: -30
+    choice1IsBad: 0
+    choice2IsBad: 1
+    choice3IsBad: 1
+    choice1NextLine: 2
+    choice2NextLine: 2
+    choice3NextLine: 2
+  - speakerName: Forest Ranger
+    dialogue: So, is this your first time camping here?
+    speakerPortrait: {fileID: 21300000, guid: ccf4ac88625324da28f7217ba2335dee, type: 3}
+    isReaganSpeaking: 0
+    hasChoices: 1
+    choice1: Yep! First time!
+    choice2: Nah, I've been here before.
+    choice3: Does it matter?
+    npcReply1: Well, welcome! Just follow the campground rules.
+    npcReply2: Oh, cool. Then you know the drill.
+    npcReply3: Just trying to make conversation, man.
+    choice1ReplyPortrait: {fileID: 21300000, guid: ccf4ac88625324da28f7217ba2335dee, type: 3}
+    choice2ReplyPortrait: {fileID: 21300000, guid: eb9157eff2d33494388cd35cd25d82f0, type: 3}
+    choice3ReplyPortrait: {fileID: 21300000, guid: eb9157eff2d33494388cd35cd25d82f0, type: 3}
+    choice1TimeChange: 0
+    choice2TimeChange: 30
+    choice3TimeChange: -30
+    choice1IsBad: 0
+    choice2IsBad: 0
+    choice3IsBad: 1
+    choice1NextLine: 4
+    choice2NextLine: 4
+    choice3NextLine: 4
+  - speakerName: Forest Ranger
+    dialogue: So, seriously, what are you planning on stealing?
+    speakerPortrait: {fileID: 21300000, guid: ccf4ac88625324da28f7217ba2335dee, type: 3}
+    isReaganSpeaking: 0
+    hasChoices: 1
+    choice1: Nothing! I misspoke!
+    choice2: Just some snacks!
+    choice3: No, I meant to say I want to kill!
+    npcReply1: Uh-huh. I'll be keeping an eye on you.
+    npcReply2: Dude, there's literally a store down the road.
+    npcReply3: '...
+
+      Sooo, I''m calling the cops...
+
+
+      Also, you can''t
+      come in.'
+    choice1ReplyPortrait: {fileID: 21300000, guid: ccf4ac88625324da28f7217ba2335dee, type: 3}
+    choice2ReplyPortrait: {fileID: 21300000, guid: 6ef79f2e5fecf41f0bd2a2934cb4aa7c, type: 3}
+    choice3ReplyPortrait: {fileID: 21300000, guid: eb9157eff2d33494388cd35cd25d82f0, type: 3}
+    choice1TimeChange: 30
+    choice2TimeChange: -30
+    choice3TimeChange: -30
+    choice1IsBad: 0
+    choice2IsBad: 1
+    choice3IsBad: 1
+    choice1NextLine: 4
+    choice2NextLine: 4
+    choice3NextLine: -1
+  - speakerName: Forest Ranger
+    dialogue: Hey, are you, like, one of them possums or something?
+    speakerPortrait: {fileID: 21300000, guid: ccf4ac88625324da28f7217ba2335dee, type: 3}
+    isReaganSpeaking: 0
+    hasChoices: 1
+    choice1: Uhh, noo...
+    choice2: Yep bark bark
+    choice3: Raccoon actually.
+    npcReply1: Oh okay, that's a relief.
+    npcReply2: Sorry man, no dogs allowed.
+    npcReply3: Sorry man, can't let ya in.
+    choice1ReplyPortrait: {fileID: 21300000, guid: ccf4ac88625324da28f7217ba2335dee, type: 3}
+    choice2ReplyPortrait: {fileID: 21300000, guid: eb9157eff2d33494388cd35cd25d82f0, type: 3}
+    choice3ReplyPortrait: {fileID: 21300000, guid: eb9157eff2d33494388cd35cd25d82f0, type: 3}
+    choice1TimeChange: 30
+    choice2TimeChange: -30
+    choice3TimeChange: -30
+    choice1IsBad: 0
+    choice2IsBad: 1
+    choice3IsBad: 1
+    choice1NextLine: -1
+    choice2NextLine: -1
+    choice3NextLine: -1
   dialogueManager: {fileID: 1038724681}
 --- !u!61 &650616309
 BoxCollider2D:
@@ -366670,6 +366891,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CamFollowPlayer
   player: {fileID: 965427580}
+  myCamera: {fileID: 0}
+  defaultCameraSize: 9
+  zoomedCameraSize: 14
+  isZoomedOut: 0
 --- !u!114 &1016725363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366825,7 +367050,13 @@ MonoBehaviour:
   dialogueChoices: {fileID: 220436284}
   choiceButton1: {fileID: 1234668972}
   choiceButton2: {fileID: 246107021}
+  choiceButton3: {fileID: 179447697}
   continueHint: {fileID: 2112037628}
+  typeSpeed: 0.035
+  badChoicesToReject: 3
+  rejectionDialogue: That's three red flags in a row! You're not coming into these
+    campgrounds!
+  rejectionPortrait: {fileID: 0}
 --- !u!1 &1038997595
 GameObject:
   m_ObjectHideFlags: 0
@@ -369855,7 +370086,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 58}
+  m_AnchoredPosition: {x: 0, y: 74}
   m_SizeDelta: {x: 590, y: 28}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1234668972
@@ -371673,6 +371904,143 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1944624350233458273, guid: f6ca5f5b6f48050488ef269bc14a91f8, type: 3}
   m_PrefabInstance: {fileID: 55293913}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1373168054
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1373168055}
+  - component: {fileID: 1373168057}
+  - component: {fileID: 1373168056}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1373168055
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373168054}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 179447694}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1373168056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373168054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Yeah, haha!
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 24
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1373168057
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373168054}
+  m_CullTransparentMesh: 1
 --- !u!4 &1374183628 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1026301617713320662, guid: d015e757940490b45aa07995642266fb, type: 3}

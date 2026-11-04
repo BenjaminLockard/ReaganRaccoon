@@ -29,8 +29,11 @@ public class DialogueManager : MonoBehaviour
     public Button choiceButton3;
     public TMP_Text continueHint;
 
-    [Header("Typewriter")]
+    [Header("Typewriter Effect")]
     public float typeSpeed = 0.035f;
+
+    [Header("Overworld Timer")]
+    public TimeManager timer;
 
     [Header("Ranger Rejection")]
     public int badChoicesToReject = 3;
@@ -69,12 +72,17 @@ public class DialogueManager : MonoBehaviour
         [TextArea(2, 5)]
         public string npcReply3;
 
-        [Header("Reply Expressions")]
+        [Header("Ranger Reply Expressions")]
         public Sprite choice1ReplyPortrait;
         public Sprite choice2ReplyPortrait;
         public Sprite choice3ReplyPortrait;
 
-        [Header("Future Overworld Time Changes")]
+        [Header("Reagan Choice Expressions")]
+        public Sprite choice1ReaganPortrait;
+        public Sprite choice2ReaganPortrait;
+        public Sprite choice3ReaganPortrait;
+
+        [Header("Overworld Time Changes")]
         public float choice1TimeChange;
         public float choice2TimeChange;
         public float choice3TimeChange;
@@ -84,8 +92,13 @@ public class DialogueManager : MonoBehaviour
         public bool choice2IsBad;
         public bool choice3IsBad;
 
+        [Header("Immediate Rejection")]
+        public bool choice1RejectImmediately;
+        public bool choice2RejectImmediately;
+        public bool choice3RejectImmediately;
+
         [Header("Branching: Next Element Index")]
-        [Tooltip("-2 = next element, -1 = end conversation")]
+        [Tooltip("-2 = next element, -1 = end dialogue")]
         public int choice1NextLine = -2;
         public int choice2NextLine = -2;
         public int choice3NextLine = -2;
@@ -103,6 +116,8 @@ public class DialogueManager : MonoBehaviour
     private bool showingRejection;
     private bool waitingForKeyRelease;
 
+    private bool rejectAfterReply;
+
     private int selectedChoice;
     private int lastChoiceFrame = -1;
 
@@ -114,6 +129,7 @@ public class DialogueManager : MonoBehaviour
 
     private Sprite defaultNPCPortrait;
     private Sprite currentNPCPortrait;
+    private Sprite currentReaganPortrait;
     private Sprite pendingNPCPortrait;
 
     private Coroutine typingCoroutine;
@@ -171,9 +187,8 @@ public class DialogueManager : MonoBehaviour
 
     public bool IsShowingChoices()
     {
-        // Prevent NPCDialogue from advancing while
-        // a question is still typing.
-        return showingChoices || choicesPending;
+        // Let E finish typing the question first.
+        return showingChoices;
     }
 
     public bool IsEntryDenied()
@@ -203,6 +218,7 @@ public class DialogueManager : MonoBehaviour
         showingChosenResponse = false;
         showingNPCReply = false;
         showingRejection = false;
+        rejectAfterReply = false;
 
         waitingForKeyRelease = true;
         lastChoiceFrame = -1;
@@ -213,6 +229,7 @@ public class DialogueManager : MonoBehaviour
         consecutiveBadChoices = 0;
         currentNPCName = "NPC";
         defaultNPCPortrait = null;
+        currentReaganPortrait = reaganPortrait;
 
         foreach (DialogueLine line in lines)
         {
@@ -234,6 +251,9 @@ public class DialogueManager : MonoBehaviour
         if (dialoguePanel != null)
             dialoguePanel.SetActive(true);
 
+        if (dialogueChoices != null)
+            dialogueChoices.SetActive(false);
+
         if (entryDenied)
             ShowRejection();
         else
@@ -244,15 +264,15 @@ public class DialogueManager : MonoBehaviour
     {
         DialogueLine line = currentLines[currentLineIndex];
 
-        if (!line.isReaganSpeaking &&
-            line.speakerPortrait != null)
-        {
-            currentNPCPortrait = line.speakerPortrait;
-        }
-        else
-        {
-            currentNPCPortrait = defaultNPCPortrait;
-        }
+        currentNPCPortrait =
+            line.speakerPortrait != null &&
+            !line.isReaganSpeaking
+            ? line.speakerPortrait
+            : defaultNPCPortrait;
+
+        // Restore Reagan's normal expression
+        // at the start of each new question.
+        currentReaganPortrait = reaganPortrait;
 
         UpdatePortraits(line.isReaganSpeaking);
 
@@ -293,9 +313,6 @@ public class DialogueManager : MonoBehaviour
 
     private void DisplayDialogue(string text)
     {
-        if (dialogueText == null)
-            return;
-
         if (typingCoroutine != null)
         {
             StopCoroutine(typingCoroutine);
@@ -305,8 +322,19 @@ public class DialogueManager : MonoBehaviour
         fullDialogueText = text ?? "";
         isTyping = false;
 
+        if (dialogueText == null)
+        {
+            OnTypingFinished();
+            return;
+        }
+
         typingCoroutine = StartCoroutine(
-            Type(dialogueText, fullDialogueText, typeSpeed));
+            Type(
+                dialogueText,
+                fullDialogueText,
+                typeSpeed
+            )
+        );
     }
 
     private void FinishTyping()
@@ -333,7 +361,9 @@ public class DialogueManager : MonoBehaviour
         if (dialogueActive && choicesPending)
         {
             choicesPending = false;
-            ShowChoices(currentLines[currentLineIndex]);
+
+            ShowChoices(
+                currentLines[currentLineIndex]);
         }
     }
 
@@ -356,7 +386,7 @@ public class DialogueManager : MonoBehaviour
         UpdateChoiceHighlight();
     }
 
-    private void SetButtonText(Button button, string text)
+    private void SetButtonText(Button button, string value)
     {
         if (button == null)
             return;
@@ -365,7 +395,7 @@ public class DialogueManager : MonoBehaviour
             button.GetComponentInChildren<TMP_Text>();
 
         if (label != null)
-            label.text = text;
+            label.text = value;
     }
 
     private void ChangeSelection(int direction)
@@ -407,8 +437,10 @@ public class DialogueManager : MonoBehaviour
 
         string chosenText;
         bool isBad;
+        bool immediateRejection;
         float timeChange;
         int nextLine;
+        Sprite chosenReaganPortrait;
 
         switch (choiceIndex)
         {
@@ -417,7 +449,11 @@ public class DialogueManager : MonoBehaviour
                 pendingNPCReply = line.npcReply1;
                 pendingNPCPortrait =
                     line.choice1ReplyPortrait;
+                chosenReaganPortrait =
+                    line.choice1ReaganPortrait;
                 isBad = line.choice1IsBad;
+                immediateRejection =
+                    line.choice1RejectImmediately;
                 timeChange = line.choice1TimeChange;
                 nextLine = line.choice1NextLine;
                 break;
@@ -427,7 +463,11 @@ public class DialogueManager : MonoBehaviour
                 pendingNPCReply = line.npcReply2;
                 pendingNPCPortrait =
                     line.choice2ReplyPortrait;
+                chosenReaganPortrait =
+                    line.choice2ReaganPortrait;
                 isBad = line.choice2IsBad;
+                immediateRejection =
+                    line.choice2RejectImmediately;
                 timeChange = line.choice2TimeChange;
                 nextLine = line.choice2NextLine;
                 break;
@@ -437,13 +477,16 @@ public class DialogueManager : MonoBehaviour
                 pendingNPCReply = line.npcReply3;
                 pendingNPCPortrait =
                     line.choice3ReplyPortrait;
+                chosenReaganPortrait =
+                    line.choice3ReaganPortrait;
                 isBad = line.choice3IsBad;
+                immediateRejection =
+                    line.choice3RejectImmediately;
                 timeChange = line.choice3TimeChange;
                 nextLine = line.choice3NextLine;
                 break;
         }
 
-        // -2 means continue to the next element.
         pendingNextLine = nextLine == -2
             ? currentLineIndex + 1
             : nextLine;
@@ -458,6 +501,12 @@ public class DialogueManager : MonoBehaviour
         if (continueHint != null)
             continueHint.gameObject.SetActive(true);
 
+        // Change Reagan's expression for this answer.
+        currentReaganPortrait =
+            chosenReaganPortrait != null
+            ? chosenReaganPortrait
+            : reaganPortrait;
+
         UpdatePortraits(true);
         DisplayDialogue(chosenText);
 
@@ -466,17 +515,42 @@ public class DialogueManager : MonoBehaviour
         else
             consecutiveBadChoices = 0;
 
-        if (consecutiveBadChoices >=
-            Mathf.Max(1, badChoicesToReject))
+        bool tooManyBadChoices =
+            consecutiveBadChoices >=
+            Mathf.Max(1, badChoicesToReject);
+
+        if (tooManyBadChoices || immediateRejection)
         {
             entryDenied = true;
+
+            // Immediate rejection can use the custom
+            // NPC reply before ending the conversation.
+            rejectAfterReply = immediateRejection &&
+                !string.IsNullOrEmpty(pendingNPCReply);
+
+            if (!rejectAfterReply)
+            {
+                pendingNPCReply = null;
+            }
+        }
+        else
+        {
+            rejectAfterReply = false;
         }
 
-        // Timer adjustments are NOT applied yet.
+        // Call the teammate's overworld timer method.
+        if (timer != null && timeChange != 0f)
+        {
+            timer.changeTime(timeChange);
+        }
+
         Debug.Log(
-            "Time adjustment reserved: " + timeChange +
-            " | Bad streak: " + consecutiveBadChoices +
-            " | Next line: " + pendingNextLine);
+            "Choice selected. Time change: " +
+            timeChange +
+            " | Bad streak: " +
+            consecutiveBadChoices +
+            " | Next element: " +
+            pendingNextLine);
     }
 
     public void AdvanceDialogue()
@@ -506,7 +580,7 @@ public class DialogueManager : MonoBehaviour
         {
             showingChosenResponse = false;
 
-            if (entryDenied)
+            if (entryDenied && !rejectAfterReply)
             {
                 ShowRejection();
                 return;
@@ -536,6 +610,14 @@ public class DialogueManager : MonoBehaviour
             pendingNPCReply = null;
             pendingNPCPortrait = null;
 
+            if (rejectAfterReply)
+            {
+                // Special rejection reply has already
+                // been shown. End without repeating it.
+                EndDialogue();
+                return;
+            }
+
             GoToLine(pendingNextLine);
             return;
         }
@@ -545,7 +627,8 @@ public class DialogueManager : MonoBehaviour
 
     private void GoToLine(int index)
     {
-        if (index == -1 ||
+        if (currentLines == null ||
+            index == -1 ||
             index >= currentLines.Length)
         {
             EndDialogue();
@@ -566,12 +649,7 @@ public class DialogueManager : MonoBehaviour
 
     public void NextLine()
     {
-        if (!dialogueActive ||
-            showingChoices ||
-            choicesPending)
-            return;
-
-        GoToLine(currentLineIndex + 1);
+        AdvanceDialogue();
     }
 
     private void ShowRejection()
@@ -588,9 +666,12 @@ public class DialogueManager : MonoBehaviour
         if (continueHint != null)
             continueHint.gameObject.SetActive(true);
 
-        currentNPCPortrait = rejectionPortrait != null
+        currentNPCPortrait =
+            rejectionPortrait != null
             ? rejectionPortrait
             : defaultNPCPortrait;
+
+        currentReaganPortrait = reaganPortrait;
 
         UpdatePortraits(false);
         DisplayDialogue(rejectionDialogue);
@@ -616,8 +697,10 @@ public class DialogueManager : MonoBehaviour
 
         if (reaganPortraitImage != null)
         {
-            if (reaganPortrait != null)
-                reaganPortraitImage.sprite = reaganPortrait;
+            reaganPortraitImage.sprite =
+                currentReaganPortrait != null
+                ? currentReaganPortrait
+                : reaganPortrait;
 
             reaganPortraitImage.enabled =
                 reaganPortraitImage.sprite != null;
@@ -643,6 +726,7 @@ public class DialogueManager : MonoBehaviour
         showingChosenResponse = false;
         showingNPCReply = false;
         showingRejection = false;
+        rejectAfterReply = false;
 
         pendingNPCReply = null;
         pendingNPCPortrait = null;
@@ -652,8 +736,3 @@ public class DialogueManager : MonoBehaviour
             dialoguePanel.SetActive(false);
     }
 }
-
-
-
-
-
