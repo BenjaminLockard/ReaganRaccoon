@@ -103,10 +103,10 @@ TextureImporter:
       name: tv_0
       rect:
         serializedVersion: 2
-        x: 818
-        y: 39
-        width: 2200
-        height: 1891
+        x: 1026
+        y: 0
+        width: 1784
+        height: 1797
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
