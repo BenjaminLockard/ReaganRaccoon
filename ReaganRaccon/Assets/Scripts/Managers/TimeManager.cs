@@ -7,9 +7,9 @@ using TMPro;
 public class TimeManager : MonoBehaviour
 {
     [Header("Time Values")]
-    [SerializeField] private float baseTime = 180;
+    [SerializeField] private float baseTime = 60;
     [SerializeField] private float currentTime = 0;
-    [SerializeField] private bool ticking = true;
+    [SerializeField] private bool ticking = false;
 
     public TMP_Text timerText;
 
@@ -23,6 +23,21 @@ public class TimeManager : MonoBehaviour
         }
     }
 
+    public void ChangeTime(float time)
+    {
+        currentTime += time;
+        if (currentTime < 0f)
+            currentTime = 0f;
+    }
+
+    public void StartTimer()
+    {
+        if (currentTime < 0f)
+            return;
+
+        ticking = true;
+    }
+
     void DisplayTime(float timeToDisplay)
     {
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
@@ -33,13 +48,13 @@ public class TimeManager : MonoBehaviour
 
     void Start()
     {
-        ticking = true;
+        ticking = false;
         currentTime = baseTime;
     }
 
     void Update()
     {
-        if (currentTime <= 0)
+        if (ticking && currentTime <= 0)
         {
             ticking = false;
             timerText.text = "0:00 TIME UP - Restart via ESC menu";
