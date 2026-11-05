@@ -56044,6 +56044,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 965427581}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -56753,6 +56757,10 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
@@ -57966,6 +57974,10 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
@@ -84352,6 +84364,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 965427581}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -85845,6 +85861,10 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
@@ -92495,6 +92515,10 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
@@ -135231,6 +135255,10 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
@@ -365060,6 +365088,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 965427581}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -365137,6 +365169,10 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
@@ -366383,6 +366419,10 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
@@ -368818,6 +368858,10 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -371431,6 +371475,10 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
@@ -538124,6 +538172,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 965427581}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -541136,6 +541188,10 @@ PrefabInstance:
       value: Null
       objectReference: {fileID: 0}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -541856,6 +541912,10 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
@@ -825062,6 +825122,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 965427581}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -825144,6 +825208,10 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
@@ -826645,6 +826713,10 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
