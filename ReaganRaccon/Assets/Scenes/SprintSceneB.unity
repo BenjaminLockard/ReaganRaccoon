@@ -56043,6 +56043,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 965427581}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -56752,6 +56756,10 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
@@ -57884,6 +57892,10 @@ PrefabInstance:
       value: Null
       objectReference: {fileID: 0}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -57961,6 +57973,10 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
@@ -84342,6 +84358,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 965427581}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -85835,6 +85855,10 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
@@ -92399,6 +92423,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 965427581}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -92481,6 +92509,10 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
@@ -135218,6 +135250,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 965427581}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -135827,7 +135863,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8799777215194099863, guid: 55481db4a2c7a734487ded5e1e1ff988, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 8.917023
+      value: 8.917053
       objectReference: {fileID: 0}
     - target: {fileID: 8799777215194099863, guid: 55481db4a2c7a734487ded5e1e1ff988, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -136566,10 +136602,22 @@ MonoBehaviour:
     hasChoices: 1
     choice1: Uh, no...
     choice2: Yeah, haha!
+    choice3: 
     npcReply1: Oh, okay! Sorry for asking.
     npcReply2: Wait, seriously?! Not cool man...
+    npcReply3: 
     choice1ReplyPortrait: {fileID: 21300000, guid: ccf4ac88625324da28f7217ba2335dee, type: 3}
     choice2ReplyPortrait: {fileID: 21300000, guid: eb9157eff2d33494388cd35cd25d82f0, type: 3}
+    choice3ReplyPortrait: {fileID: 0}
+    choice1TimeChange: 0
+    choice2TimeChange: 0
+    choice3TimeChange: 0
+    choice1IsBad: 0
+    choice2IsBad: 0
+    choice3IsBad: 0
+    choice1NextLine: -2
+    choice2NextLine: -2
+    choice3NextLine: -2
   - speakerName: TestNPC
     dialogue: Anyway, have a nice day!
     speakerPortrait: {fileID: 21300000, guid: ccf4ac88625324da28f7217ba2335dee, type: 3}
@@ -136577,10 +136625,22 @@ MonoBehaviour:
     hasChoices: 0
     choice1: Uh, no...
     choice2: Yeah, haha!
+    choice3: 
     npcReply1: 
     npcReply2: 
+    npcReply3: 
     choice1ReplyPortrait: {fileID: 0}
     choice2ReplyPortrait: {fileID: 0}
+    choice3ReplyPortrait: {fileID: 0}
+    choice1TimeChange: 0
+    choice2TimeChange: 0
+    choice3TimeChange: 0
+    choice1IsBad: 0
+    choice2IsBad: 0
+    choice3IsBad: 0
+    choice1NextLine: -2
+    choice2NextLine: -2
+    choice3NextLine: -2
   dialogueManager: {fileID: 1038724681}
 --- !u!61 &650616309
 BoxCollider2D:
@@ -365022,6 +365082,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 965427581}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -365099,6 +365163,10 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
@@ -366346,6 +366414,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 965427581}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -366952,7 +367024,12 @@ MonoBehaviour:
   dialogueChoices: {fileID: 220436284}
   choiceButton1: {fileID: 1234668972}
   choiceButton2: {fileID: 246107021}
+  choiceButton3: {fileID: 0}
   continueHint: {fileID: 2112037628}
+  typeSpeed: 0.035
+  badChoicesToReject: 3
+  rejectionDialogue: That's three red flags! You're not coming into these campgrounds!
+  rejectionPortrait: {fileID: 0}
 --- !u!1 &1038997595
 GameObject:
   m_ObjectHideFlags: 0
@@ -368775,6 +368852,10 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -370753,6 +370834,7 @@ RectTransform:
   - {fileID: 1836115465}
   - {fileID: 1038724680}
   - {fileID: 1619734329}
+  - {fileID: 1690620275}
   m_Father: {fileID: 795019402}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -371302,6 +371384,10 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
@@ -537995,6 +538081,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 965427581}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -541007,6 +541097,10 @@ PrefabInstance:
       value: Null
       objectReference: {fileID: 0}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -541365,6 +541459,104 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6ca5f5b6f48050488ef269bc14a91f8, type: 3}
+--- !u!1 &1690620274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1690620275}
+  - component: {fileID: 1690620277}
+  - component: {fileID: 1690620276}
+  - component: {fileID: 1690620278}
+  m_Layer: 5
+  m_Name: TV
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1690620275
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690620274}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1282631685}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -1094.3522}
+  m_SizeDelta: {x: 800, y: 629.1871}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1690620276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690620274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -3578749811347107042, guid: 0bdbc2767d76c5e4c98b0e3ba98dcf2c, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1690620277
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690620274}
+  m_CullTransparentMesh: 1
+--- !u!95 &1690620278
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690620274}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5a2ed3c6160866148bb8762c6408d648, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1693128344
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -541629,6 +541821,10 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
@@ -824835,6 +825031,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 965427581}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -824917,6 +825117,10 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
@@ -826418,6 +826622,10 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
+    - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
