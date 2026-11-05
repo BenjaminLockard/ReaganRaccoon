@@ -47,7 +47,7 @@ public class interaction : MonoBehaviour
            
             transition.SetTrigger("tvSwitchScenes");
             playerControls.resetIFrame();
-            Invoke("buffer", 120f);
+            Invoke("buffer", 2.50f);
            
             
         }
