@@ -136609,12 +136609,18 @@ MonoBehaviour:
     choice1ReplyPortrait: {fileID: 21300000, guid: ccf4ac88625324da28f7217ba2335dee, type: 3}
     choice2ReplyPortrait: {fileID: 21300000, guid: eb9157eff2d33494388cd35cd25d82f0, type: 3}
     choice3ReplyPortrait: {fileID: 0}
+    choice1ReaganPortrait: {fileID: 0}
+    choice2ReaganPortrait: {fileID: 0}
+    choice3ReaganPortrait: {fileID: 0}
     choice1TimeChange: 0
     choice2TimeChange: 0
     choice3TimeChange: 0
     choice1IsBad: 0
     choice2IsBad: 0
     choice3IsBad: 0
+    choice1RejectImmediately: 0
+    choice2RejectImmediately: 0
+    choice3RejectImmediately: 0
     choice1NextLine: -2
     choice2NextLine: -2
     choice3NextLine: -2
@@ -136632,16 +136638,23 @@ MonoBehaviour:
     choice1ReplyPortrait: {fileID: 0}
     choice2ReplyPortrait: {fileID: 0}
     choice3ReplyPortrait: {fileID: 0}
+    choice1ReaganPortrait: {fileID: 0}
+    choice2ReaganPortrait: {fileID: 0}
+    choice3ReaganPortrait: {fileID: 0}
     choice1TimeChange: 0
     choice2TimeChange: 0
     choice3TimeChange: 0
     choice1IsBad: 0
     choice2IsBad: 0
     choice3IsBad: 0
+    choice1RejectImmediately: 0
+    choice2RejectImmediately: 0
+    choice3RejectImmediately: 0
     choice1NextLine: -2
     choice2NextLine: -2
     choice3NextLine: -2
   dialogueManager: {fileID: 1038724681}
+  interactionPrompt: {fileID: 0}
 --- !u!61 &650616309
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -365776,6 +365789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReaganControls
   moneyManager: {fileID: 1856602290}
+  cam: {fileID: 1016725362}
   maxSpeed: 8
   acceleration: 12
   deceleration: 22
@@ -367027,6 +367041,8 @@ MonoBehaviour:
   choiceButton3: {fileID: 0}
   continueHint: {fileID: 2112037628}
   typeSpeed: 0.035
+  timer: {fileID: 0}
+  timePopup: {fileID: 0}
   badChoicesToReject: 3
   rejectionDialogue: That's three red flags! You're not coming into these campgrounds!
   rejectionPortrait: {fileID: 0}
