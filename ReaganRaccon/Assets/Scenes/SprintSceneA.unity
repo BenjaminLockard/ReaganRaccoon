@@ -136627,12 +136627,18 @@ MonoBehaviour:
     choice1ReplyPortrait: {fileID: 21300000, guid: ccf4ac88625324da28f7217ba2335dee, type: 3}
     choice2ReplyPortrait: {fileID: 21300000, guid: eb9157eff2d33494388cd35cd25d82f0, type: 3}
     choice3ReplyPortrait: {fileID: 21300000, guid: ccf4ac88625324da28f7217ba2335dee, type: 3}
+    choice1ReaganPortrait: {fileID: 2287266622474569010, guid: 08225669174644a51a10d006546ab439, type: 3}
+    choice2ReaganPortrait: {fileID: -1072137621703592839, guid: 6c8d88e7e7f8d4050b434d994cf76637, type: 3}
+    choice3ReaganPortrait: {fileID: 2287266622474569010, guid: 08225669174644a51a10d006546ab439, type: 3}
     choice1TimeChange: 0
     choice2TimeChange: -30
     choice3TimeChange: 30
     choice1IsBad: 1
     choice2IsBad: 1
     choice3IsBad: 0
+    choice1RejectImmediately: 0
+    choice2RejectImmediately: 0
+    choice3RejectImmediately: 0
     choice1NextLine: 1
     choice2NextLine: 3
     choice3NextLine: 2
@@ -136650,12 +136656,18 @@ MonoBehaviour:
     choice1ReplyPortrait: {fileID: 21300000, guid: ccf4ac88625324da28f7217ba2335dee, type: 3}
     choice2ReplyPortrait: {fileID: 21300000, guid: eb9157eff2d33494388cd35cd25d82f0, type: 3}
     choice3ReplyPortrait: {fileID: 21300000, guid: 6ef79f2e5fecf41f0bd2a2934cb4aa7c, type: 3}
+    choice1ReaganPortrait: {fileID: -1072137621703592839, guid: 6c8d88e7e7f8d4050b434d994cf76637, type: 3}
+    choice2ReaganPortrait: {fileID: -1072137621703592839, guid: 6c8d88e7e7f8d4050b434d994cf76637, type: 3}
+    choice3ReaganPortrait: {fileID: 2287266622474569010, guid: 08225669174644a51a10d006546ab439, type: 3}
     choice1TimeChange: 30
     choice2TimeChange: -30
     choice3TimeChange: -30
     choice1IsBad: 0
     choice2IsBad: 1
     choice3IsBad: 1
+    choice1RejectImmediately: 0
+    choice2RejectImmediately: 0
+    choice3RejectImmediately: 0
     choice1NextLine: 2
     choice2NextLine: 2
     choice3NextLine: 2
@@ -136673,12 +136685,18 @@ MonoBehaviour:
     choice1ReplyPortrait: {fileID: 21300000, guid: ccf4ac88625324da28f7217ba2335dee, type: 3}
     choice2ReplyPortrait: {fileID: 21300000, guid: eb9157eff2d33494388cd35cd25d82f0, type: 3}
     choice3ReplyPortrait: {fileID: 21300000, guid: eb9157eff2d33494388cd35cd25d82f0, type: 3}
+    choice1ReaganPortrait: {fileID: 2287266622474569010, guid: 08225669174644a51a10d006546ab439, type: 3}
+    choice2ReaganPortrait: {fileID: 2287266622474569010, guid: 08225669174644a51a10d006546ab439, type: 3}
+    choice3ReaganPortrait: {fileID: 2287266622474569010, guid: 08225669174644a51a10d006546ab439, type: 3}
     choice1TimeChange: 0
     choice2TimeChange: 30
     choice3TimeChange: -30
     choice1IsBad: 0
     choice2IsBad: 0
     choice3IsBad: 1
+    choice1RejectImmediately: 0
+    choice2RejectImmediately: 0
+    choice3RejectImmediately: 0
     choice1NextLine: 4
     choice2NextLine: 4
     choice3NextLine: 4
@@ -136702,12 +136720,18 @@ MonoBehaviour:
     choice1ReplyPortrait: {fileID: 21300000, guid: ccf4ac88625324da28f7217ba2335dee, type: 3}
     choice2ReplyPortrait: {fileID: 21300000, guid: 6ef79f2e5fecf41f0bd2a2934cb4aa7c, type: 3}
     choice3ReplyPortrait: {fileID: 21300000, guid: eb9157eff2d33494388cd35cd25d82f0, type: 3}
+    choice1ReaganPortrait: {fileID: -1072137621703592839, guid: 6c8d88e7e7f8d4050b434d994cf76637, type: 3}
+    choice2ReaganPortrait: {fileID: 2287266622474569010, guid: 08225669174644a51a10d006546ab439, type: 3}
+    choice3ReaganPortrait: {fileID: -1072137621703592839, guid: 6c8d88e7e7f8d4050b434d994cf76637, type: 3}
     choice1TimeChange: 30
     choice2TimeChange: -30
     choice3TimeChange: -30
     choice1IsBad: 0
     choice2IsBad: 1
     choice3IsBad: 1
+    choice1RejectImmediately: 0
+    choice2RejectImmediately: 0
+    choice3RejectImmediately: 1
     choice1NextLine: 4
     choice2NextLine: 4
     choice3NextLine: -1
@@ -136725,12 +136749,18 @@ MonoBehaviour:
     choice1ReplyPortrait: {fileID: 21300000, guid: ccf4ac88625324da28f7217ba2335dee, type: 3}
     choice2ReplyPortrait: {fileID: 21300000, guid: eb9157eff2d33494388cd35cd25d82f0, type: 3}
     choice3ReplyPortrait: {fileID: 21300000, guid: eb9157eff2d33494388cd35cd25d82f0, type: 3}
+    choice1ReaganPortrait: {fileID: -1072137621703592839, guid: 6c8d88e7e7f8d4050b434d994cf76637, type: 3}
+    choice2ReaganPortrait: {fileID: -1072137621703592839, guid: 6c8d88e7e7f8d4050b434d994cf76637, type: 3}
+    choice3ReaganPortrait: {fileID: 2287266622474569010, guid: 08225669174644a51a10d006546ab439, type: 3}
     choice1TimeChange: 30
     choice2TimeChange: -30
     choice3TimeChange: -30
     choice1IsBad: 0
     choice2IsBad: 1
     choice3IsBad: 1
+    choice1RejectImmediately: 0
+    choice2RejectImmediately: 0
+    choice3RejectImmediately: 0
     choice1NextLine: -1
     choice2NextLine: -1
     choice3NextLine: -1
@@ -367053,6 +367083,7 @@ MonoBehaviour:
   choiceButton3: {fileID: 179447697}
   continueHint: {fileID: 2112037628}
   typeSpeed: 0.035
+  timer: {fileID: 0}
   badChoicesToReject: 3
   rejectionDialogue: That's three red flags in a row! You're not coming into these
     campgrounds!

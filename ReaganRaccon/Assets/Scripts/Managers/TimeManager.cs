@@ -48,7 +48,7 @@ public class TimeManager : MonoBehaviour
 
     void Start()
     {
-        ticking = false;
+        ticking = true;
         currentTime = baseTime;
     }
 

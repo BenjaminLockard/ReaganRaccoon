@@ -1,6 +1,7 @@
 
 using UnityEngine;
 using TMPro;
+using System.Collections.Generic;
 
 public class InteractionPromptManager : MonoBehaviour
 {
@@ -9,17 +10,28 @@ public class InteractionPromptManager : MonoBehaviour
     [Header("Prompt UI")]
     public TMP_Text promptText;
 
+    private Dictionary<GameObject, string> activePrompts =
+        new Dictionary<GameObject, string>();
+
     private GameObject currentSource;
-    private string currentMessage;
 
     void Awake()
     {
-        Instance = this;
-    }
+        if (Instance != null && Instance != this)
+        {
+            Debug.LogWarning(
+                "Duplicate InteractionPromptManager found!",
+                this
+            );
 
-    void Start()
-    {
-        HidePrompt();
+            enabled = false;
+            return;
+        }
+
+        Instance = this;
+
+        if (promptText != null)
+            promptText.gameObject.SetActive(false);
     }
 
     public void ShowPrompt(GameObject source, string message)
@@ -27,22 +39,66 @@ public class InteractionPromptManager : MonoBehaviour
         if (promptText == null || source == null)
             return;
 
-        currentSource = source;
-        currentMessage = message;
+        if (activePrompts.TryGetValue(source, out string oldMessage)
+            && oldMessage == message)
+        {
+            return;
+        }
 
-        promptText.text = currentMessage;
-        promptText.gameObject.SetActive(true);
+        activePrompts[source] = message;
+        RefreshPrompt();
     }
 
     public void HidePrompt(GameObject source = null)
     {
-        if (source != null && currentSource != source)
+        if (source == null)
+        {
+            activePrompts.Clear();
+        }
+        else
+        {
+            activePrompts.Remove(source);
+        }
+
+        RefreshPrompt();
+    }
+
+    private void RefreshPrompt()
+    {
+        if (promptText == null)
             return;
 
-        currentSource = null;
+        GameObject selectedSource = null;
+        string selectedMessage = "";
 
-        if (promptText != null)
+        foreach (var prompt in activePrompts)
+        {
+            if (prompt.Key != null && prompt.Key.activeInHierarchy)
+            {
+                selectedSource = prompt.Key;
+                selectedMessage = prompt.Value;
+                break;
+            }
+        }
+
+        currentSource = selectedSource;
+
+        if (currentSource == null)
+        {
             promptText.gameObject.SetActive(false);
+            return;
+        }
+
+        if (promptText.text != selectedMessage)
+            promptText.text = selectedMessage;
+
+        if (!promptText.gameObject.activeSelf)
+            promptText.gameObject.SetActive(true);
+    }
+
+    void OnDestroy()
+    {
+        if (Instance == this)
+            Instance = null;
     }
 }
-

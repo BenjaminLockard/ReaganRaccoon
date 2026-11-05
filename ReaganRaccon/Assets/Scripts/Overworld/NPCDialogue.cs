@@ -10,14 +10,21 @@ public class NPCDialogue : MonoBehaviour
     [Header("References")]
     public DialogueManager dialogueManager;
 
+    [Header("Interaction Prompt")]
+    public GameObject interactionPrompt;
+
     private bool playerNearby;
     private bool waitForKeyRelease;
     private bool activeConversation;
 
+    void Start()
+    {
+        UpdatePrompt();
+    }
+
     void Update()
     {
-        if (Keyboard.current == null ||
-            dialogueManager == null)
+        if (dialogueManager == null)
             return;
 
         if (activeConversation &&
@@ -25,6 +32,11 @@ public class NPCDialogue : MonoBehaviour
         {
             activeConversation = false;
         }
+
+        UpdatePrompt();
+
+        if (Keyboard.current == null)
+            return;
 
         if (waitForKeyRelease)
         {
@@ -56,20 +68,39 @@ public class NPCDialogue : MonoBehaviour
                 dialogueManager.IsDialogueActive();
 
             waitForKeyRelease = activeConversation;
+
+            UpdatePrompt();
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Reagan"))
+        {
             playerNearby = true;
+            UpdatePrompt();
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Reagan"))
+        {
             playerNearby = false;
+            UpdatePrompt();
+        }
+    }
+
+    void UpdatePrompt()
+    {
+        if (interactionPrompt == null)
+            return;
+
+        bool showPrompt =
+            playerNearby &&
+            dialogueManager != null &&
+            !dialogueManager.IsDialogueActive();
+
+        interactionPrompt.SetActive(showPrompt);
     }
 }
-
-

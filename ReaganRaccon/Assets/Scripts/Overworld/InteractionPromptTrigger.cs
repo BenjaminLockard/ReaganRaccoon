@@ -11,19 +11,27 @@ public class InteractionPromptTrigger : MonoBehaviour
 
     private bool playerNearby;
 
+    void OnEnable()
+    {
+        playerNearby = false;
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Reagan"))
         {
             playerNearby = true;
-            ShowPrompt();
+            UpdatePrompt();
         }
     }
 
     void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Reagan"))
+        {
             playerNearby = true;
+            UpdatePrompt();
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -31,39 +39,47 @@ public class InteractionPromptTrigger : MonoBehaviour
         if (other.CompareTag("Reagan"))
         {
             playerNearby = false;
-
-            if (InteractionPromptManager.Instance != null)
-                InteractionPromptManager.Instance.HidePrompt(gameObject);
+            HidePrompt();
         }
     }
 
-    void Update()
+    void OnDisable()
     {
-        if (!playerNearby)
-            return;
+        HidePrompt();
+        playerNearby = false;
+    }
 
+    private void UpdatePrompt()
+    {
         if (InteractionPromptManager.Instance == null)
             return;
 
-        if (dialogueManager != null &&
-            dialogueManager.IsDialogueActive())
-        {
-            InteractionPromptManager.Instance.HidePrompt(gameObject);
-        }
-        else
-        {
-            ShowPrompt();
-        }
-    }
+        bool dialogueOpen =
+            dialogueManager != null &&
+            dialogueManager.IsDialogueActive();
 
-    private void ShowPrompt()
-    {
-        if (InteractionPromptManager.Instance != null)
+        if (playerNearby && !dialogueOpen)
         {
             InteractionPromptManager.Instance.ShowPrompt(
                 gameObject,
-                promptMessage);
+                promptMessage
+            );
+        }
+        else
+        {
+            HidePrompt();
+        }
+    }
+
+    private void HidePrompt()
+    {
+        if (InteractionPromptManager.Instance != null)
+        {
+            InteractionPromptManager.Instance.HidePrompt(
+                gameObject
+            );
         }
     }
 }
+
 

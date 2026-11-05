@@ -35,12 +35,15 @@ public class DialogueManager : MonoBehaviour
     [Header("Overworld Timer")]
     public TimeManager timer;
 
+    [Header("Time Popup")]
+    public DialogueTimePopup timePopup;
+
     [Header("Ranger Rejection")]
     public int badChoicesToReject = 3;
 
     [TextArea(2, 5)]
     public string rejectionDialogue =
-        "That's three red flags! " +
+        "That's three red flags in a row! " +
         "You're not coming into these campgrounds!";
 
     public Sprite rejectionPortrait;
@@ -115,7 +118,6 @@ public class DialogueManager : MonoBehaviour
     private bool showingNPCReply;
     private bool showingRejection;
     private bool waitingForKeyRelease;
-
     private bool rejectAfterReply;
 
     private int selectedChoice;
@@ -123,6 +125,9 @@ public class DialogueManager : MonoBehaviour
 
     private int consecutiveBadChoices;
     private bool entryDenied;
+
+    // NEW: Camp entrance approval
+    private bool entryAllowed = false;
 
     private string currentNPCName;
     private string pendingNPCReply;
@@ -187,13 +192,18 @@ public class DialogueManager : MonoBehaviour
 
     public bool IsShowingChoices()
     {
-        // Let E finish typing the question first.
         return showingChoices;
     }
 
     public bool IsEntryDenied()
     {
         return entryDenied;
+    }
+
+    // NEW: Used by CampEntranceGate.cs
+    public bool IsEntryAllowed()
+    {
+        return entryAllowed;
     }
 
     public int GetBadChoiceStreak()
@@ -270,8 +280,6 @@ public class DialogueManager : MonoBehaviour
             ? line.speakerPortrait
             : defaultNPCPortrait;
 
-        // Restore Reagan's normal expression
-        // at the start of each new question.
         currentReaganPortrait = reaganPortrait;
 
         UpdatePortraits(line.isReaganSpeaking);
@@ -301,8 +309,7 @@ public class DialogueManager : MonoBehaviour
         {
             dest.text += letter;
 
-            yield return new WaitForSeconds(
-                Mathf.Max(0.001f, speed));
+            yield return new WaitForSeconds(speed);
         }
 
         isTyping = false;
@@ -332,7 +339,7 @@ public class DialogueManager : MonoBehaviour
             Type(
                 dialogueText,
                 fullDialogueText,
-                typeSpeed
+                Mathf.Max(0.001f, typeSpeed)
             )
         );
     }
@@ -501,7 +508,6 @@ public class DialogueManager : MonoBehaviour
         if (continueHint != null)
             continueHint.gameObject.SetActive(true);
 
-        // Change Reagan's expression for this answer.
         currentReaganPortrait =
             chosenReaganPortrait != null
             ? chosenReaganPortrait
@@ -522,26 +528,26 @@ public class DialogueManager : MonoBehaviour
         if (tooManyBadChoices || immediateRejection)
         {
             entryDenied = true;
+            entryAllowed = false;
 
-            // Immediate rejection can use the custom
-            // NPC reply before ending the conversation.
             rejectAfterReply = immediateRejection &&
                 !string.IsNullOrEmpty(pendingNPCReply);
 
             if (!rejectAfterReply)
-            {
                 pendingNPCReply = null;
-            }
         }
         else
         {
             rejectAfterReply = false;
         }
 
-        // Call the teammate's overworld timer method.
+        // Update overworld timer and show popup.
         if (timer != null && timeChange != 0f)
         {
-            timer.changeTime(timeChange);
+            timer.ChangeTime(timeChange);
+
+            if (timePopup != null)
+                timePopup.ShowTimeChange(timeChange);
         }
 
         Debug.Log(
@@ -612,8 +618,6 @@ public class DialogueManager : MonoBehaviour
 
             if (rejectAfterReply)
             {
-                // Special rejection reply has already
-                // been shown. End without repeating it.
                 EndDialogue();
                 return;
             }
@@ -713,6 +717,13 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
+        // NEW: Grant camp access after successful dialogue.
+        if (!entryDenied)
+        {
+            entryAllowed = true;
+            Debug.Log("CAMPGROUND ENTRY APPROVED!");
+        }
+
         if (typingCoroutine != null)
         {
             StopCoroutine(typingCoroutine);
@@ -736,3 +747,4 @@ public class DialogueManager : MonoBehaviour
             dialoguePanel.SetActive(false);
     }
 }
+
