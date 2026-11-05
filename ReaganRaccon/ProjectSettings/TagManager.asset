@@ -8,6 +8,8 @@ TagManager:
   - Reagan
   - Hazard
   - SpawnZone
+  - Lose
+  - Win
   layers:
   - Default
   - TransparentFX
@@ -63,7 +65,7 @@ TagManager:
   - name: Trees
     uniqueID: 843793863
     locked: 0
-  - name: New Layer 7
+  - name: bat
     uniqueID: 801603119
     locked: 0
   m_RenderingLayers:
