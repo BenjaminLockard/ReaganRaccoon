@@ -44,10 +44,18 @@ public class interaction : MonoBehaviour
             //pause
             //Debug.Log("Loading Game");
             //IFRAME BUGFIX
+           
+            transition.SetTrigger("tvSwitchScenes");
             playerControls.resetIFrame();
-
-            loadNext.switchScene(type, SceneName);
+            Invoke("buffer", 2.50f);
+           
+            
         }
+    }
+
+    public void buffer()
+    {
+        loadNext.switchScene(type, SceneName);
     }
 
 }
