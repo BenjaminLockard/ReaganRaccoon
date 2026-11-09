@@ -932,6 +932,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1687740357068939130, guid: 7629ea38bc05d4442afe97465fe33c08, type: 3}
   m_PrefabInstance: {fileID: 1712230130}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1628939855 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5475161280891251241, guid: 7629ea38bc05d4442afe97465fe33c08, type: 3}
+  m_PrefabInstance: {fileID: 1712230130}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1712230130
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1258,7 +1263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f0b6c39946f40ebb96561c15c5a24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadNext
-  transition: {fileID: 0}
+  transition: {fileID: 1628939855}
   SceneName: ClawMinigame
   type: switchback
   removed: {fileID: 617844191}
