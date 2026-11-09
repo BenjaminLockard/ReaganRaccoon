@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class CamFollowPlayer : MonoBehaviour
 {
@@ -10,31 +11,59 @@ public class CamFollowPlayer : MonoBehaviour
 
     [Header("Camera Zoom Behavior")]
     [SerializeField] private float defaultCameraSize = 9.0f;
-    [SerializeField] private float zoomedCameraSize = 14.0f;
+    [SerializeField] private float zoomedCameraSize = 18.0f;
     [SerializeField] private bool isZoomedOut = false;
 
+    private Coroutine zoomCoroutine;
     public void OnZoom()
     {
+
         if (isZoomedOut)
         {
-            ZoomIn();
-            isZoomedOut=false;
+            zoomCoroutine = StartCoroutine(ZoomIn());
         }
         else
         {
-            ZoomOut();
-            isZoomedOut = true;
+            zoomCoroutine = StartCoroutine(ZoomOut());
         }
     }
 
-    public void ZoomOut()
+    public IEnumerator ZoomOut()
     {
-        myCamera.orthographicSize = zoomedCameraSize;
+        if (!isZoomedOut)
+        {
+            isZoomedOut = true;
+
+            if (zoomCoroutine != null)
+                StopCoroutine(zoomCoroutine);
+
+            for (float i = 0.125f; myCamera.orthographicSize <= zoomedCameraSize; i *= 1.5f)
+            {
+                myCamera.orthographicSize += i;
+                yield return new WaitForSeconds(0.035f);
+            }
+
+            myCamera.orthographicSize = zoomedCameraSize;
+        }
     }
 
-    public void ZoomIn()
+    public IEnumerator ZoomIn()
     {
-        myCamera.orthographicSize = defaultCameraSize;
+        if (isZoomedOut)
+        {
+            isZoomedOut = false;
+
+            if (zoomCoroutine != null)
+                StopCoroutine(zoomCoroutine);
+
+            for (float i = myCamera.orthographicSize / 6; myCamera.orthographicSize >= defaultCameraSize; i /= 1.5f)
+            {
+                myCamera.orthographicSize -= i;
+                yield return new WaitForSeconds(0.035f);
+            }
+
+            myCamera.orthographicSize = defaultCameraSize;
+        }
     }
 
 

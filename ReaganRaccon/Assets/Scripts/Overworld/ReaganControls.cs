@@ -7,6 +7,7 @@ public class ReaganControls : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
     public MoneyManager moneyManager;
+    public CamFollowPlayer cam;
 
     [Header("Movement")]
     [SerializeField] private float maxSpeed = 5f;
@@ -409,6 +410,7 @@ public class ReaganControls : MonoBehaviour
         // WASD movement.
         if (moveInput.sqrMagnitude > 0f)
         {
+            StartCoroutine(cam.ZoomIn());
             Vector2 inputDirection = moveInput.normalized;
 
             desiredVelocity = inputDirection * maxSpeed;
@@ -418,6 +420,7 @@ public class ReaganControls : MonoBehaviour
         // Mouse movement.
         else if (moveToCursor)
         {
+            StartCoroutine(cam.ZoomIn());
             Vector2 direction =
                 (Vector2)cursorWorldPosition -
                 (Vector2)transform.position;
