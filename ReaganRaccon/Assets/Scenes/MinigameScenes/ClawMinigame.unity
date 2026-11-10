@@ -133,7 +133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5423696680777498701, guid: 0ee8a9e1fed82a846a0b5329ef89b73a, type: 3}
       propertyPath: m_text
-      value: MASH
+      value: GRAB
       objectReference: {fileID: 0}
     - target: {fileID: 5561800701140586792, guid: 0ee8a9e1fed82a846a0b5329ef89b73a, type: 3}
       propertyPath: m_AnchoredPosition.x

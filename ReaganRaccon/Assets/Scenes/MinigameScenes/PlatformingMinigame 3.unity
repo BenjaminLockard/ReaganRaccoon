@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f0b6c39946f40ebb96561c15c5a24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadNext
-  transition: {fileID: 0}
+  transition: {fileID: 1450160220}
   SceneName: PlatformingMinigame 3
   type: switchback
   removed: {fileID: 1910150507}
@@ -1439,6 +1439,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ee8a9e1fed82a846a0b5329ef89b73a, type: 3}
+--- !u!95 &1450160220 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3559632826098118260, guid: 0ee8a9e1fed82a846a0b5329ef89b73a, type: 3}
+  m_PrefabInstance: {fileID: 1450160219}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1517716932
 GameObject:
   m_ObjectHideFlags: 0
