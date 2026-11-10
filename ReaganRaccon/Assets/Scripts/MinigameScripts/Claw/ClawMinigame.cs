@@ -57,7 +57,7 @@ public class ClawMinigame : MonoBehaviour
             //goes left and right
         }
         if(finished){
-            rb.velocity = new Vector2(0,0);
+            rb.linearVelocity = new Vector2(0,0);
         }
     }
 
@@ -69,7 +69,7 @@ public class ClawMinigame : MonoBehaviour
             //Debug.Log("WINNER");
             //loadNext.switchScene("NULL","TestSceneB");
             //Jason
-            rb.velocity = new Vector2(0,0);
+            rb.linearVelocity = new Vector2(0,0);
             loadNext.switchScene("switchback","ClawMinigame");
             //The name of this script needs to be put in
             //then the script knows which one to destroy
@@ -77,7 +77,7 @@ public class ClawMinigame : MonoBehaviour
         else{
             //runs the return sequence where the claw goes back up and you try again
             failed = true;
-            rb.velocity = new Vector2(0,0);
+            rb.linearVelocity = new Vector2(0,0);
             loadNext.switchScene("switchback","ClawMinigame");
         }
     }
