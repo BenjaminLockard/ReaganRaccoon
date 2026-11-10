@@ -56176,6 +56176,10 @@ PrefabInstance:
       value: PlatformingMinigame
       objectReference: {fileID: 0}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -56752,6 +56756,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: PlatformingMinigame 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
@@ -57863,6 +57871,10 @@ PrefabInstance:
       value: PlatformingMinigame 1
       objectReference: {fileID: 0}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -57881,7 +57893,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 589636002368998424, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1537332265}
   m_SourcePrefab: {fileID: 100100000, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
 --- !u!4 &282557777 stripped
 Transform:
@@ -57948,6 +57963,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: PlatformingMinigame 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
@@ -84379,6 +84398,10 @@ PrefabInstance:
       value: ClawMinigame
       objectReference: {fileID: 0}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -85860,6 +85883,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: PlatformingMinigame
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
@@ -92542,6 +92569,10 @@ PrefabInstance:
       value: MashingMinigame
       objectReference: {fileID: 0}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -92628,6 +92659,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: BaseBallMinigame
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
@@ -135505,6 +135540,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: BaseBallMinigame
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
@@ -365429,6 +365468,10 @@ PrefabInstance:
       value: FishingMinigame
       objectReference: {fileID: 0}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -365510,6 +365553,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: PlatformingMinigame
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
@@ -366898,6 +366945,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: PlatformingMinigame 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
@@ -369347,6 +369398,10 @@ PrefabInstance:
       value: BaseBallMinigame
       objectReference: {fileID: 0}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -371725,6 +371780,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: FishingMinigame
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
@@ -538361,6 +538420,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1026301617713320662, guid: d015e757940490b45aa07995642266fb, type: 3}
   m_PrefabInstance: {fileID: 1534243088}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1537332258 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 589636002368998424, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+  m_PrefabInstance: {fileID: 282557776}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1537332265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537332258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42c82b2a8314460dad57f9e83289cef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractionPromptTrigger
+  promptMessage: Press E to Interact
+  dialogueManager: {fileID: 0}
 --- !u!1001 &1537627406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -538421,6 +538499,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: PlatformingMinigame 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
@@ -541510,6 +541592,10 @@ PrefabInstance:
       value: FishingMinigame
       objectReference: {fileID: 0}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -542287,6 +542373,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: PlatformingMinigame 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
@@ -826004,6 +826094,10 @@ PrefabInstance:
       value: ClawMinigame
       objectReference: {fileID: 0}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
@@ -826090,6 +826184,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: PlatformingMinigame 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 
@@ -827722,6 +827820,10 @@ PrefabInstance:
       propertyPath: Root
       value: 
       objectReference: {fileID: 795019401}
+    - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1690620278}
     - target: {fileID: 7754078752573345682, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: playerControls
       value: 

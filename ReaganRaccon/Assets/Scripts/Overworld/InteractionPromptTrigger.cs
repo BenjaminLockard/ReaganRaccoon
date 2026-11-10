@@ -16,10 +16,22 @@ public class InteractionPromptTrigger : MonoBehaviour
         playerNearby = false;
     }
 
+    void Start()
+    {
+        Debug.Log("PROMPT SCRIPT ACTIVE ON: " + gameObject.name);
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log(
+            "PROMPT COLLISION: " + gameObject.name +
+            " detected " + other.gameObject.name
+        );
+
         if (other.CompareTag("Reagan"))
         {
+            Debug.Log("REAGAN DETECTED BY PROMPT: " + gameObject.name);
+
             playerNearby = true;
             UpdatePrompt();
         }
@@ -38,6 +50,8 @@ public class InteractionPromptTrigger : MonoBehaviour
     {
         if (other.CompareTag("Reagan"))
         {
+            Debug.Log("REAGAN LEFT PROMPT: " + gameObject.name);
+
             playerNearby = false;
             HidePrompt();
         }
@@ -75,9 +89,7 @@ public class InteractionPromptTrigger : MonoBehaviour
     {
         if (InteractionPromptManager.Instance != null)
         {
-            InteractionPromptManager.Instance.HidePrompt(
-                gameObject
-            );
+            InteractionPromptManager.Instance.HidePrompt(gameObject);
         }
     }
 }
