@@ -108591,7 +108591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e77cb4f2ec498e418be650e1a92cd1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeManager
-  baseTime: 210
+  baseTime: 120
   currentTime: 0
   ticking: 1
   timerText: {fileID: 1578278669}
