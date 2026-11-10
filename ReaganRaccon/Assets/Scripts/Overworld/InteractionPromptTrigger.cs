@@ -26,18 +26,13 @@ public class InteractionPromptTrigger : MonoBehaviour
     }
 
     void OnTriggerStay2D(Collider2D other)
-{
-    if (other.CompareTag("Reagan"))
     {
-        if (!playerNearby)
+        if (other.CompareTag("Reagan"))
         {
-            Debug.Log("PROMPT DETECTED: " + gameObject.name);
+            playerNearby = true;
+            UpdatePrompt();
         }
-
-        playerNearby = true;
-        UpdatePrompt();
     }
-}
 
     void OnTriggerExit2D(Collider2D other)
     {
