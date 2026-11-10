@@ -50,6 +50,13 @@ public class ReaganControls : MonoBehaviour
     [SerializeField] private GameObject smallPrefab;
     [SerializeField] private float coinLaunchForceMin = 6f;
     [SerializeField] private float coinLaunchForceMax = 10f;
+    //For specific hierarchy position
+    [SerializeField] private GameObject coinParent;
+
+    [Header("Powerup Stuff")]
+    [SerializeField] public bool kibble = false;
+    [SerializeField] public bool caramel = false;
+    [SerializeField] public bool soda = false;
 
 
     private float dizzyTimer;
@@ -114,7 +121,7 @@ public class ReaganControls : MonoBehaviour
     {
         float speed = currentVelocity.magnitude;
 
-        if (speed > (maxSpeed * crashThreshold) && !dizzy)
+        if (speed > (maxSpeed * crashThreshold) && !dizzy && !soda)
         {
             dizzy = true;
             dizzyTimer = dizzyDuration;
@@ -176,7 +183,16 @@ public class ReaganControls : MonoBehaviour
 
     public void dropMoney()
     {
-        float moneyToLose = moneyManager.getCurrentMoney() / 5f;
+        float moneyToLose;
+
+        if (caramel)
+            moneyToLose = moneyManager.getCurrentMoney() / 10f;
+        else
+            moneyToLose = moneyManager.getCurrentMoney() / 5f;
+
+
+
+
         if (moneyToLose > 25f)
             moneyToLose = 25f;
 
@@ -189,7 +205,8 @@ public class ReaganControls : MonoBehaviour
                 GameObject grandCoin = Instantiate(
                     grandPrefab,
                     transform.position,
-                    transform.rotation
+                    transform.rotation,
+                    coinParent.transform
                 );
 
                 MoneyFloating coin =
@@ -219,7 +236,8 @@ public class ReaganControls : MonoBehaviour
                 GameObject largeCoin = Instantiate(
                     largePrefab,
                     transform.position,
-                    transform.rotation
+                    transform.rotation,
+                    coinParent.transform
                 );
 
                 MoneyFloating coin =
@@ -249,7 +267,8 @@ public class ReaganControls : MonoBehaviour
                 GameObject smallCoin = Instantiate(
                     smallPrefab,
                     transform.position,
-                    transform.rotation
+                    transform.rotation,
+                    coinParent.transform
                 );
 
                 MoneyFloating coin =
@@ -474,12 +493,55 @@ public class ReaganControls : MonoBehaviour
     }
 
 
-        // RESET SCENE
 
-        //public void OnReset(InputValue input)
-        //{
-        //    SceneManager.LoadScene(
-        //        SceneManager.GetActiveScene().name
-        //    );
-        //}
+    public IEnumerator behaviorCoffee()
+    {
+        maxSpeed += 3.5f;
+        
+        acceleration += 7.5f;
+        yield return new WaitForSeconds(30f);
+        maxSpeed -= 3.5f;
+
+        acceleration -= 7.5f;
     }
+
+    public IEnumerator behaviorSoda()
+    {
+        soda = true;
+        maxSpeed -= 3.5f;
+        dashSpeed += 2f;
+        deceleration -= 2.5f;
+        dashCooldown -= 0.5f;
+        yield return new WaitForSeconds(15f);
+        soda = false;
+        maxSpeed += 3.5f;
+        dashSpeed -= 2f;
+        deceleration += 2.5f;
+        dashCooldown += 0.5f;
+
+    }
+
+    public IEnumerator behaviorCotton()
+    {
+        yield return new WaitForSeconds(2f);
+        kibble = true;
+        soda = true;
+        maxSpeed += 7.5f;
+        deceleration += 7.5f;
+        acceleration += 7.5f;
+        dashSpeed += 7.5f;
+        yield return new WaitForSeconds(8f);
+        kibble = false;
+        soda = false;
+        maxSpeed -= 12.5f;
+        deceleration -= 15f;
+        acceleration -= 7.5f;
+        dashSpeed -= 12.5f;
+        yield return new WaitForSeconds(4f);
+        maxSpeed += 5f;
+        deceleration += 7.5f;
+        dashSpeed += 5f;
+    }
+
+
+}
