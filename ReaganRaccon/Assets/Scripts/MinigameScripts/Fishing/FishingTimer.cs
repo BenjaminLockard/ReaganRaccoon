@@ -12,15 +12,16 @@ public class FishingTimer : MonoBehaviour
     void Start()
     {
         loadNext = GetComponent<LoadNext>();
+        timer = surviveTimeLimit;
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        timer += Time.deltaTime;
-        mainText.text = "Time: " + timer;
-        if(timer > surviveTimeLimit)
+        timer -= Time.deltaTime;
+        mainText.text = "Time: " + Mathf.RoundToInt(timer);
+        if(timer <= 0 )
         {
             
             loadNext.switchScene("FishingMinigame","switchback");
