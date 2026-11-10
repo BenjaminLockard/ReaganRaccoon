@@ -15,7 +15,6 @@ public class ClawMinigame : MonoBehaviour
     public Rigidbody2D rb;
     private bool isSpacePressed = false; 
     private LoadNext loadNext;
-
     void Start(){
         loadNext = GetComponent<LoadNext>();
         rb = GetComponent<Rigidbody2D>();
@@ -56,20 +55,15 @@ public class ClawMinigame : MonoBehaviour
             rb.MovePosition(rb.position + new Vector2(speed * flip, 0f) * Time.fixedDeltaTime);
             //goes left and right
         }
-        if(finished){
-            rb.velocity = new Vector2(0,0);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision){
-        
         if(collision.gameObject.CompareTag("Prize") && finished != true)
         {
             //hitting the triangle causes you to win
             //Debug.Log("WINNER");
             //loadNext.switchScene("NULL","TestSceneB");
             //Jason
-            rb.velocity = new Vector2(0,0);
             loadNext.switchScene("switchback","ClawMinigame");
             //The name of this script needs to be put in
             //then the script knows which one to destroy
@@ -77,8 +71,6 @@ public class ClawMinigame : MonoBehaviour
         else{
             //runs the return sequence where the claw goes back up and you try again
             failed = true;
-            rb.velocity = new Vector2(0,0);
-            loadNext.switchScene("switchback","ClawMinigame");
         }
     }
     public void OnSpace(InputValue space){
