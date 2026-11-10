@@ -6,6 +6,9 @@ public class MoneyManager : MonoBehaviour
 {
     private float currentMoney, goingSum;
     public TMP_Text moneyText, updateText;
+    private Coroutine feedback;
+
+    public bool wine;
 
     public float getCurrentMoney()
     {
@@ -17,9 +20,17 @@ public class MoneyManager : MonoBehaviour
         if (amount == 0f)
             return;
         
+        if (wine)
+            amount *= 1.2f;
+
         currentMoney += amount;
-        goingSum += amount;
-        moneyText.text = "$" + currentMoney.ToString("F2");
+
+        if (amount > 0f)
+            goingSum += amount;
+        else
+            goingSum = amount;
+
+         moneyText.text = "$" + currentMoney.ToString("F2");
 
         if (amount > 0)
         {
@@ -32,7 +43,10 @@ public class MoneyManager : MonoBehaviour
             updateText.color = new Color(1f, 0f, 0f, 1f);
         }
 
-        StartCoroutine(changeFeedback());
+        if (feedback != null)
+            StopCoroutine(feedback);
+
+        feedback = StartCoroutine(changeFeedback());
     }
 
     public IEnumerator changeFeedback()

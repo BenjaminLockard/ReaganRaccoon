@@ -61,11 +61,11 @@ public class HazardDog : MonoBehaviour
 
     void UpdateState()
     {
-        if ((PlayerInRange() && currentState == EnemyState.Patrolling) && !playerControls.iFrames)
+        if ((PlayerInRange() && currentState == EnemyState.Patrolling) && !playerControls.iFrames && !playerControls.kibble)
         {
             currentState = EnemyState.Chasing;
         }
-        else if ((!PlayerInRange() && currentState == EnemyState.Chasing) || playerControls.iFrames)
+        else if ((!PlayerInRange() && currentState == EnemyState.Chasing) || playerControls.iFrames || playerControls.kibble)
         {
             currentState = EnemyState.Patrolling;
         }
