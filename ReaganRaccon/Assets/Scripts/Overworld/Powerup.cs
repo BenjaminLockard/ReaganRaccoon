@@ -46,7 +46,7 @@ public class Powerup : MonoBehaviour
             // pickup radius----------------------------------
             case "caramel":
                 StartCoroutine(behaviorCaramel());
-                uiManager.PowerupDisplay("Caramel Apple", "Drop less money when hit", 30f);
+                uiManager.PowerupDisplay("Caramel Apple", "Drop less money", 30f);
                 break;
             // lose less money ----------------------------------
             case "cotton":
@@ -72,7 +72,7 @@ public class Powerup : MonoBehaviour
             // extra time ----------------------------------
             case "soda":
                 StartCoroutine(reaganControls.behaviorSoda());
-                uiManager.PowerupDisplay("Grape Soda", "Slow movement, better dahses", 15f);
+                uiManager.PowerupDisplay("Grape Soda", "Move slow, better dahses", 15f);
                 break;
             // dash frequency & no dizzy but slow ----------------------------------
             case "pills":
