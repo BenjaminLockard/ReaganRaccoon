@@ -17,7 +17,7 @@ public class MashingMinigame : MonoBehaviour
     }
     public void OnSpace(InputValue space){
         if(finish != true){
-        Debug.Log("Press Space " + timesToMash);
+        //Debug.Log("Press Space " + timesToMash);
         timesToMash--;
         }
         

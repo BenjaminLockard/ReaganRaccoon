@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
         string temp = levelNames[counter];
         if(counter >= levelNames.Length - 1)// 6
         {  
-            Debug.Log("SHUFFTING");
+            //Debug.Log("SHUFFTING");
             Shuffle(levelNames);
             counter = 0;
         }
@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
         {
             counter++;
         }
-        Debug.Log("Counter is at: " + counter);
+        //Debug.Log("Counter is at: " + counter);
         return temp;
     }
     
