@@ -3,6 +3,7 @@ using UnityEngine;
 public class FishManager : MonoBehaviour
 
 {   public GameObject spawnObject;
+    [SerializeField] private GameObject _containerTypeSpawnObject;
     public Rigidbody2D rb;
     public float timer;
     private float speedMultiplier;
@@ -23,7 +24,8 @@ public class FishManager : MonoBehaviour
         if(timer > timeBetweenSpawn)
         {
             Vector2 randomSpawnPosition = new Vector2(rb.transform.position.x, rb.transform.position.y + Random.Range(-8.0f,7.8f));
-            Instantiate(spawnObject, randomSpawnPosition, Quaternion.identity);
+            GameObject newBullet = Instantiate(spawnObject, randomSpawnPosition, Quaternion.identity);
+            newBullet.transform.parent = _containerTypeSpawnObject.transform; //makes the new spawn the child of the container
             timer = 0;
         }
 

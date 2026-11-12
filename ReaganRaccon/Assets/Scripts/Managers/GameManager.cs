@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     private string[] levelNames =
      {"BaseBallMinigame","ClawMinigame","FishingMinigame",
     "PlatformingMinigame 1","PlatformingMinigame 2"
-    ,"PlatformingMinigame 3"};
+    ,"PlatformingMinigame 3","MashingMinigame"};
      void Awake() { //finishes Singleton creation
         Instance = this;
         Shuffle(levelNames);
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     public string getLeveName()
     {
         string temp = levelNames[counter];
-        if(counter > levelNames.Length)
+        if(counter >= levelNames.Length - 1)// 6
         {  
             Debug.Log("SHUFFTING");
             Shuffle(levelNames);

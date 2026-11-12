@@ -119,6 +119,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &25876588
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 25876589}
+  m_Layer: 0
+  m_Name: BulletContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &25876589
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25876588}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1011184167}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &334864781 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6679173859980219832, guid: 4fb7c744e03904466a00ce8509681e8a, type: 3}
@@ -248,6 +279,11 @@ PrefabInstance:
 --- !u!224 &406572330 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8358765299762162838, guid: 0ee8a9e1fed82a846a0b5329ef89b73a, type: 3}
+  m_PrefabInstance: {fileID: 406572329}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &406572331 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3559632826098118260, guid: 0ee8a9e1fed82a846a0b5329ef89b73a, type: 3}
   m_PrefabInstance: {fileID: 406572329}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &554688609
@@ -462,8 +498,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 735719488}
-  - component: {fileID: 735719489}
-  - component: {fileID: 735719490}
   m_Layer: 0
   m_Name: FishingMiniRoot
   m_TagString: Untagged
@@ -486,42 +520,11 @@ Transform:
   m_Children:
   - {fileID: 729607941}
   - {fileID: 966585016}
-  - {fileID: 1868485207}
+  - {fileID: 2142602212}
   - {fileID: 1011184167}
   - {fileID: 406572330}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &735719489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 735719487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10f0b6c39946f40ebb96561c15c5a24e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LoadNext
-  transition: {fileID: 0}
-  SceneName: FishingMinigame
-  type: switchback
-  removed: {fileID: 735719487}
---- !u!114 &735719490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 735719487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea47a36dd777c3b49b5fe372c0c761e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  timer: 0
-  surviveTimeLimit: 21
-  mainText: {fileID: 905749277}
 --- !u!1 &905749275
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,7 +537,7 @@ GameObject:
   - component: {fileID: 905749278}
   - component: {fileID: 905749277}
   m_Layer: 6
-  m_Name: Text (TMP)
+  m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -875,7 +878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f0b6c39946f40ebb96561c15c5a24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadNext
-  transition: {fileID: 0}
+  transition: {fileID: 406572331}
   SceneName: FishingMinigame
   type: switchback
   removed: {fileID: 735719487}
@@ -910,6 +913,7 @@ Transform:
   m_Children:
   - {fileID: 334864781}
   - {fileID: 1311539542}
+  - {fileID: 25876589}
   m_Father: {fileID: 735719488}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1311539541 stripped
@@ -962,6 +966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FishManager
   spawnObject: {fileID: 6896062574837197363, guid: 585da0411eb45b345b7f3aa67ed76dce, type: 3}
+  _containerTypeSpawnObject: {fileID: 25876588}
   rb: {fileID: 1311539543}
   timer: 0
   timeBetweenSpawn: 0.7
@@ -977,38 +982,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b49926dbc7835945931b71002061e1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!1 &1868485206
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1868485207}
-  m_Layer: 0
-  m_Name: Stage
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1868485207
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1868485206}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -35.834, y: 1.25001, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2142602212}
-  m_Father: {fileID: 735719488}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1953481221 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5523188985548620093, guid: 4fb7c744e03904466a00ce8509681e8a, type: 3}
@@ -1066,6 +1039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FishManager
   spawnObject: {fileID: 898550771233344960, guid: c7fc80eacd17076408bbbe5afeaada4e, type: 3}
+  _containerTypeSpawnObject: {fileID: 25876588}
   rb: {fileID: 1953481223}
   timer: 0
   timeBetweenSpawn: 0.7
@@ -1145,8 +1119,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2142602212}
   - component: {fileID: 2142602214}
+  - component: {fileID: 2142602216}
+  - component: {fileID: 2142602215}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Stage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1161,11 +1137,11 @@ Transform:
   m_GameObject: {fileID: 2142602211}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.618, y: 0.1444, z: 0}
+  m_LocalPosition: {x: -41.452, y: 1.3944099, z: 0}
   m_LocalScale: {x: 30.489407, y: 17.394932, z: 0.91161}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1868485207}
+  m_Father: {fileID: 735719488}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2142602214
 SpriteRenderer:
@@ -1226,6 +1202,37 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &2142602215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142602211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10f0b6c39946f40ebb96561c15c5a24e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LoadNext
+  transition: {fileID: 406572331}
+  SceneName: FishingMinigame
+  type: switchback
+  removed: {fileID: 735719487}
+--- !u!114 &2142602216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142602211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea47a36dd777c3b49b5fe372c0c761e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  timer: 0
+  surviveTimeLimit: 21
+  mainText: {fileID: 905749277}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

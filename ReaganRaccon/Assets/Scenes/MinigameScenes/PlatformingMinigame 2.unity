@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28845de33742361fab2708e8db6c9359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Goal
-  name: PlatformingMinigame
+  name: PlatformingMinigame 2
 --- !u!114 &199081310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,7 +285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadNext
   transition: {fileID: 340258637}
-  SceneName: PlatformingMinigame
+  SceneName: PlatformingMinigame 2
   type: switchback
   removed: {fileID: 1910150507}
 --- !u!1001 &340258636
@@ -1501,7 +1501,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8957324059118975939, guid: 3f47b376ee74740c998f2d1efcabadaf, type: 3}
   m_Color: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 1}
@@ -1711,7 +1711,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2129813150
 MonoBehaviour:
   m_ObjectHideFlags: 0

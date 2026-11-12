@@ -36,18 +36,18 @@ public class ClawMinigame : MonoBehaviour
         //fixed updates on a constant loop
         if(isSpacePressed){
             //moves down
-            if (failed && finished != finished)//is triggered by the collider
+            if (failed && finished)//is triggered by the collider
             {
-            loadNext.switchScene("switchback","ClawMinigame");
-            rb.MovePosition(rb.position + new Vector2(0f , speed) * Time.fixedDeltaTime);
-            if(rb.transform.position.y >= 3)
+                //loadNext.switchScene("switchback","ClawMinigame");
+                //rb.MovePosition(rb.position + new Vector2(0f , speed) * Time.fixedDeltaTime);
+                if(rb.transform.position.y >= 3) //does nothing
                 {
                     //claw goes up then goes back to going left and right
-                    failed = false;
-                    isSpacePressed = false;
+                    //failed = false;
+                    //isSpacePressed = false;
                 }
             }else{
-                //claw goes straight down 
+            //claw goes straight down 
             rb.MovePosition(rb.position + new Vector2(0f , speed * -1) * Time.fixedDeltaTime);
             }
         }
@@ -65,11 +65,12 @@ public class ClawMinigame : MonoBehaviour
         
         if(collision.gameObject.CompareTag("Prize") && finished != true)
         {
+            finished = true;
             //hitting the triangle causes you to win
             //Debug.Log("WINNER");
             //loadNext.switchScene("NULL","TestSceneB");
             //Jason
-            rb.linearVelocity = new Vector2(0,0);
+            //rb.linearVelocity = new Vector2(0,0);
             loadNext.switchScene("switchback","ClawMinigame");
             //The name of this script needs to be put in
             //then the script knows which one to destroy
@@ -77,13 +78,16 @@ public class ClawMinigame : MonoBehaviour
         else{
             //runs the return sequence where the claw goes back up and you try again
             failed = true;
-            rb.linearVelocity = new Vector2(0,0);
-            loadNext.switchScene("switchback","ClawMinigame");
+            finished = true;
+            //rb.linearVelocity = new Vector2(0,0);
+            //loadNext.switchScene("switchback","ClawMinigame");
         }
+
     }
     public void OnSpace(InputValue space){
         //Debug.Log("Press Space Pressed");
         isSpacePressed = true;
         //this causes the claw to go down and to run the next section of the code
     }
+    
 }
