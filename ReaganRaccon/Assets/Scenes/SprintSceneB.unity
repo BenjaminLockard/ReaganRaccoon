@@ -59309,6 +59309,10 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 965427581}
+    - target: {fileID: 8170968004631787061, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8673874306904970502, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
       propertyPath: SceneName
       value: Null
@@ -59324,7 +59328,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 589636002368998424, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1934554424}
   m_SourcePrefab: {fileID: 100100000, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
 --- !u!4 &282557777 stripped
 Transform:
@@ -138667,7 +138674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RewardManager
   rewardWindow: {fileID: 1981008386}
-  loseWindow: {fileID: 0}
+  loseWindow: {fileID: 319119394}
   overworldInput: {fileID: 965427584}
   possibleRewards:
   - itemName: Golden Apple
@@ -552903,7 +552910,7 @@ GameObject:
   - component: {fileID: 1688842106}
   - component: {fileID: 1688842107}
   m_Layer: 5
-  m_Name: InteractionPromptManager
+  m_Name: InteractionPromptManagerItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -553460,7 +553467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractionPromptTrigger
   promptMessage: Press E to Interact
-  dialogueManager: {fileID: 0}
+  dialogueManager: {fileID: 1757369395}
 --- !u!114 &1708621692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -553529,8 +553536,8 @@ MonoBehaviour:
     choice1RejectImmediately: 0
     choice2RejectImmediately: 0
     choice3RejectImmediately: 1
-    choice1NextLine: -1
-    choice2NextLine: -1
+    choice1NextLine: 5
+    choice2NextLine: 6
     choice3NextLine: -1
   - speakerName: Forest Ranger
     dialogue: So, is this your first time camping here?
@@ -553655,13 +553662,14 @@ MonoBehaviour:
     choice3RejectImmediately: 1
     choice1NextLine: 7
     choice2NextLine: 7
-    choice3NextLine: 7
+    choice3NextLine: -1
   - speakerName: Forest Ranger
     dialogue: What do you mean by chaotic neutral?
     speakerPortrait: {fileID: 21300000, guid: ccf4ac88625324da28f7217ba2335dee, type: 3}
     isReaganSpeaking: 0
     hasChoices: 1
-    choice1: When children cry, I buzz like a mosquito until they stop.
+    choice1: When children cry, I buzz like a mosquito until they either stop, or
+      cry louder.
     choice2: I won't bother anyone unless I'm bored
     choice3: For example, I'd free all the aniimals from the zoo.
     npcReply1: Sounds annoying but harmless.
@@ -553695,14 +553703,15 @@ MonoBehaviour:
     choice2: You're too uptight. This job can't pay that much.
     choice3: I do what I want!
     npcReply1: Good. I'm glad we understand each other. You can come in.
-    npcReply2: 
-    npcReply3: 
+    npcReply2: 'Hey that''s none of your business! Get out of here! '
+    npcReply3: Well I hope you didn't want to come in because you're definitely not
+      getting in!
     choice1ReplyPortrait: {fileID: 21300000, guid: ccf4ac88625324da28f7217ba2335dee, type: 3}
-    choice2ReplyPortrait: {fileID: 21300000, guid: eb9157eff2d33494388cd35cd25d82f0, type: 3}
-    choice3ReplyPortrait: {fileID: 21300000, guid: eb9157eff2d33494388cd35cd25d82f0, type: 3}
+    choice2ReplyPortrait: {fileID: 21300000, guid: 6ef79f2e5fecf41f0bd2a2934cb4aa7c, type: 3}
+    choice3ReplyPortrait: {fileID: 21300000, guid: 6ef79f2e5fecf41f0bd2a2934cb4aa7c, type: 3}
     choice1ReaganPortrait: {fileID: -1072137621703592839, guid: 6c8d88e7e7f8d4050b434d994cf76637, type: 3}
     choice2ReaganPortrait: {fileID: 21300000, guid: 27df1034cfd1448fdbe7776c2e4b2faf, type: 3}
-    choice3ReaganPortrait: {fileID: 21300000, guid: 27df1034cfd1448fdbe7776c2e4b2faf, type: 3}
+    choice3ReaganPortrait: {fileID: 21300000, guid: 8a06002c1f6974c299b1ec385814341f, type: 3}
     choice1TimeChange: 30
     choice2TimeChange: -30
     choice3TimeChange: -30
@@ -553724,7 +553733,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1708621689}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -553747,7 +553756,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -553761,7 +553770,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.3540946, y: 0.492218}
+  m_Size: {x: 1.5, y: 3}
   m_EdgeRadius: 0
 --- !u!212 &1708621694
 SpriteRenderer:
@@ -810936,6 +810945,25 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1934554417 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 589636002368998424, guid: 1b0459ac841d1420d883c01283eddf37, type: 3}
+  m_PrefabInstance: {fileID: 282557776}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1934554424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934554417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42c82b2a8314460dad57f9e83289cef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractionPromptTrigger
+  promptMessage: Press E to Interact
+  dialogueManager: {fileID: 1757369395}
 --- !u!1001 &1935136323
 PrefabInstance:
   m_ObjectHideFlags: 0

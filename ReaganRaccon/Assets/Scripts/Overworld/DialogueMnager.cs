@@ -43,8 +43,8 @@ public class DialogueManager : MonoBehaviour
 
     [TextArea(2, 5)]
     public string rejectionDialogue =
-        "That's three red flags in a row! " +
-        "You're not coming into these campgrounds!";
+        "Dude, I don't get paid enough for this!" +
+        "You seem like a red flag, so you can't come in, man!";
 
     public Sprite rejectionPortrait;
 
