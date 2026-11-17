@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Collections;
+using UnityEditor.ShaderGraph.Internal;
 
 public class UIManager : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class UIManager : MonoBehaviour
     public TMP_Text powerupName, powerupDesc, powerupDuration;
     private float powerupTime = 0f;
     private bool powerupTicking = false;
+    private Vector2 restingPlace;
 
     public void OnPause(InputValue input)
     {
@@ -44,22 +47,53 @@ public class UIManager : MonoBehaviour
         powerupDuration.text = string.Format("{0:00}", seconds);
     }
 
-    public void PowerupDisplay(string name, string desc, float duration)
+    public IEnumerator PowerupDisplay(string name, string desc, float duration)
     {
         powerupPopup.SetActive(true);
         powerupName.text = name;
         powerupDesc.text = desc;
 
+
+        if (powerupPopup.GetComponent<RectTransform>().anchoredPosition != restingPlace)
+        {
+            powerupPopup.GetComponent<RectTransform>().anchoredPosition = (restingPlace + new Vector2(-300f, 0f));
+            for (int i = 0; i < 150; i++)
+            {
+                powerupPopup.GetComponent<RectTransform>().anchoredPosition += new Vector2(2f, 0f);
+                yield return new WaitForSeconds(0.005f);
+            }
+        }
+
+        powerupPopup.GetComponent<RectTransform>().anchoredPosition = restingPlace;
         powerupTime = duration;
         powerupTicking = true;
+    }
+
+    public IEnumerator PowerupHide()
+    {
+        powerupTicking = false;
+
+        for (int i = 0; i < 150; i++)
+            {
+                powerupPopup.GetComponent<RectTransform>().anchoredPosition += new Vector2(-2f, 0f);
+                yield return new WaitForSeconds(0.005f);
+        }
+
+        powerupPopup.SetActive(false);
+    }
+
+
+    private void Start()
+    {
+        restingPlace = powerupPopup.GetComponent<RectTransform>().anchoredPosition;
+        powerupPopup.GetComponent<RectTransform>().anchoredPosition = (restingPlace + new Vector2(-300f, 0f));
     }
 
     private void Update()
     {
         if (powerupTicking && powerupTime <= 1)
         {
-            powerupTicking = false;
-            powerupPopup.SetActive(false);
+            StartCoroutine(PowerupHide());
         }
         else
         {
