@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ public class TimeManager : MonoBehaviour
     IEnumerator Type(TMP_Text dest, string text, float typeSpeed)
     {
         dest.text = "";
+
         foreach (char letter in text)
         {
             dest.text += letter;
@@ -26,43 +28,72 @@ public class TimeManager : MonoBehaviour
     public void ChangeTime(float time)
     {
         currentTime += time;
+
         if (currentTime < 0f)
             currentTime = 0f;
+
+        DisplayTime(currentTime);
     }
 
     public void StartTimer()
     {
-        if (currentTime < 0f)
+        if (currentTime <= 0f)
             return;
 
         ticking = true;
     }
 
+    public void PauseTimer()
+    {
+        ticking = false;
+    }
+
     void DisplayTime(float timeToDisplay)
     {
+        if (timerText == null)
+            return;
+
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timerText.text = string.Format(
+            "{0:00}:{1:00}",
+            minutes,
+            seconds
+        );
     }
 
     void Start()
     {
-        ticking = true;
         currentTime = baseTime;
+
+        // Timer waits until the ranger dialogue ends.
+        ticking = false;
+
+        DisplayTime(currentTime);
     }
 
     void Update()
     {
-        if (ticking && currentTime <= 0)
+        if (!ticking)
+            return;
+
+        currentTime -= Time.deltaTime;
+
+        if (currentTime <= 0f)
         {
+            currentTime = 0f;
             ticking = false;
-            timerText.text = "0:00 TIME UP - Restart via ESC menu";
+
+            if (timerText != null)
+            {
+                timerText.text =
+                    "0:00 TIME UP - Restart via ESC menu";
+            }
+
+            return;
         }
-        else if (ticking)
-        {
-            DisplayTime(currentTime);
-            currentTime -= Time.deltaTime;
-        }
+
+        DisplayTime(currentTime);
     }
 }

@@ -126,7 +126,6 @@ public class DialogueManager : MonoBehaviour
     private int consecutiveBadChoices;
     private bool entryDenied;
 
-    // NEW: Camp entrance approval
     private bool entryAllowed = false;
 
     private string currentNPCName;
@@ -200,7 +199,6 @@ public class DialogueManager : MonoBehaviour
         return entryDenied;
     }
 
-    // NEW: Used by CampEntranceGate.cs
     public bool IsEntryAllowed()
     {
         return entryAllowed;
@@ -223,6 +221,11 @@ public class DialogueManager : MonoBehaviour
         pendingNextLine = 0;
 
         dialogueActive = true;
+
+        // Pause the timer while dialogue is active.
+        if (timer != null)
+            timer.PauseTimer();
+
         showingChoices = false;
         choicesPending = false;
         showingChosenResponse = false;
@@ -308,7 +311,6 @@ public class DialogueManager : MonoBehaviour
         foreach (char letter in text)
         {
             dest.text += letter;
-
             yield return new WaitForSeconds(speed);
         }
 
@@ -541,7 +543,7 @@ public class DialogueManager : MonoBehaviour
             rejectAfterReply = false;
         }
 
-        // Update overworld timer and show popup.
+        // Apply time changes without starting the countdown.
         if (timer != null && timeChange != 0f)
         {
             timer.ChangeTime(timeChange);
@@ -717,7 +719,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
-        // NEW: Grant camp access after successful dialogue.
+        // Grant camp access after successful dialogue.
         if (!entryDenied)
         {
             entryAllowed = true;
@@ -732,6 +734,11 @@ public class DialogueManager : MonoBehaviour
 
         isTyping = false;
         dialogueActive = false;
+
+        // Start the countdown only after successful dialogue.
+        if (timer != null && !entryDenied)
+            timer.StartTimer();
+
         showingChoices = false;
         choicesPending = false;
         showingChosenResponse = false;
@@ -747,4 +754,3 @@ public class DialogueManager : MonoBehaviour
             dialoguePanel.SetActive(false);
     }
 }
-

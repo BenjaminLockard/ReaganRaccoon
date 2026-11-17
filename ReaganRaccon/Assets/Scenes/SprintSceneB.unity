@@ -59604,7 +59604,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &319119395
 RectTransform:
   m_ObjectHideFlags: 0
@@ -138653,7 +138653,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &578964428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -553528,10 +553528,10 @@ MonoBehaviour:
     choice3IsBad: 1
     choice1RejectImmediately: 0
     choice2RejectImmediately: 0
-    choice3RejectImmediately: 0
-    choice1NextLine: 2
-    choice2NextLine: 2
-    choice3NextLine: 2
+    choice3RejectImmediately: 1
+    choice1NextLine: -1
+    choice2NextLine: -1
+    choice3NextLine: -1
   - speakerName: Forest Ranger
     dialogue: So, is this your first time camping here?
     speakerPortrait: {fileID: 21300000, guid: ccf4ac88625324da28f7217ba2335dee, type: 3}
@@ -553593,8 +553593,8 @@ MonoBehaviour:
     choice1RejectImmediately: 0
     choice2RejectImmediately: 0
     choice3RejectImmediately: 1
-    choice1NextLine: 4
-    choice2NextLine: 4
+    choice1NextLine: -1
+    choice2NextLine: -1
     choice3NextLine: -1
   - speakerName: Forest Ranger
     dialogue: Hey, are you, like, one of them possums or something?
@@ -553620,8 +553620,98 @@ MonoBehaviour:
     choice2IsBad: 1
     choice3IsBad: 1
     choice1RejectImmediately: 0
+    choice2RejectImmediately: 1
+    choice3RejectImmediately: 1
+    choice1NextLine: -1
+    choice2NextLine: -1
+    choice3NextLine: -1
+  - speakerName: Forest Ranger
+    dialogue: But like, what do you mean by chaotic good?
+    speakerPortrait: {fileID: 21300000, guid: ccf4ac88625324da28f7217ba2335dee, type: 3}
+    isReaganSpeaking: 0
+    hasChoices: 1
+    choice1: I donate money to misbehaved orphans.
+    choice2: I steal from the rich and give to the poor.
+    choice3: I'm really good at being chaotic!
+    npcReply1: That sounds pretty noble, you seem trustworthy!
+    npcReply2: I don't think I should let a thief in here man... then again... I
+      am the poor...
+    npcReply3: Sounds like you're looking to make my job harder. No way you're coming
+      in!
+    choice1ReplyPortrait: {fileID: 21300000, guid: ccf4ac88625324da28f7217ba2335dee, type: 3}
+    choice2ReplyPortrait: {fileID: 21300000, guid: eb9157eff2d33494388cd35cd25d82f0, type: 3}
+    choice3ReplyPortrait: {fileID: 21300000, guid: 6ef79f2e5fecf41f0bd2a2934cb4aa7c, type: 3}
+    choice1ReaganPortrait: {fileID: 21300000, guid: 27df1034cfd1448fdbe7776c2e4b2faf, type: 3}
+    choice2ReaganPortrait: {fileID: 21300000, guid: 27df1034cfd1448fdbe7776c2e4b2faf, type: 3}
+    choice3ReaganPortrait: {fileID: 21300000, guid: 8a06002c1f6974c299b1ec385814341f, type: 3}
+    choice1TimeChange: 30
+    choice2TimeChange: 0
+    choice3TimeChange: -30
+    choice1IsBad: 0
+    choice2IsBad: 0
+    choice3IsBad: 1
+    choice1RejectImmediately: 0
     choice2RejectImmediately: 0
-    choice3RejectImmediately: 0
+    choice3RejectImmediately: 1
+    choice1NextLine: 7
+    choice2NextLine: 7
+    choice3NextLine: 7
+  - speakerName: Forest Ranger
+    dialogue: What do you mean by chaotic neutral?
+    speakerPortrait: {fileID: 21300000, guid: ccf4ac88625324da28f7217ba2335dee, type: 3}
+    isReaganSpeaking: 0
+    hasChoices: 1
+    choice1: When children cry, I buzz like a mosquito until they stop.
+    choice2: I won't bother anyone unless I'm bored
+    choice3: For example, I'd free all the aniimals from the zoo.
+    npcReply1: Sounds annoying but harmless.
+    npcReply2: Still sounds like you're a liability, man. I can't let you in.
+    npcReply3: Sounds like you're a trouble maker then. You can't come in, man.
+    choice1ReplyPortrait: {fileID: 21300000, guid: eb9157eff2d33494388cd35cd25d82f0, type: 3}
+    choice2ReplyPortrait: {fileID: -8196486244809568696, guid: 2e263662c243e49a0b6ad84871fedd1b, type: 3}
+    choice3ReplyPortrait: {fileID: 21300000, guid: 6ef79f2e5fecf41f0bd2a2934cb4aa7c, type: 3}
+    choice1ReaganPortrait: {fileID: -1072137621703592839, guid: 6c8d88e7e7f8d4050b434d994cf76637, type: 3}
+    choice2ReaganPortrait: {fileID: 21300000, guid: 27df1034cfd1448fdbe7776c2e4b2faf, type: 3}
+    choice3ReaganPortrait: {fileID: 21300000, guid: 27df1034cfd1448fdbe7776c2e4b2faf, type: 3}
+    choice1TimeChange: 30
+    choice2TimeChange: -30
+    choice3TimeChange: -30
+    choice1IsBad: 0
+    choice2IsBad: 1
+    choice3IsBad: 1
+    choice1RejectImmediately: 0
+    choice2RejectImmediately: 1
+    choice3RejectImmediately: 1
+    choice1NextLine: 7
+    choice2NextLine: -1
+    choice3NextLine: -1
+  - speakerName: Forest Ranger
+    dialogue: Look, man. I just need to make sure you're not gonna cause any problems
+      here.
+    speakerPortrait: {fileID: 21300000, guid: ccf4ac88625324da28f7217ba2335dee, type: 3}
+    isReaganSpeaking: 0
+    hasChoices: 1
+    choice1: I promise, I'll be good.
+    choice2: You're too uptight. This job can't pay that much.
+    choice3: I do what I want!
+    npcReply1: Good. I'm glad we understand each other. You can come in.
+    npcReply2: 
+    npcReply3: 
+    choice1ReplyPortrait: {fileID: 21300000, guid: ccf4ac88625324da28f7217ba2335dee, type: 3}
+    choice2ReplyPortrait: {fileID: 21300000, guid: eb9157eff2d33494388cd35cd25d82f0, type: 3}
+    choice3ReplyPortrait: {fileID: 21300000, guid: eb9157eff2d33494388cd35cd25d82f0, type: 3}
+    choice1ReaganPortrait: {fileID: -1072137621703592839, guid: 6c8d88e7e7f8d4050b434d994cf76637, type: 3}
+    choice2ReaganPortrait: {fileID: 21300000, guid: 27df1034cfd1448fdbe7776c2e4b2faf, type: 3}
+    choice3ReaganPortrait: {fileID: 21300000, guid: 27df1034cfd1448fdbe7776c2e4b2faf, type: 3}
+    choice1TimeChange: 30
+    choice2TimeChange: -30
+    choice3TimeChange: -30
+    choice1IsBad: 0
+    choice2IsBad: 1
+    choice3IsBad: 1
+    choice1RejectImmediately: 0
+    choice2RejectImmediately: 1
+    choice3RejectImmediately: 1
     choice1NextLine: -1
     choice2NextLine: -1
     choice3NextLine: -1
