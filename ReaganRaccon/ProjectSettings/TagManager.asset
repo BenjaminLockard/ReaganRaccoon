@@ -53,9 +53,6 @@ TagManager:
   - name: Campground
     uniqueID: 2110568903
     locked: 0
-  - name: Reagan
-    uniqueID: 1391004129
-    locked: 0
   - name: Camping stuff
     uniqueID: 3437419787
     locked: 0
@@ -67,6 +64,12 @@ TagManager:
     locked: 0
   - name: bat
     uniqueID: 801603119
+    locked: 0
+  - name: Reagan
+    uniqueID: 1391004129
+    locked: 0
+  - name: enemy
+    uniqueID: 2678448869
     locked: 0
   m_RenderingLayers:
   - Default
