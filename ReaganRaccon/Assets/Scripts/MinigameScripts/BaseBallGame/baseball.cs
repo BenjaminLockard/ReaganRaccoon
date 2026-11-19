@@ -1,39 +1,85 @@
+
 using UnityEngine;
 
 public class baseballscript : MonoBehaviour
 {
     private Rigidbody2D rb;
     private LoadNext loadNext;
+
     private Vector2 force;
-    //public int x;
-    //private int y = 0;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private bool gameEnded = false;
+
     void Start()
     {
         loadNext = GetComponent<LoadNext>();
         rb = GetComponent<Rigidbody2D>();
-        Invoke("throwBall", Random.Range(5,10));
-        force = new Vector2(Random.Range(-20,-10), 0);
+
+        Invoke("throwBall", Random.Range(5f, 10f));
+
+        force = new Vector2(
+            Random.Range(-20f, -10f),
+            0f
+        );
     }
 
-    // Update is called once per frame
     private void throwBall()
     {
-        rb.AddForce(force,ForceMode2D.Impulse);//change Vector 2     
+        if (gameEnded)
+            return;
+
+        if (rb != null)
+        {
+            rb.AddForce(force, ForceMode2D.Impulse);
+        }
     }
-    
-    private void OnTriggerEnter2D(Collider2D other){
-        if(other.gameObject.CompareTag("Win")){
-            //trigger win item
-            //load scene
-            //Debug.Log("YOU WIN!!");
-            loadNext.switchScene("BaseBallMinigame","switchback");
-        }else if(other.gameObject.CompareTag("Lose")){
-            //trigger lose 
-            //load scene
-            loadNext.switchScene("BaseBallMinigame","switchback");
-            //Debug.Log("FUCK YOU FUCK YOU AHHHHHH FUCK YOU");
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (gameEnded)
+            return;
+
+        bool won = other.CompareTag("Win");
+        bool lost = other.CompareTag("Lose");
+
+        if (!won && !lost)
+            return;
+
+        gameEnded = true;
+
+        RewardManager rewardManager =
+            FindFirstObjectByType<RewardManager>();
+
+        if (rewardManager != null)
+        {
+            if (won)
+            {
+                rewardManager.ShowRewardWindow();
+            }
+            else
+            {
+                rewardManager.ShowLoseWindow();
+            }
+        }
+        else
+        {
+            Debug.LogWarning(
+                "Baseball: RewardManager not found!"
+            );
         }
 
+        if (loadNext != null)
+        {
+            loadNext.switchScene(
+                "BaseBallMinigame",
+                "switchback"
+            );
+        }
+        else
+        {
+            Debug.LogError(
+                "Baseball: LoadNext component missing!"
+            );
+        }
     }
 }
+
