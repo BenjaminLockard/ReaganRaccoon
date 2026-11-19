@@ -50,18 +50,18 @@ public class Powerup : MonoBehaviour
             // pickup radius----------------------------------
             case "caramel":
                 StartCoroutine(behaviorCaramel());
-                StartCoroutine(uiManager.PowerupDisplay("Caramel Apple", "Drop less money", 30f));
+                StartCoroutine(uiManager.PowerupDisplay("Honey", "Drop less money", 30f));
                 break;
             // lose less money ----------------------------------
             case "cotton":
                 StartCoroutine(reaganControls.behaviorCotton());
-               StartCoroutine( uiManager.PowerupDisplay("Cotton Candy", "Turbo mode", 14f));
+               StartCoroutine( uiManager.PowerupDisplay("Donut", "Turbo mode", 14f));
                 break;
 
             // sort-lived superboost w/ crash ----------------------------------
             case "wine":
                 StartCoroutine(behaviorWine());
-                StartCoroutine(uiManager.PowerupDisplay("Fine Wine", "Money Multiplier", 30f));
+                StartCoroutine(uiManager.PowerupDisplay("Margarita", "Money Multiplier", 30f));
                 break;
             // money multiplier ----------------------------------
             case "coffee":

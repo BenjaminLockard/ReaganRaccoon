@@ -31,7 +31,7 @@ public class MoneyManager : MonoBehaviour
 
         if (amount > 0f)
         {
-            audioSource.PlayOneShot(gainSound, 0.3f);
+            audioSource.PlayOneShot(gainSound, 0.2f);
             goingSum += amount;
         }
         else

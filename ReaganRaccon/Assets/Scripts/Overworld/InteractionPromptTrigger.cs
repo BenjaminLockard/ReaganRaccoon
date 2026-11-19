@@ -62,18 +62,38 @@ public class InteractionPromptTrigger : MonoBehaviour
             dialogueManager != null &&
             dialogueManager.IsDialogueActive();
 
-        if (playerNearby && !dialogueOpen)
+        if (dialogueManager != null)
         {
-            InteractionPromptManager.Instance.ShowPrompt(
-                gameObject,
-                promptMessage
-            );
 
-            promptShowing = true;
-        }
-        else
+            if (playerNearby && !dialogueOpen && !dialogueManager.IsEntryAllowed())
+            {
+                InteractionPromptManager.Instance.ShowPrompt(
+                    gameObject,
+                    promptMessage
+                );
+
+                promptShowing = true;
+            }
+            else
+            {
+                HidePrompt();
+            }
+        } else
         {
-            HidePrompt();
+
+            if (playerNearby)
+            {
+                InteractionPromptManager.Instance.ShowPrompt(
+                    gameObject,
+                    promptMessage
+                );
+
+                promptShowing = true;
+            }
+            else
+            {
+                HidePrompt();
+            }
         }
     }
 

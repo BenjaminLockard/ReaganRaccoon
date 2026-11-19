@@ -57,10 +57,10 @@ public class UIManager : MonoBehaviour
         if (powerupPopup.GetComponent<RectTransform>().anchoredPosition != restingPlace)
         {
             powerupPopup.GetComponent<RectTransform>().anchoredPosition = (restingPlace + new Vector2(-300f, 0f));
-            for (int i = 0; i < 150; i++)
+            for (int i = 0; i < 30; i++)
             {
-                powerupPopup.GetComponent<RectTransform>().anchoredPosition += new Vector2(2f, 0f);
-                yield return new WaitForSeconds(0.005f);
+                powerupPopup.GetComponent<RectTransform>().anchoredPosition += new Vector2(10f, 0f);
+                yield return new WaitForSeconds(0.001f);
             }
         }
 
@@ -73,10 +73,10 @@ public class UIManager : MonoBehaviour
     {
         powerupTicking = false;
 
-        for (int i = 0; i < 150; i++)
+        for (int i = 0; i < 30; i++)
             {
-                powerupPopup.GetComponent<RectTransform>().anchoredPosition += new Vector2(-2f, 0f);
-                yield return new WaitForSeconds(0.005f);
+                powerupPopup.GetComponent<RectTransform>().anchoredPosition += new Vector2(-10f, 0f);
+                yield return new WaitForSeconds(0.001f);
         }
 
         powerupPopup.SetActive(false);
@@ -95,7 +95,7 @@ public class UIManager : MonoBehaviour
         {
             StartCoroutine(PowerupHide());
         }
-        else
+        else if (powerupTicking)
         {
             DisplayTime(powerupTime);
             powerupTime -= Time.deltaTime;
