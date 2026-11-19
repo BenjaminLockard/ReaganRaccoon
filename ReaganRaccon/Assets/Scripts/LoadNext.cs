@@ -11,7 +11,7 @@ public class LoadNext : MonoBehaviour
     public string SceneName;
     public string type;
     public GameObject removed;
-
+    public ReaganControls reaganControls;
     public void switchScene(string type, string SceneName){
         StartCoroutine(switchaScene(type, SceneName));
     }
@@ -59,7 +59,10 @@ public class LoadNext : MonoBehaviour
         Debug.LogWarning("RewardManager not found!");
 
         // Fallback so the player is not stuck
+       
         GameManager.Instance.setRootTrue();
+
+        reaganControls.resetIFrame();
 
     }
     //reloads the root scene 

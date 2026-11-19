@@ -62,10 +62,7 @@ public class RewardManager : MonoBehaviour
         if (Keyboard.current != null)
         {
             keyboardPressed =
-                Keyboard.current.wKey.wasPressedThisFrame ||
-                Keyboard.current.aKey.wasPressedThisFrame ||
-                Keyboard.current.sKey.wasPressedThisFrame ||
-                Keyboard.current.dKey.wasPressedThisFrame ||
+                Keyboard.current.eKey.wasPressedThisFrame ||
                 Keyboard.current.spaceKey.wasPressedThisFrame;
         }
 

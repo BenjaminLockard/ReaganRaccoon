@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 
 public class interaction : MonoBehaviour
@@ -15,9 +16,16 @@ public class interaction : MonoBehaviour
     public Animator transition;
     public Animator stopMoving;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    public AudioClip minigameSound;
+    public AudioSource audioSource;
     
-    void start()
+    void Start()
     {
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
         loadNext = GetComponent<LoadNext>();
     }
 
@@ -44,7 +52,8 @@ public class interaction : MonoBehaviour
             //pause
             //Debug.Log("Loading Game");
             //IFRAME BUGFIX
-           
+
+            audioSource.PlayOneShot(minigameSound, 0.8f);
             transition.SetTrigger("tvSwitchScenes");
             playerControls.resetIFrame();
             Invoke("buffer", 2.50f);

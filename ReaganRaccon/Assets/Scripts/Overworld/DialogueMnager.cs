@@ -1,9 +1,10 @@
 
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.InputSystem;
-using TMPro;
 using System.Collections;
+using TMPro;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -47,6 +48,9 @@ public class DialogueManager : MonoBehaviour
         "You seem like a red flag, so you can't come in, man!";
 
     public Sprite rejectionPortrait;
+
+    public AudioClip guySound, reaganSound, goodSound, badSound;
+    public AudioSource audioSource;
 
     [System.Serializable]
     public class DialogueLine
@@ -140,8 +144,14 @@ public class DialogueManager : MonoBehaviour
     private bool isTyping;
     private string fullDialogueText = "";
 
+
     void Start()
     {
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
+
         if (dialoguePanel != null)
             dialoguePanel.SetActive(false);
 
@@ -211,7 +221,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(DialogueLine[] lines)
     {
-        if (dialogueActive ||
+        if (entryAllowed ||
             lines == null ||
             lines.Length == 0)
             return;
@@ -283,9 +293,13 @@ public class DialogueManager : MonoBehaviour
             ? line.speakerPortrait
             : defaultNPCPortrait;
 
+
         currentReaganPortrait = reaganPortrait;
 
         UpdatePortraits(line.isReaganSpeaking);
+
+        if(!line.isReaganSpeaking)
+            audioSource.PlayOneShot(guySound, 0.7f);
 
         showingChoices = false;
         choicesPending = line.hasChoices;
@@ -337,6 +351,8 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
+        
+
         typingCoroutine = StartCoroutine(
             Type(
                 dialogueText,
@@ -367,6 +383,7 @@ public class DialogueManager : MonoBehaviour
 
     private void OnTypingFinished()
     {
+
         if (dialogueActive && choicesPending)
         {
             choicesPending = false;
@@ -441,6 +458,9 @@ public class DialogueManager : MonoBehaviour
 
         if (choiceIndex < 0 || choiceIndex > 2)
             return;
+
+
+        audioSource.PlayOneShot(reaganSound, 1.1f);
 
         DialogueLine line = currentLines[currentLineIndex];
 
@@ -519,9 +539,15 @@ public class DialogueManager : MonoBehaviour
         DisplayDialogue(chosenText);
 
         if (isBad)
+        {
+            audioSource.PlayOneShot(badSound, 0.4f);
             consecutiveBadChoices++;
+        }
         else
+        {
+            audioSource.PlayOneShot(goodSound, 0.6f);
             consecutiveBadChoices = 0;
+        }
 
         bool tooManyBadChoices =
             consecutiveBadChoices >=
@@ -581,6 +607,7 @@ public class DialogueManager : MonoBehaviour
         if (showingRejection)
         {
             EndDialogue();
+            SceneManager.LoadScene("MainMenu");
             return;
         }
 
