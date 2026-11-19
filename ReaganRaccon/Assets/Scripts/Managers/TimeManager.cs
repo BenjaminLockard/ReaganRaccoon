@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -11,6 +12,8 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private float baseTime = 60;
     [SerializeField] private float currentTime = 0;
     [SerializeField] private bool ticking = false;
+
+    [Header("EndGame")]
 
     public TMP_Text timerText;
 
@@ -88,12 +91,20 @@ public class TimeManager : MonoBehaviour
             if (timerText != null)
             {
                 timerText.text =
-                    "0:00 TIME UP - Restart via ESC menu";
+                    "0:00 TIME'S UP";
             }
 
+            StartCoroutine(EndGame());
             return;
         }
 
         DisplayTime(currentTime);
+    }
+
+    public IEnumerator EndGame()
+    {
+        
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene("MainMenu");
     }
 }
