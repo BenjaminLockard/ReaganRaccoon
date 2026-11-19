@@ -521812,6 +521812,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1949256032}
     m_Modifications:
+    - target: {fileID: -5787903183113938868, guid: 32ff1e86797ea1c4b874e98a399e1c54, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7f34199147adc42b0af3e1225c8cc2af, type: 2}
     - target: {fileID: 1334915721907032342, guid: 32ff1e86797ea1c4b874e98a399e1c54, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
@@ -698076,6 +698080,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1949256032}
     m_Modifications:
+    - target: {fileID: -5787903183113938868, guid: 32ff1e86797ea1c4b874e98a399e1c54, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7f34199147adc42b0af3e1225c8cc2af, type: 2}
     - target: {fileID: 1334915721907032342, guid: 32ff1e86797ea1c4b874e98a399e1c54, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
@@ -1143727,6 +1143735,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1949256032}
     m_Modifications:
+    - target: {fileID: -5787903183113938868, guid: 32ff1e86797ea1c4b874e98a399e1c54, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7f34199147adc42b0af3e1225c8cc2af, type: 2}
     - target: {fileID: 1334915721907032342, guid: 32ff1e86797ea1c4b874e98a399e1c54, type: 3}
       propertyPath: m_LocalScale.x
       value: 3
@@ -1175845,6 +1175857,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1949256032}
     m_Modifications:
+    - target: {fileID: -5787903183113938868, guid: 32ff1e86797ea1c4b874e98a399e1c54, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7f34199147adc42b0af3e1225c8cc2af, type: 2}
+    - target: {fileID: -5787903183113938868, guid: 32ff1e86797ea1c4b874e98a399e1c54, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1334915721907032342, guid: 32ff1e86797ea1c4b874e98a399e1c54, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
