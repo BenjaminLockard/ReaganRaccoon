@@ -17,6 +17,9 @@ public class Powerup : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Vector2 currentVelocity;
 
+    public AudioSource audioSource;
+    public AudioClip powerupSound;
+
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -25,6 +28,7 @@ public class Powerup : MonoBehaviour
             !reaganControls.iFrames)
         {
             powerupBehavior();
+            audioSource.PlayOneShot(powerupSound, 0.8f);
 
             active = false;
             spriteRenderer.enabled = false;
@@ -121,6 +125,11 @@ public class Powerup : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.enabled = active;
+
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
     }
 
     
