@@ -17,6 +17,11 @@ public class NPCDialogue : MonoBehaviour
     private bool waitForKeyRelease;
     private bool activeConversation;
 
+    void Start()
+    {
+        UpdatePrompt();
+    }
+
     void Update()
     {
         if (dialogueManager == null)
@@ -27,6 +32,8 @@ public class NPCDialogue : MonoBehaviour
         {
             activeConversation = false;
         }
+
+        UpdatePrompt();
 
         if (Keyboard.current == null)
             return;
@@ -61,6 +68,8 @@ public class NPCDialogue : MonoBehaviour
                 dialogueManager.IsDialogueActive();
 
             waitForKeyRelease = activeConversation;
+
+            UpdatePrompt();
         }
     }
 
@@ -69,6 +78,7 @@ public class NPCDialogue : MonoBehaviour
         if (other.CompareTag("Reagan"))
         {
             playerNearby = true;
+            UpdatePrompt();
         }
     }
 
@@ -77,6 +87,20 @@ public class NPCDialogue : MonoBehaviour
         if (other.CompareTag("Reagan"))
         {
             playerNearby = false;
+            UpdatePrompt();
         }
+    }
+
+    void UpdatePrompt()
+    {
+        if (interactionPrompt == null)
+            return;
+
+        bool showPrompt =
+            playerNearby &&
+            dialogueManager != null &&
+            !dialogueManager.IsDialogueActive();
+
+        interactionPrompt.SetActive(showPrompt);
     }
 }

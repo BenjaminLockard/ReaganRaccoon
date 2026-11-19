@@ -8,10 +8,6 @@ public class MoneyManager : MonoBehaviour
     public TMP_Text moneyText, updateText;
     private Coroutine feedback;
 
-    [Header("Sounds")]
-    [SerializeField] private AudioClip gainSound, loseSound;
-    public AudioSource audioSource;
-
     public bool wine;
 
     public float getCurrentMoney()
@@ -30,15 +26,9 @@ public class MoneyManager : MonoBehaviour
         currentMoney += amount;
 
         if (amount > 0f)
-        {
-            audioSource.PlayOneShot(gainSound, 0.2f);
             goingSum += amount;
-        }
         else
-        {
-            audioSource.PlayOneShot(loseSound, 0.6f);
             goingSum = amount;
-        }
 
          moneyText.text = "$" + currentMoney.ToString("F2");
 
@@ -75,11 +65,6 @@ public class MoneyManager : MonoBehaviour
     void Start()
     {
         currentMoney = 0.00f;
-
-        if (audioSource == null)
-        {
-            audioSource = GetComponent<AudioSource>();
-        }
     }
 
     // Update is called once per frame

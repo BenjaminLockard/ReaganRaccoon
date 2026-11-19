@@ -27,9 +27,6 @@ public class HazardDog : MonoBehaviour
     // Current movement velocity.
     private Vector2 currentVelocity;
 
-    public AudioClip aggroSound;
-    public AudioSource audioSource;
-
 
     // --------------------------------------------------
     // PLAYER RANGE
@@ -67,7 +64,6 @@ public class HazardDog : MonoBehaviour
         if ((PlayerInRange() && currentState == EnemyState.Patrolling) && !playerControls.iFrames && !playerControls.kibble)
         {
             currentState = EnemyState.Chasing;
-            audioSource.PlayOneShot(aggroSound, 0.6f);
         }
         else if ((!PlayerInRange() && currentState == EnemyState.Chasing) || playerControls.iFrames || playerControls.kibble)
         {
@@ -172,11 +168,6 @@ public class HazardDog : MonoBehaviour
 
     void Start()
     {
-        if (audioSource == null)
-        {
-            audioSource = GetComponent<AudioSource>();
-        }
-
         player = GameObject.FindWithTag("Reagan");
         playerControls = player.GetComponent<ReaganControls>();
 

@@ -9,13 +9,11 @@ public class InteractionPromptTrigger : MonoBehaviour
     [Header("Optional Dialogue Manager")]
     public DialogueManager dialogueManager;
 
-    private bool playerNearby = false;
-    private bool promptShowing = false;
+    private bool playerNearby;
 
     void OnEnable()
     {
         playerNearby = false;
-        promptShowing = false;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -45,12 +43,10 @@ public class InteractionPromptTrigger : MonoBehaviour
         }
     }
 
-    void Update()
+    void OnDisable()
     {
-        if (playerNearby)
-        {
-            UpdatePrompt();
-        }
+        HidePrompt();
+        playerNearby = false;
     }
 
     private void UpdatePrompt()
@@ -62,59 +58,28 @@ public class InteractionPromptTrigger : MonoBehaviour
             dialogueManager != null &&
             dialogueManager.IsDialogueActive();
 
-        if (dialogueManager != null)
+        if (playerNearby && !dialogueOpen)
         {
-
-            if (playerNearby && !dialogueOpen && !dialogueManager.IsEntryAllowed())
-            {
-                InteractionPromptManager.Instance.ShowPrompt(
-                    gameObject,
-                    promptMessage
-                );
-
-                promptShowing = true;
-            }
-            else
-            {
-                HidePrompt();
-            }
-        } else
+            InteractionPromptManager.Instance.ShowPrompt(
+                gameObject,
+                promptMessage
+            );
+        }
+        else
         {
-
-            if (playerNearby)
-            {
-                InteractionPromptManager.Instance.ShowPrompt(
-                    gameObject,
-                    promptMessage
-                );
-
-                promptShowing = true;
-            }
-            else
-            {
-                HidePrompt();
-            }
+            HidePrompt();
         }
     }
 
     private void HidePrompt()
     {
-        if (!promptShowing)
-            return;
-
         if (InteractionPromptManager.Instance != null)
         {
             InteractionPromptManager.Instance.HidePrompt(
                 gameObject
             );
         }
-
-        promptShowing = false;
-    }
-
-    void OnDisable()
-    {
-        HidePrompt();
-        playerNearby = false;
     }
 }
+
+

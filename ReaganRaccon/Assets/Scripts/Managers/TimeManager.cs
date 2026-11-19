@@ -1,6 +1,5 @@
 
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -13,14 +12,7 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private float currentTime = 0;
     [SerializeField] private bool ticking = false;
 
-    [Header("EndGame")]
-    [SerializeField] private GameObject endgamePanel, pureBlackPanel;
-    [SerializeField] private Image pureBlackImage;
-    [SerializeField] private TMP_Text earningsText;
-
-   [SerializeField] private MoneyManager moneyManager;
-
-   public TMP_Text timerText;
+    public TMP_Text timerText;
 
     IEnumerator Type(TMP_Text dest, string text, float typeSpeed)
     {
@@ -96,40 +88,12 @@ public class TimeManager : MonoBehaviour
             if (timerText != null)
             {
                 timerText.text =
-                    "0:00 TIME'S UP";
+                    "0:00 TIME UP - Restart via ESC menu";
             }
 
-            StartCoroutine(EndGame());
             return;
         }
 
         DisplayTime(currentTime);
-    }
-
-    public IEnumerator EndGame()
-    {
-        endgamePanel.SetActive(true);
-        earningsText.text = "you earned $" + moneyManager.getCurrentMoney().ToString();
-
-        pureBlackPanel.SetActive(true);
-
-        float duration = 2f;
-        float elapsed = 0f;
-        yield return new WaitForSeconds(0.5f);
-
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-
-            float alpha = Mathf.Clamp01(elapsed / duration);
-
-            Color c = pureBlackImage.color;
-            c.a = alpha;
-            pureBlackImage.color = c;
-
-            yield return null;
-        }
-
-        SceneManager.LoadScene("MainMenu");
     }
 }
