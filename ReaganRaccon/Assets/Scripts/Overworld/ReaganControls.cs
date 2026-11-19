@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class ReaganControls : MonoBehaviour
 {
@@ -63,6 +64,8 @@ public class ReaganControls : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
 
     private float dizzyTimer;
+
+    private float iframeTimer;
 
     Vector2 desiredVelocity = Vector2.zero;
 
@@ -174,6 +177,7 @@ public class ReaganControls : MonoBehaviour
     public IEnumerator justHit()
     {
         iFrames = true;
+        iframeTimer = iFrameDuration;
         dropMoney();
 
         for (float i = iFrameDuration; i > 0f; i -= 0.15f)
@@ -184,7 +188,6 @@ public class ReaganControls : MonoBehaviour
             yield return new WaitForSeconds(0.075f);
         }
 
-        iFrames = false;
     }
 
     public void dropMoney()
@@ -492,6 +495,13 @@ public class ReaganControls : MonoBehaviour
         ) * Time.deltaTime;
 
         UpdateAnimation();
+
+        if (iFrames)
+        {
+            iframeTimer -= Time.deltaTime;
+            if (iframeTimer <= 0f)
+                iFrames = false;
+        }
     }
     void Start()
     {
