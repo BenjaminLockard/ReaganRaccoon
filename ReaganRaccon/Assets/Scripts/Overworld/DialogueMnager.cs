@@ -1,9 +1,10 @@
 
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.InputSystem;
-using TMPro;
 using System.Collections;
+using TMPro;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -382,6 +383,7 @@ public class DialogueManager : MonoBehaviour
 
     private void OnTypingFinished()
     {
+
         if (dialogueActive && choicesPending)
         {
             choicesPending = false;
@@ -605,6 +607,7 @@ public class DialogueManager : MonoBehaviour
         if (showingRejection)
         {
             EndDialogue();
+            SceneManager.LoadScene("MainMenu");
             return;
         }
 
