@@ -12,7 +12,7 @@ public class interaction : MonoBehaviour
     public string SceneName;
     public string type;
     public GameObject removed;
-    private float transitionTime = 1.7f; 
+    private float transitionTime = 0.86f; 
     public Animator transition;
     public Animator stopMoving;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
