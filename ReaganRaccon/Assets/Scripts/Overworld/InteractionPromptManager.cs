@@ -7,23 +7,23 @@ public class InteractionPromptManager : MonoBehaviour
 {
     public static InteractionPromptManager Instance;
 
+    [Header("Interaction Prompt UI")]
     public TMP_Text promptText;
 
     private Dictionary<GameObject, string> activePrompts =
         new Dictionary<GameObject, string>();
 
-    private GameObject currentSource;
-
     void Awake()
     {
-        // Do not disable this script if another manager exists.
         if (Instance != null && Instance != this)
         {
             Debug.LogWarning(
                 "Duplicate InteractionPromptManager detected. " +
-                "Using the latest instance.",
+                "Keeping the original manager.",
                 this
             );
+
+            return;
         }
 
         Instance = this;
@@ -51,45 +51,28 @@ public class InteractionPromptManager : MonoBehaviour
 
     public void ShowPrompt(GameObject source, string message)
     {
-        // Forward requests to the active manager.
         if (Instance != this)
         {
             if (Instance != null)
-            {
                 Instance.ShowPrompt(source, message);
-            }
 
             return;
         }
 
         if (source == null || promptText == null)
-        {
             return;
-        }
 
-        if (!activePrompts.TryGetValue(source, out string oldMessage)
-            || oldMessage != message)
-        {
-            activePrompts[source] = message;
-
-            Debug.Log(
-                "Prompt requested by: " + source.name,
-                source
-            );
-        }
+        activePrompts[source] = message;
 
         RefreshPrompt();
     }
 
     public void HidePrompt(GameObject source = null)
     {
-        // Forward requests to the active manager.
         if (Instance != this)
         {
             if (Instance != null)
-            {
                 Instance.HidePrompt(source);
-            }
 
             return;
         }
@@ -109,9 +92,7 @@ public class InteractionPromptManager : MonoBehaviour
     private void RefreshPrompt()
     {
         if (promptText == null)
-        {
             return;
-        }
 
         GameObject selectedSource = null;
         string selectedMessage = "";
@@ -127,9 +108,7 @@ public class InteractionPromptManager : MonoBehaviour
             }
         }
 
-        currentSource = selectedSource;
-
-        if (currentSource == null)
+        if (selectedSource == null)
         {
             if (promptText.gameObject.activeSelf)
             {
@@ -139,10 +118,7 @@ public class InteractionPromptManager : MonoBehaviour
             return;
         }
 
-        if (promptText.text != selectedMessage)
-        {
-            promptText.text = selectedMessage;
-        }
+        promptText.text = selectedMessage;
 
         if (!promptText.gameObject.activeSelf)
         {
@@ -158,3 +134,5 @@ public class InteractionPromptManager : MonoBehaviour
         }
     }
 }
+
+

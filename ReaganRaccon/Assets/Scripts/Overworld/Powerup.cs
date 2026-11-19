@@ -17,6 +17,9 @@ public class Powerup : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Vector2 currentVelocity;
 
+    public AudioSource audioSource;
+    public AudioClip powerupSound;
+
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -25,6 +28,7 @@ public class Powerup : MonoBehaviour
             !reaganControls.iFrames)
         {
             powerupBehavior();
+            audioSource.PlayOneShot(powerupSound, 0.8f);
 
             active = false;
             spriteRenderer.enabled = false;
@@ -37,7 +41,7 @@ public class Powerup : MonoBehaviour
         switch (id) {
             case "kibble":
                 StartCoroutine(behaviorKibble());
-                uiManager.PowerupDisplay("Kibble", "Dogs will ignore you", 15f);
+                StartCoroutine(uiManager.PowerupDisplay("Kibble", "Dogs will ignore you", 15f));
                 break;
             // dogs ignore ----------------------------------
             case "sandwich":
@@ -46,33 +50,33 @@ public class Powerup : MonoBehaviour
             // pickup radius----------------------------------
             case "caramel":
                 StartCoroutine(behaviorCaramel());
-                uiManager.PowerupDisplay("Caramel Apple", "Drop less money", 30f);
+                StartCoroutine(uiManager.PowerupDisplay("Honey", "Drop less money", 30f));
                 break;
             // lose less money ----------------------------------
             case "cotton":
                 StartCoroutine(reaganControls.behaviorCotton());
-                uiManager.PowerupDisplay("Cotton Candy", "Turbo mode", 14f);
+               StartCoroutine( uiManager.PowerupDisplay("Donut", "Turbo mode", 14f));
                 break;
 
             // sort-lived superboost w/ crash ----------------------------------
             case "wine":
                 StartCoroutine(behaviorWine());
-                uiManager.PowerupDisplay("Fine Wine", "Money Multiplier", 30f);
+                StartCoroutine(uiManager.PowerupDisplay("Margarita", "Money Multiplier", 30f));
                 break;
             // money multiplier ----------------------------------
             case "coffee":
                 StartCoroutine(reaganControls.behaviorCoffee());
-                uiManager.PowerupDisplay("Black Coffee", "Faster movement", 30f);
+                StartCoroutine(uiManager.PowerupDisplay("Black Coffee", "Faster movement", 30f));
                 break;
             // move & dash speed ----------------------------------
             case "tea":
                 behaviorTea();
-                uiManager.PowerupDisplay("Herbal Tea", "+15 seconds time", 5f);
+                StartCoroutine(uiManager.PowerupDisplay("Herbal Tea", "+15 seconds time", 5f));
                 break;
             // extra time ----------------------------------
             case "soda":
                 StartCoroutine(reaganControls.behaviorSoda());
-                uiManager.PowerupDisplay("Grape Soda", "Move slow, better dahses", 15f);
+                StartCoroutine(uiManager.PowerupDisplay("Grape Soda", "Move slow, better dahses", 15f));
                 break;
             // dash frequency & no dizzy but slow ----------------------------------
             case "pills":
@@ -121,6 +125,11 @@ public class Powerup : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.enabled = active;
+
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
     }
 
     
