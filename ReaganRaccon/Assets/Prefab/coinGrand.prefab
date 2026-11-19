@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6170837043218100616}
   - component: {fileID: 3521188702530225356}
   - component: {fileID: 5025222850679742144}
-  - component: {fileID: 2086807580531355695}
+  - component: {fileID: -6855856179670231227}
   m_Layer: 0
   m_Name: coinGrand
   m_TagString: Untagged
@@ -29,13 +29,8 @@ Transform:
   m_GameObject: {fileID: 2261367470287414207}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-<<<<<<< HEAD
   m_LocalPosition: {x: -20.05, y: 1.7400017, z: 0}
   m_LocalScale: {x: 7, y: 7, z: 7}
-=======
-  m_LocalPosition: {x: 34.1, y: -2.36, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 5}
->>>>>>> 4e0012a1957b97612b97d167bb828b0e3aaa0f5a
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -133,13 +128,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-<<<<<<< HEAD
   m_Offset: {x: 0, y: 0.002697468}
   m_Radius: 0.08189944
-=======
-  m_Offset: {x: -0.00000007947286, y: 0.000000029802322}
-  m_Radius: 0.10747266
->>>>>>> 4e0012a1957b97612b97d167bb828b0e3aaa0f5a
 --- !u!114 &5025222850679742144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,7 +147,7 @@ MonoBehaviour:
   moneyManager: {fileID: 0}
   playerControls: {fileID: 0}
   deceleration: 15
---- !u!95 &2086807580531355695
+--- !u!95 &-6855856179670231227
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0

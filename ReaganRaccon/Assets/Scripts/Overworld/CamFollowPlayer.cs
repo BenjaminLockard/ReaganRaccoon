@@ -1,8 +1,7 @@
 using System.Collections;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
+using System.Collections;
 
 public class CamFollowPlayer : MonoBehaviour
 {
@@ -16,12 +15,9 @@ public class CamFollowPlayer : MonoBehaviour
     [SerializeField] private bool isZoomedOut = false;
 
     private Coroutine zoomCoroutine;
-
-    public AudioClip zoomSound;
-    public AudioSource audioSource;
     public void OnZoom()
     {
-        audioSource.PlayOneShot(zoomSound, 2.0f);
+
         if (isZoomedOut)
         {
             zoomCoroutine = StartCoroutine(ZoomIn());
@@ -83,11 +79,6 @@ public class CamFollowPlayer : MonoBehaviour
 
     void Start()
     {
-        if (audioSource == null)
-        {
-            audioSource = GetComponent<AudioSource>();
-        }
-
         if (myCamera == null)
         {
             myCamera = Camera.main;

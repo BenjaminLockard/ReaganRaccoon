@@ -58,9 +58,6 @@ public class ReaganControls : MonoBehaviour
     [SerializeField] public bool caramel = false;
     [SerializeField] public bool soda = false;
 
-    [Header("Sounds")]
-    [SerializeField] private AudioClip dashSound, collisionSound;
-    [SerializeField] private AudioSource audioSource;
 
     private float dizzyTimer;
 
@@ -106,8 +103,6 @@ public class ReaganControls : MonoBehaviour
         dashCooldownTimer = dashCooldown;
 
         currentVelocity = dashDirection * dashSpeed;
-
-        audioSource.PlayOneShot(dashSound, 1.0f);
     }
 
     // COLLISION / CRASH STUN
@@ -128,7 +123,6 @@ public class ReaganControls : MonoBehaviour
 
         if (speed > (maxSpeed * crashThreshold) && !dizzy && !soda)
         {
-            audioSource.PlayOneShot(collisionSound, 0.3f);
             dizzy = true;
             dizzyTimer = dizzyDuration;
         }
@@ -189,7 +183,6 @@ public class ReaganControls : MonoBehaviour
 
     public void dropMoney()
     {
-        audioSource.PlayOneShot(collisionSound, 0.4f);
         float moneyToLose;
 
         if (caramel)
@@ -497,11 +490,6 @@ public class ReaganControls : MonoBehaviour
     {
         // Get the SpriteRenderer component attached to this GameObject
         spriteRenderer = GetComponent<SpriteRenderer>();
-
-        if (audioSource == null)
-        {
-            audioSource = GetComponent<AudioSource>();
-        }
     }
 
 
